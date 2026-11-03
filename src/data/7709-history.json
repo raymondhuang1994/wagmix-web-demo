@@ -1,0 +1,182 @@
+{
+  "symbol": "7709.HK",
+  "currency": "HKD",
+  "source": "Yahoo Finance Historical Data",
+  "sourceUrl": "https://finance.yahoo.com/quote/7709.HK/history/",
+  "sourceDateCoverage": "2026-09-30 to 2026-10-28, as available in retrieved rows",
+  "displayStatus": "Historical snapshot; not live; no intraday timestamp supplied",
+  "note": "Source omitted some expected dates, including 2026-10-29. Do not infer absent prices or label the final row as the latest trading day.",
+  "prices": [
+    {
+      "date": "2026-09-30",
+      "open": 41.2,
+      "high": 41.42,
+      "low": 39.6,
+      "close": 40.1,
+      "adjustedClose": 40.1,
+      "volume": 47895623
+    },
+    {
+      "date": "2026-10-02",
+      "open": 42.52,
+      "high": 42.78,
+      "low": 41.78,
+      "close": 42.2,
+      "adjustedClose": 42.2,
+      "volume": 82589181
+    },
+    {
+      "date": "2026-10-05",
+      "open": 42.58,
+      "high": 43.38,
+      "low": 42.48,
+      "close": 42.94,
+      "adjustedClose": 42.94,
+      "volume": 19712445
+    },
+    {
+      "date": "2026-10-06",
+      "open": 40.46,
+      "high": 40.88,
+      "low": 39.34,
+      "close": 39.94,
+      "adjustedClose": 39.94,
+      "volume": 62988491
+    },
+    {
+      "date": "2026-10-07",
+      "open": 38.3,
+      "high": 38.54,
+      "low": 36.88,
+      "close": 37.26,
+      "adjustedClose": 37.26,
+      "volume": 78248701
+    },
+    {
+      "date": "2026-10-08",
+      "open": 37.78,
+      "high": 38.38,
+      "low": 35.02,
+      "close": 35.28,
+      "adjustedClose": 35.28,
+      "volume": 75788533
+    },
+    {
+      "date": "2026-10-09",
+      "open": 33.5,
+      "high": 35.4,
+      "low": 33.3,
+      "close": 35.4,
+      "adjustedClose": 35.4,
+      "volume": 40267065
+    },
+    {
+      "date": "2026-10-12",
+      "open": 33.1,
+      "high": 33.22,
+      "low": 31.62,
+      "close": 31.82,
+      "adjustedClose": 31.82,
+      "volume": 104584861
+    },
+    {
+      "date": "2026-10-13",
+      "open": 27.2,
+      "high": 27.22,
+      "low": 24.74,
+      "close": 26.1,
+      "adjustedClose": 26.1,
+      "volume": 310700285
+    },
+    {
+      "date": "2026-10-14",
+      "open": 25.76,
+      "high": 26.58,
+      "low": 23.82,
+      "close": 24.68,
+      "adjustedClose": 24.68,
+      "volume": 144234032
+    },
+    {
+      "date": "2026-10-15",
+      "open": 20.98,
+      "high": 20.98,
+      "low": 18.23,
+      "close": 18.68,
+      "adjustedClose": 18.68,
+      "volume": 382364034
+    },
+    {
+      "date": "2026-10-16",
+      "open": 20.12,
+      "high": 20.8,
+      "low": 19.07,
+      "close": 19.19,
+      "adjustedClose": 19.19,
+      "volume": 187862925
+    },
+    {
+      "date": "2026-10-20",
+      "open": 16.95,
+      "high": 18.36,
+      "low": 16.95,
+      "close": 17.23,
+      "adjustedClose": 17.23,
+      "volume": 208714630
+    },
+    {
+      "date": "2026-10-21",
+      "open": 19.68,
+      "high": 20.6,
+      "low": 18.94,
+      "close": 19.62,
+      "adjustedClose": 19.62,
+      "volume": 179803290
+    },
+    {
+      "date": "2026-10-22",
+      "open": 18.86,
+      "high": 18.96,
+      "low": 16.87,
+      "close": 17.2,
+      "adjustedClose": 17.2,
+      "volume": 150353501
+    },
+    {
+      "date": "2026-10-23",
+      "open": 17,
+      "high": 19.1,
+      "low": 16.93,
+      "close": 18.65,
+      "adjustedClose": 18.65,
+      "volume": 151479965
+    },
+    {
+      "date": "2026-10-26",
+      "open": 19.11,
+      "high": 19.78,
+      "low": 18.57,
+      "close": 18.9,
+      "adjustedClose": 18.9,
+      "volume": 89368283
+    },
+    {
+      "date": "2026-10-27",
+      "open": 21.48,
+      "high": 21.9,
+      "low": 20.5,
+      "close": 20.86,
+      "adjustedClose": 20.86,
+      "volume": 127746934
+    },
+    {
+      "date": "2026-10-28",
+      "open": 23.4,
+      "high": 25.46,
+      "low": 23.4,
+      "close": 25.42,
+      "adjustedClose": 25.42,
+      "volume": 173126289
+    }
+  ]
+}

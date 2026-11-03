@@ -1,0 +1,72 @@
+{
+  "asOf": "2026-10-28",
+  "basis": "Company-reported preliminary consolidated K-IFRS; original unit billion KRW; display divided by 1000 to trillion KRW.",
+  "quarters": [
+    {
+      "period": "2025 Q4",
+      "revenueBillionKrw": 32826.7,
+      "operatingProfitBillionKrw": 19169.6,
+      "sourceId": "q425"
+    },
+    {
+      "period": "2026 Q1",
+      "revenueBillionKrw": 52576.3,
+      "operatingProfitBillionKrw": 37610.3,
+      "sourceId": "q126"
+    },
+    {
+      "period": "2026 Q2",
+      "revenueBillionKrw": 79318.7,
+      "operatingProfitBillionKrw": 60542.6,
+      "sourceId": "q226"
+    },
+    {
+      "period": "2026 Q3",
+      "revenueBillionKrw": 104615.5,
+      "operatingProfitBillionKrw": 83333.8,
+      "sourceId": "q326"
+    }
+  ],
+  "sources": [
+    {
+      "id": "history",
+      "label": {
+        "zh": "公司沿革與 HBM",
+        "en": "Company history & HBM"
+      },
+      "url": "https://news.skhynix.com/en/semiconductor-101-when-semiconductors-sk-hynix-made-their-mark-on-the-world/"
+    },
+    {
+      "id": "q425",
+      "label": {
+        "zh": "2025 年第四季",
+        "en": "Q4 2025"
+      },
+      "url": "https://news.skhynix.com/en/sk-hynix-announces-fy25-financial-results/"
+    },
+    {
+      "id": "q126",
+      "label": {
+        "zh": "2026 年第一季",
+        "en": "Q1 2026"
+      },
+      "url": "https://news.skhynix.com/en/q1-2026-business-results/"
+    },
+    {
+      "id": "q226",
+      "label": {
+        "zh": "2026 年第二季",
+        "en": "Q2 2026"
+      },
+      "url": "https://news.skhynix.com/en/q2-2026-business-results/"
+    },
+    {
+      "id": "q326",
+      "label": {
+        "zh": "2026 年第三季",
+        "en": "Q3 2026"
+      },
+      "url": "https://news.skhynix.com/en/q3-2026-business-results/"
+    }
+  ]
+}

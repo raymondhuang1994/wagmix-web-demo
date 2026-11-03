@@ -1,0 +1,31 @@
+{
+  "version": "V11",
+  "launchDate": "2026-11-20",
+  "contacts": {
+    "x": "https://x.com/WAGMIx_Official",
+    "telegram": "https://t.me/wagmix",
+    "email": "mailto:info@wagmix.com"
+  },
+  "capabilityOrder": [
+    "platform",
+    "custody",
+    "liquidity",
+    "structuring",
+    "research"
+  ],
+  "featureOrder": [
+    "backing",
+    "funding",
+    "liquidity",
+    "access"
+  ],
+  "downloadFiles": {
+    "whitepaper": "WAGMIx_SKHY2Lw_Whitepaper_EN.pdf",
+    "factsheetZh": "WAGMIx_SKHY2Lw_Factsheet_ZH.pdf",
+    "factsheetEn": "WAGMIx_SKHY2Lw_Factsheet_EN.pdf"
+  },
+  "productRoutes": {
+    "7709.W": "#/products/7709/7709.W/overview",
+    "SKHY2Lw": "#/products/7709/SKHY2Lw/overview"
+  }
+}

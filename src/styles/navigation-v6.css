@@ -1,0 +1,30 @@
+/* Five visible capability entries link to five continuously rendered sections. */
+.context-nav[data-context="capabilities"] .context-heading>small{line-height:1.65;letter-spacing:0}
+.context-nav[data-context="capabilities"] .context-links a i{opacity:.65}
+.context-nav[data-context="capabilities"] .context-links a.active i{opacity:1}
+.p-terms-grid{align-items:start}
+.context-content .p-facts dd{overflow-wrap:anywhere}
+@media(max-width:900px){
+  .context-nav[data-context="capabilities"]{padding:12px;border-radius:13px;background:#f7fbfffa;backdrop-filter:blur(18px)}
+  .context-nav[data-context="capabilities"] .context-heading{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:0 4px 9px;border:0;margin:0}
+  .context-nav[data-context="capabilities"] .context-heading>small{font-size:10px;margin:0;order:2;max-width:160px;text-align:right}
+  .context-nav[data-context="capabilities"] .context-heading>strong{font-size:12px}
+  .context-nav[data-context="capabilities"] .context-links{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));position:static;max-height:none;overflow:visible;padding:0;border:0;border-radius:0;background:transparent;box-shadow:none;gap:5px}
+  .context-nav[data-context="capabilities"] .context-links a{font-size:12px;padding:9px 10px;border:1px solid #dfeaf6;background:#ffffffa8;border-radius:8px;line-height:1.45;min-height:38px}
+  .context-nav[data-context="capabilities"] .context-links a>span{gap:6px}
+  .context-nav[data-context="capabilities"] .context-links small{min-width:14px;font-size:9px}
+  .context-nav[data-context="capabilities"] .context-links a i{font-size:12px}
+  .context-nav[data-context="capabilities"] .context-links a.active{background:#e3f1ff;border-color:#bfdcfa}
+  .context-nav[data-context="capabilities"] .context-links a:last-child{grid-column:1/-1}
+  .en .context-nav[data-context="capabilities"] .context-links a{font-size:11px;min-height:45px}
+}
+@media(max-width:380px){
+  .context-nav[data-context="capabilities"]{padding:10px}
+  .context-nav[data-context="capabilities"] .context-links a{padding:9px 7px;font-size:11px}
+  .context-nav[data-context="capabilities"] .context-links a>span{gap:4px}
+  .context-nav[data-context="capabilities"] .context-links a i{display:none}
+}
+
+.wp-date-update{padding:17px 20px;background:#eaf4ff;border:1px solid #c6e1f8;border-left:3px solid #228bda;border-radius:8px;margin:18px 0 24px;color:#275c84}
+.wp-date-update strong{font-size:13px}.wp-date-update p{font-size:13px!important;line-height:1.8;margin:7px 0 0!important;color:#426986!important}
+@media(max-width:600px){body:not(.en) .team-section .section-head h2{font-size:clamp(22px,6.15vw,29px)}}

@@ -1,0 +1,48 @@
+/* Product v7: document downloads and a source-backed company investment theme. */
+.p-hero-download{display:flex;align-items:center;flex-wrap:wrap;gap:12px;margin:26px 0 18px}.p-hero-download>span,.p-download-language{font-size:12px;line-height:1.6;color:#547795}.p-hero-download .btn{min-height:46px}.p-document-actions{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-top:24px}.p-document-actions .btn{margin-top:0!important}.p-download-language{display:block;margin-top:11px}.p-feature-copy{white-space:pre-line}.p-paper-cover>div{font-size:11px!important;letter-spacing:.06em}.p-theme-market-heading{padding-top:58px;border-top:1px solid #ceddec;margin-top:52px}.p-theme-market-heading h3{font-size:clamp(24px,2.4vw,34px);line-height:1.4;color:#143657;max-width:790px;margin:10px 0 0}.sk-company{margin-top:32px}.sk-company-intro{display:grid;grid-template-columns:1.05fr 1fr;gap:40px;padding:36px;border:1px solid #c9dfef;background:#f5faff;border-radius:20px}.sk-company-tag{display:inline-block;font-size:14px;font-weight:650;letter-spacing:.01em;color:#1269b5;padding:6px 11px;background:#e1f0fd;border-radius:7px}.sk-company-intro h3{font-size:24px;line-height:1.45;color:#173d60;margin:17px 0 13px}.sk-company-intro>div>p{font-size:15px;line-height:1.8;color:#54708b;margin:0}.sk-milestones{display:grid;grid-template-columns:1fr 1fr;gap:22px;align-content:start}.sk-milestones article{border-left:1px solid #c5dcee;padding-left:20px}.sk-milestones article>span{display:block;font-size:24px;font-weight:600;color:#1269b5;line-height:1.2;margin-bottom:14px}.sk-milestones h4{font-size:16px;line-height:1.55;margin:0 0 9px;color:#254764}.sk-milestones p{font-size:13px;line-height:1.75;color:#5d7690;margin:0}.sk-performance{padding:35px 36px 27px;margin-top:20px;border:1px solid #c9dfef;background:white;border-radius:20px}.sk-performance-top{display:flex;align-items:flex-end;justify-content:space-between;gap:20px}.sk-performance-top h3{font-size:24px;line-height:1.45;color:#173d60;margin:8px 0 0}.sk-unit{color:#597590;font-size:12px;white-space:nowrap;padding-bottom:4px}.sk-kpis{display:grid;grid-template-columns:1fr 1fr;gap:30px;margin:28px 0 32px}.sk-kpis article{padding:0 0 0 18px;border-left:3px solid #1d77d7}.sk-kpis article:nth-child(2){border-left-color:#95c7ed}.sk-kpis article>span{font-size:13px;color:#5d7894}.sk-kpis strong{display:block;font-size:clamp(38px,4.4vw,58px);font-weight:550;line-height:1.12;letter-spacing:-.04em;color:#0f3b63;margin:7px 0}.sk-kpis p{font-size:12px;margin:7px 0 0;color:#547c9d}.sk-chart{margin:0;border-top:1px solid #e1ebf4;padding-top:23px}.sk-chart figcaption{font-size:15px;font-weight:600;color:#254868;line-height:1.6}.sk-chart-legend{display:flex;align-items:center;gap:20px;margin:14px 0 22px;font-size:12px;color:#55718b;flex-wrap:wrap}.sk-chart-legend>span{display:flex;align-items:center;gap:7px}.sk-chart-legend i{display:inline-block;width:14px;height:8px;border-radius:2px}.sk-chart-legend small{font-size:11px;margin-left:auto}.sk-revenue{background:#1974d0}.sk-profit{background:#99c9ed}.sk-chart-axis{display:grid;grid-template-columns:82px 1fr;gap:16px;font-size:11px;color:#7b92a9;margin-bottom:15px}.sk-chart-axis>div{display:flex;justify-content:space-between}.sk-chart-axis b{font-weight:400;transform:translateX(50%)}.sk-chart-axis b:first-child{transform:none}.sk-chart-axis b:last-child{transform:none}.sk-chart-row{display:grid;grid-template-columns:82px 1fr;gap:16px;align-items:center;padding-bottom:18px}.sk-chart-period{font-size:12px;font-variant-numeric:tabular-nums;color:#54718d;font-weight:550}.sk-chart-tracks{background:linear-gradient(to right,#e7eef5 1px,transparent 1px);background-size:33.33333% 100%;border-right:1px solid #e7eef5}.sk-chart-track{position:relative;height:20px;margin:0 0 6px}.sk-chart-track:last-child{margin:0}.sk-chart-track i{display:block;height:100%;border-radius:0 3px 3px 0}.sk-chart-track b{position:absolute;top:0;margin-left:7px;line-height:20px;font-size:11px;color:#557391;font-weight:500;font-variant-numeric:tabular-nums}.sk-chart-data{margin-top:3px;border-bottom:1px solid #e2ebf3}.sk-chart-data table{width:100%}.sk-chart-data caption{padding:12px 0 4px;text-align:left;font-size:12px;color:#5d7893}.sk-chart-data td,.sk-chart-data th{font-size:12px!important}.sk-source-note{font-size:11px;line-height:1.75;color:#72869b;padding-top:16px}.sk-source-note p{margin:0 0 9px}.sk-source-note a{color:#386f9c;text-decoration:underline;text-underline-offset:3px;white-space:nowrap}.sk-source-note a:hover{color:#1269b5}.sk-company .eyebrow{font-size:11px;letter-spacing:.04em}
+@media(max-width:1100px){.sk-company-intro{gap:26px;padding:28px;grid-template-columns:1fr}.sk-milestones article{padding-left:17px}.sk-performance{padding:28px}.sk-company-intro h3{max-width:630px}.sk-company-intro>div>p{max-width:740px}.sk-kpis{gap:20px}}
+@media(max-width:600px){.p-hero-download{gap:9px;margin-top:22px}.p-hero-download .btn{font-size:13px}.p-hero-download>span{font-size:11px}.p-document-actions{align-items:stretch;gap:10px}.p-document-actions .btn{flex:1 1 100%;justify-content:center}.p-theme-market-heading{padding-top:33px;margin-top:35px}.p-theme-market-heading h3{font-size:24px}.sk-company{margin-top:22px}.sk-company-intro{padding:22px 19px;gap:25px;border-radius:15px}.sk-company-intro h3{font-size:21px}.sk-company-intro>div>p{font-size:14px}.sk-milestones{gap:16px}.sk-milestones article{padding-left:12px}.sk-milestones article>span{font-size:22px}.sk-milestones h4{font-size:14px}.sk-milestones p{font-size:12px}.sk-performance{padding:22px 19px;border-radius:15px}.sk-performance-top{align-items:flex-start;display:block}.sk-performance-top h3{font-size:21px}.sk-unit{display:block;margin-top:8px}.sk-kpis{gap:14px;margin-top:22px}.sk-kpis article{padding-left:12px}.sk-kpis strong{font-size:39px}.sk-kpis p{font-size:11px}.sk-chart-legend{gap:15px;margin:12px 0 17px}.sk-chart-legend small{flex:1 1 100%;margin-left:0}.sk-chart-axis,.sk-chart-row{grid-template-columns:57px 1fr;gap:8px}.sk-chart-axis{font-size:10px}.sk-chart-period{font-size:10px}.sk-chart-track b{font-size:9px;margin-left:4px}.sk-chart-track{height:17px;margin-bottom:5px}.sk-chart-track b{line-height:17px}.sk-chart-row{padding-bottom:15px}.sk-chart figcaption{font-size:14px}.sk-source-note{font-size:10.5px}.sk-source-note a{white-space:normal}}
+
+/* Keep pending access separate from the active product details and factsheet. */
+.p-hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: stretch;
+  gap: 10px;
+  margin-top: 24px;
+}
+.p-hero-actions .btn,
+.p-trading-pending {
+  min-height: 44px;
+}
+.p-trading-pending {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  max-width: 100%;
+  padding: 10px 14px;
+  color: #40566b;
+  background: #edf2f6;
+  border: 1px solid #c8d4df;
+  border-radius: 10px;
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 550;
+  line-height: 1.45;
+  cursor: not-allowed;
+}
+.p-trading-pending svg { width: 18px; height: 18px; flex-shrink: 0; }
+.p-hero-copy .p-hero-download { margin: 12px 0 0; gap: 10px; }
+.p-factsheet-link {
+  display: inline-flex;
+  align-items: center;
+  min-height: 42px;
+  color: #15558f;
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.p-factsheet-link:focus-visible { outline: 2px solid #15558f; outline-offset: 3px; }
+.docs-home .sheet-front > strong { font-size: 39px; line-height: 1.8; letter-spacing: -.045em; }

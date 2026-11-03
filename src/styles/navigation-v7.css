@@ -1,0 +1,16 @@
+/* Official social channels remain next to the logo at all viewport sizes. */
+.site-header{gap:18px}
+.header-socials{display:flex;align-items:center;gap:6px;flex-shrink:0;padding-left:15px;border-left:1px solid #cadae9}
+.header-socials a{display:grid;place-items:center;width:31px;height:31px;border-radius:8px;border:1px solid #d4e3ef;background:#f8fcff;color:#285e88;transition:background .18s,color .18s,transform .18s}
+.header-socials a:hover{background:#166eb3;border-color:#166eb3;color:#fff;transform:translateY(-1px)}
+.header-socials a:focus-visible{outline:3px solid #198ee4;outline-offset:3px}
+.header-socials svg{width:17px;height:17px}
+.header-socials a>span{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+.site-nav>a,.site-nav summary{padding-left:18px;padding-right:18px}
+.context-links a i{opacity:.6}
+.context-links a:hover i,.context-links a.active i{opacity:1}
+.menu-foot{justify-content:flex-start}
+@media(min-width:901px) and (max-width:1180px){.site-header{gap:10px}.site-logo{width:120px}.header-socials{padding-left:9px;gap:4px}.header-socials a{width:29px;height:29px}.site-nav>a,.site-nav summary{padding-left:12px;padding-right:12px}.header-contact{display:none}.site-nav{margin-left:auto}}
+@media(max-width:900px){.site-header{gap:10px;padding-left:14px}.header-socials{padding-left:10px;gap:5px}.site-logo{width:115px}.header-socials a{width:29px;height:29px}.header-actions{gap:3px}}
+@media(max-width:430px){.site-header{gap:7px;padding:0 9px 0 12px}.site-logo{width:98px}.header-socials{padding-left:7px;gap:4px}.header-socials a{width:26px;height:28px}.header-socials svg{width:16px;height:16px}.lang-switch{padding:8px 5px}.mobile-toggle{width:30px;height:32px}.header-actions{gap:2px}}
+@media(prefers-reduced-motion:reduce){.header-socials a{transition:none}}

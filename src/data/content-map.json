@@ -1,0 +1,174 @@
+{
+  "capabilities": [
+    {
+      "id": "research",
+      "title": {
+        "zh": "傳統金融投研",
+        "en": "TradFi Investment Research"
+      },
+      "copy": {
+        "zh": [
+          "標的研究與市場分析",
+          "產品機制與投資邏輯"
+        ],
+        "en": [
+          "Asset research & market analysis",
+          "Product mechanics & investment rationale"
+        ]
+      }
+    },
+    {
+      "id": "structuring",
+      "title": {
+        "zh": "RWA 架構",
+        "en": "RWA Structuring"
+      },
+      "copy": {
+        "zh": [
+          "連接資產與代幣權益",
+          "串聯發行與申贖流程"
+        ],
+        "en": [
+          "Links assets & token rights",
+          "Issuance & subscribe/redeem flows"
+        ]
+      }
+    },
+    {
+      "id": "liquidity",
+      "title": {
+        "zh": "頂級做市流動性",
+        "en": "Top-Tier Liquidity"
+      },
+      "copy": {
+        "zh": [
+          "整合做市與報價服務",
+          "支持全天候訂單簿交易"
+        ],
+        "en": [
+          "Integrated market making & quotes",
+          "24/7 order-book trading"
+        ]
+      }
+    },
+    {
+      "id": "custody",
+      "title": {
+        "zh": "持牌券商托管",
+        "en": "Licensed Broker Custody"
+      },
+      "copy": {
+        "zh": [
+          "香港持牌券商托管資產",
+          "配合鏈上鏈下持倉核對"
+        ],
+        "en": [
+          "HK licensed-broker custody",
+          "On/off-chain holdings reconciliation"
+        ]
+      }
+    },
+    {
+      "id": "platform",
+      "title": {
+        "zh": "全天候代幣化平台",
+        "en": "24/7 Tokenization Platform"
+      },
+      "copy": {
+        "zh": [
+          "支援全天候二級交易",
+          "按各產品文件辦理發行與申贖"
+        ],
+        "en": [
+          "Supports round-the-clock secondary trading",
+          "Product-specific issuance and redemption arrangements"
+        ]
+      }
+    }
+  ],
+  "sellingPoints": [
+    {
+      "title": {
+        "zh": "0 資金費 + 資金費套利機會",
+        "en": "Zero Funding Fees + Funding-Rate Arbitrage Opportunities"
+      },
+      "copy": {
+        "zh": "產品不收取資金費，可配合永續合約策略，尋找資金費套利機會。實際結果取決於資金費率、對沖安排及相關成本。",
+        "en": "The product charges no funding fees and may be used alongside perpetual-contract strategies to seek funding-rate arbitrage opportunities. Outcomes depend on funding rates, hedging arrangements and related costs."
+      },
+      "id": "funding"
+    },
+    {
+      "title": {
+        "zh": "實物支持",
+        "en": "Physical Asset Backing"
+      },
+      "copy": {
+        "zh": "7709.HK 實盤持有，合規持牌券商托管\n1:1 支持",
+        "en": "Actual 7709.HK holdings in compliant, licensed broker custody\n1:1 backing"
+      },
+      "id": "backing"
+    },
+    {
+      "title": {
+        "zh": "頂級做市商深盤口",
+        "en": "Deep Order Books by Top Market Makers"
+      },
+      "copy": {
+        "zh": "全球頂級做市商 7x24 深盤口\n二級市場透過訂單簿形成交易價格",
+        "en": "7x24 deep order books from leading global market makers\nSecondary-market prices are formed through the order book"
+      },
+      "id": "liquidity"
+    },
+    {
+      "title": {
+        "zh": "免券商開戶",
+        "en": "No Brokerage Account Required"
+      },
+      "copy": {
+        "zh": "免券商開戶，24/7 錢包直連。",
+        "en": "Direct wallet access 24/7 without opening a brokerage account."
+      },
+      "id": "access"
+    }
+  ],
+  "marketMetrics": [
+    {
+      "value": 307.8,
+      "unit": "HK$ bn",
+      "zhLabel": "7709.HK 歷史月成交額峰值",
+      "enLabel": "7709.HK historical monthly turnover peak",
+      "period": "2026-07",
+      "source": "Onepager slide 1, note 1"
+    },
+    {
+      "value": 14.0,
+      "unit": "HK$ bn/day",
+      "zhLabel": "峰值月份日均成交",
+      "enLabel": "Peak-month daily average turnover",
+      "period": "2026-07",
+      "source": "Onepager slide 1, note 1"
+    },
+    {
+      "value": 132,
+      "unit": "HK$ bn",
+      "zhLabel": "7709.HK 歷史資產管理規模",
+      "enLabel": "7709.HK historical assets under management",
+      "period": "2026-06",
+      "source": "CSOP trading information, 22 June 2026, 7709.HK (NAV per unit in HKD × units outstanding)",
+      "comparison": "exceeded",
+      "sourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0622/2026062201759.xlsx"
+    }
+  ],
+  "investmentTheme": {
+    "hbmTitle": {
+      "zh": "2026 年第二季，SK 海力士佔全球高頻寬記憶體（HBM）營收約 50%，排名第一。",
+      "en": "SK hynix led the global high-bandwidth memory (HBM) market in Q2 2026, accounting for approximately 50% of industry revenue."
+    },
+    "hbmSource": "https://counterpointresearch.com/en/insights/global-dram-and-hbm-market-share",
+    "dailyObjective": {
+      "zh": "7709.HK 追求在扣除費用及開支前，取得最多相當於 SK 海力士股票每日表現兩倍的投資結果。",
+      "en": "7709.HK seeks to deliver, before fees and expenses, up to twice the daily performance of SK hynix shares."
+    }
+  }
+}

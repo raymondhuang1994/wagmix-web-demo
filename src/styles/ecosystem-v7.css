@@ -1,0 +1,20 @@
+/* V7 documented institutions: meaningful roles replace layout placeholders. */
+.v3-eco-card.is-documented{border-color:#c8ddee;box-shadow:0 8px 24px #0b456e09;min-height:365px}
+.v3-eco-name{display:flex;flex-direction:column;align-items:flex-start;justify-content:center;gap:12px;min-height:140px}
+.v3-eco-name h3{font-size:34px}
+.v7-eco-legal-name{font-size:11px;line-height:1.65;letter-spacing:0;color:#708ba1;min-height:36px}
+.v3-eco-card-bottom{min-height:160px;display:flex;flex-direction:column}
+.v3-eco-card-bottom h4{font-size:14px;font-weight:600;line-height:1.7;color:#234f73;margin:0}
+.v3-eco-card-bottom p{font-size:12px;line-height:1.85;margin-top:10px;color:#647e95}
+.v7-eco-source{display:inline-flex;gap:14px;align-items:center;align-self:flex-start;font-size:11px;font-weight:550;color:#157cc2;padding-top:18px;margin-top:auto}
+.v7-eco-source:hover{text-decoration:underline;text-underline-offset:4px}
+.v7-eco-source span{font-size:17px}
+.v3-eco-hub>span{font-size:9px;line-height:1.8}
+.v3-eco-orbit-label{white-space:normal;max-width:180px;line-height:1.55}
+.en .v3-eco-orbit-label{max-width:194px;line-height:1.55}
+.en .v3-eco-hero-copy h1{font-size:45px;line-height:1.25}
+.v3-eco-tools{align-items:flex-start}
+.v3-eco-results{padding-top:11px}
+@media(max-width:1150px){.v3-eco-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.v3-eco-card.is-documented{min-height:340px}.v3-eco-card-bottom{min-height:145px}.en .v3-eco-hero-copy h1{font-size:39px}.v3-eco-orbit-label{max-width:155px}.en .v3-eco-orbit-label{max-width:167px}}
+@media(max-width:900px){.v3-eco-hero-copy{max-width:700px}.v3-eco-visual{width:470px}.v3-eco-card.is-documented{min-height:340px}.v3-eco-results{padding-top:0}.v3-eco-name h3{font-size:37px}.v3-eco-name{min-height:130px}.en .v3-eco-hero-copy h1{font-size:42px}}
+@media(max-width:600px){.en .v3-eco-hero-copy h1{font-size:33px}.v3-eco-visual{width:340px;height:315px}.v3-eco-orbit-label{max-width:148px;font-size:10px}.en .v3-eco-orbit-label{max-width:158px;font-size:9px}.label-assets{top:0;left:0}.label-banking{top:23%;right:-3px}.label-markets{bottom:19%;left:-3px}.label-tech{bottom:0;right:0}.v3-eco-hub>span{font-size:8px}.v3-eco-grid{grid-template-columns:1fr}.v3-eco-card.is-documented{min-height:0;padding:24px}.v3-eco-name{min-height:130px}.v3-eco-card-bottom{min-height:0}.v7-eco-legal-name{font-size:12px;min-height:0}.v3-eco-card-bottom h4{font-size:15px}.v3-eco-card-bottom p{font-size:12px}.v7-eco-source{font-size:12px}.v3-eco-filters button,.en .v3-eco-filters button{font-size:11px}}

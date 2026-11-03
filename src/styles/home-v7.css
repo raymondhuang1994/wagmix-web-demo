@@ -1,0 +1,9 @@
+/* V7 social links share one contact configuration across header, contact and footer. */
+.contact-channel.is-linked{transition:transform .2s,box-shadow .2s,border-color .2s}
+.contact-channel.is-linked:hover{transform:translateY(-3px);box-shadow:0 12px 30px #1764a514;border-color:#9fc9eb}
+.contact-channel.is-linked:focus-visible{outline:3px solid #0794ec;outline-offset:4px}
+.footer-social a{display:inline-flex;align-items:center;gap:8px;padding:4px 0;color:#356b97}
+.footer-social a:hover{color:#087ed0;text-decoration:underline;text-underline-offset:5px}
+.footer-social svg{width:17px;height:17px;flex-shrink:0}
+.home-eco-flow .eco-terminal>div{line-height:1.6}
+@media(prefers-reduced-motion:reduce){.contact-channel.is-linked{transition:none}}

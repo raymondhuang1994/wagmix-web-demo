@@ -1,0 +1,12 @@
+/* PDF downloads and language notices in the V7 product-document reader. */
+.docs-hero-actions{display:flex;align-items:flex-start;gap:16px;flex-wrap:wrap;margin-top:28px}
+.docs-hero-actions>.btn{margin:0}
+.docs-hero-actions .wp-download-actions{margin:0}
+.wp-download-actions{display:flex;flex-direction:column;align-items:flex-start;gap:8px}
+.wp-download-format{font-size:12px;line-height:1.4;color:#52708c;padding-left:2px;letter-spacing:.02em}
+.wp-download-actions .btn{white-space:normal;text-align:left}
+.wp-version-notice{border:1px solid #bcd7ee;background:#edf6ff;border-radius:16px;padding:24px 28px;margin:30px 0 38px}
+.wp-version-notice h2{font-size:20px;margin:0 0 12px;color:#123d69;line-height:1.5}
+.wp-version-notice p{font-size:15px;line-height:1.85;color:#365672;margin:0;max-width:none}
+.wp-language-note{font-size:13px;line-height:1.8}
+@media(max-width:640px){.docs-hero-actions{flex-direction:column;align-items:stretch}.docs-hero-actions>.btn{align-self:flex-start}.wp-version-notice{padding:20px}.wp-version-notice h2{font-size:18px}.wp-version-notice p{font-size:14px}}
