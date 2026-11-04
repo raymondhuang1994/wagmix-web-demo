@@ -66,8 +66,8 @@ for (const lang of ['zh-Hant','en']) for (const width of [390,1280]) {
   assert.equal(logo,run(document.body.dataset.variant==='adgm'?'LOGO_LIGHT':'LOGO'),route+' brand mark');
  }
  const home = run('home()');
- const slogan = 'Define The Next Wave On‑Chain';
- assert.equal(home.match(/<h1[^>]*lang="en"[^>]*>([\s\S]*?)<\/h1>/)?.[1].replace(/<[^>]+>/g,''),slogan+'.','home slogan');
+ const slogan = lang==='en'?'Define The Next Wave On‑Chain':'引領鏈上新浪潮';
+ assert.equal(home.match(/<h1[^>]*class="brand-slogan[^"]*"[^>]*>([\s\S]*?)<\/h1>/)?.[1].replace(/<[^>]+>/g,''),slogan,'home slogan');
  assert.ok(run("footer('home')").includes(slogan),'footer slogan');
  const homeSettlement = home.match(/class="cap-disclaimer">([\s\S]*?)<\/p>/)?.[1];
  assert.ok(homeSettlement?.includes('SKHY2Lw') && homeSettlement.includes(lang==='en'?'Other products':'其他產品'),'home T0 scope');

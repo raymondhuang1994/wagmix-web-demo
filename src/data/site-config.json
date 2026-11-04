@@ -1,5 +1,5 @@
 {
-  "version": "V16",
+  "version": "V17",
   "geoAccess": {
     "mode": "preview",
     "endpoint": "",
@@ -35,5 +35,20 @@
   "productRoutes": {
     "7709.W": "#/products/7709/7709.W/overview",
     "SKHY2Lw": "#/products/7709/SKHY2Lw/overview"
+  },
+  "brand": {
+    "slogan": {
+      "zh": "引領鏈上新浪潮",
+      "en": "Define The Next Wave On‑Chain"
+    },
+    "introduction": {
+      "zh": [
+        "機構級流動性，合規託管，全天候鏈上連接。",
+        "WAGMIx 聚焦亞洲精選資產，讓價值鏈接全球。"
+      ],
+      "en": [
+        "Powered by institutional liquidity, regulated custody, and 24/7 onchain infrastructure, WAGMIx brings curated Asian assets from leading asset managers to global markets."
+      ]
+    }
   }
 }

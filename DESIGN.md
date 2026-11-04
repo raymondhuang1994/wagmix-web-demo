@@ -1,6 +1,6 @@
 # WAGMIx 双语网页设计说明
 
-客户从「產品」菜单认出底层资产 **7709.HK**，再用 **7709.W** 或 **SKHY2Lw** 选择产品。菜单、目录与详情页分别承担这三个层次的信息。下载仓库后，可直接打开[繁中入口](index.html)或[英文入口](WAGMIx_English_V16.html)查看完整交互。
+客户从「產品」菜单认出底层资产 **7709.HK**，再用 **7709.W** 或 **SKHY2Lw** 选择产品。菜单、目录与详情页分别承担这三个层次的信息。下载仓库后，可直接打开[繁中入口](index.html)或[英文入口](WAGMIx_English_V17.html)查看完整交互。
 
 | <img src="assets/7709.W.svg" width="72" height="72" alt="7709.W 深蓝方形图标"> | <img src="assets/SKHY2Lw.svg" width="72" height="72" alt="SKHY2Lw 蓝银圆形图标"> |
 |:---|:---|
@@ -19,11 +19,18 @@
 
 产品目录桌面主标题随视口在 35–60 px 间缩放，菜单品类名为 19 px，下面两行底层资料为 15–16 px。系统按 Inter、系统西文字体及繁体中文字体回退。宽度 ≤900 px 时，顶部导航收起，产品表改为逐项标注的卡片。生态目录在 ≤780 px 时由三列改为两列。深色页的环形动效应响应系统的减少动态效果设置。
 
-两种语言首页使用英文品牌口号 **Define The Next Wave On‑Chain.**，宽屏分为两行，≤600 px 分为三行。保留 `On‑Chain` 中的连字符、句末句点和英文语言标记，字号规则位于 `home-v9.css`。
+首页和页脚按语言展示品牌文案，来源为 `site-config.json` 的 `brand` 配置。英文标题为 **Define The Next Wave On‑Chain**，保留大小写及非断行连字符，不加句点；繁中标题为 **引領鏈上新浪潮**。英文宽屏两行、手机三行；繁中尽量完整呈现并以品牌蓝强调「新浪潮」。
 
-首页直接从口号开始，下方仅显示以下英文介绍，再接操作按钮。两种语言使用完全相同的介绍：
+英文简介：
 
-> Powered by elite liquidity and regulated custody, WAGMIx bridges institutions and assets 24/7 on-chain—making regional value globally tradable.
+> Powered by institutional liquidity, regulated custody, and 24/7 onchain infrastructure, WAGMIx brings curated Asian assets from leading asset managers to global markets.
+
+繁中简介分成两句：
+
+> 機構級流動性，合規託管，全天候鏈上連接。
+> WAGMIx 聚焦亞洲精選資產，讓價值鏈接全球。
+
+首页底部的地区标签、辅助标语和对应分隔线已移除；页面保留品牌背景图，按内容调整首屏高度。最终首页样式位于 `brand-v17.css`，在全站阅读样式之后加载。
 
 两张首页产品横幅共用组件与尺寸规则，7709.W 深色在上，SKHY2Lw 浅色在下。桌面均为左侧文字、右侧图标，共用内边距、图标容器、文字层级及查看产品入口；手机采用相同的堆叠结构。外层网格使两张横幅保持等高，并允许内容随字号及视口增长。
 

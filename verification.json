@@ -1,5 +1,5 @@
 {
-  "version": "V16",
+  "version": "V17",
   "date": "2026-11-04",
   "checks": {
     "bilingual_route_cases": 172,
@@ -8,7 +8,10 @@
     "whitepaper_original_and_52_sections_preserved": true,
     "original_logo_paths_and_gradients_preserved": true,
     "exact_approved_home_introduction_preserved": true,
-    "browser_visual_validation": "not performed; local browser access unavailable"
+    "browser_visual_validation": "not performed; local browser access unavailable",
+    "localized_home_and_footer_copy": true,
+    "hero_decorative_location_strip_removed": true,
+    "product_content_and_downloads_unchanged_from_V16": true
   },
   "geo": {
     "mode": "preview",
@@ -19,9 +22,9 @@
     "serverEnforcementVerified": false
   },
   "sha256": {
-    "index.html": "8769c975eee42a9015ccf5cf3a107382b4f5fd341422e6ca7819988a2be8392a",
-    "WAGMIx_繁體中文_V16.html": "8769c975eee42a9015ccf5cf3a107382b4f5fd341422e6ca7819988a2be8392a",
-    "WAGMIx_English_V16.html": "2205684104a1930814ea7352633de0c65155ca6e25cb3d38e20fe55e839360f7",
+    "index.html": "c90a7391e0ddad47fad1f11b30289bdffc36876c0e169a7980f2eb04560363c0",
+    "WAGMIx_繁體中文_V17.html": "c90a7391e0ddad47fad1f11b30289bdffc36876c0e169a7980f2eb04560363c0",
+    "WAGMIx_English_V17.html": "306e8f913e6d7c5cc608b9ee5afdfe3c78774c586065fd89d71a2f9732fb80de",
     "assets/wagmix.svg": "8ca149b495c0b591987fb673faa4139650032c0dd817637f134e708600857bb4",
     "assets/wagmix-light.svg": "584db71b335a3250966a6a07c50f1945d6ba7501c496609475c9355d5a158a36",
     "downloads/WAGMIx_SKHY2Lw_Whitepaper_EN.pdf": "e3c70cbced396e46ee04d9a4afe4081ddfd28dbc3fe2310b071ca05cfaee8b0a",

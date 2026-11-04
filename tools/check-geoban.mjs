@@ -46,7 +46,7 @@ function fixture({lang='en',mode='preview',preview='',endpoint='/api/region',rep
   document={activeElement:null,getElementById:id=>nodes.get(id)||null,body:{dataset:{},classList:{toggle(key,on){on?classes.add(key):classes.delete(key);}}},addEventListener(type,handler,capture){(listeners[type]??=[]).push({handler,capture});}};
   const location={hash:'#/products/7709/SKHY2Lw/documents',search:preview?'?geoPreview='+preview:'',origin:protocol==='https:'?'https://wagmix.example':'null',protocol,href:protocol==='https:'?'https://wagmix.example/index.html':'file:///example/index.html'};
   let fetchCalls=0;
-  const context={document,location,SITE_CONFIG:{version:'V16',geoAccess:{mode,endpoint,restrictedCountries:['US'],timeoutMs:1000}},L:lang,LOGO_LIGHT:'data:image/png;base64,logo',t:(zh,en)=>lang==='en'?en:zh,URL,AbortController,setTimeout,clearTimeout,console,fetch:async(...args)=>{fetchCalls++;if(fetchImpl)return fetchImpl(...args);if(fail)throw new Error('offline');return {ok:httpOk,json:async()=>reply};},addEventListener(type,handler){(windowListeners[type]??=[]).push(handler);}};
+  const context={document,location,SITE_CONFIG:{version:'V17',geoAccess:{mode,endpoint,restrictedCountries:['US'],timeoutMs:1000}},L:lang,LOGO_LIGHT:'data:image/png;base64,logo',t:(zh,en)=>lang==='en'?en:zh,URL,AbortController,setTimeout,clearTimeout,console,fetch:async(...args)=>{fetchCalls++;if(fetchImpl)return fetchImpl(...args);if(fail)throw new Error('offline');return {ok:httpOk,json:async()=>reply};},addEventListener(type,handler){(windowListeners[type]??=[]).push(handler);}};
   context.window=context;
   const ctx=vm.createContext(context);
   const run=code=>vm.runInContext(code,ctx);
