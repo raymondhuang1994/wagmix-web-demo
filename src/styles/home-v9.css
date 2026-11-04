@@ -11,3 +11,12 @@
 .bvi-product-art{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:380px}.bvi-product-mark{width:min(290px,70vw);height:auto;filter:drop-shadow(0 25px 25px #1f4b7229)}.bvi-mark-caption{text-align:center;display:grid;gap:8px}.bvi-mark-caption span{font-size:18px;letter-spacing:.08em;color:#193e6f}.bvi-mark-caption strong{font-size:12px;color:#47729c}.bvi-mark-caption small{font-size:11px;color:#7f9bb7}
 @media(max-width:760px){.v9-home-products{padding:60px 0}.v9-featured-product{grid-template-columns:1fr;padding:30px 25px;gap:25px;border-radius:24px}.v9-featured-art{grid-row:1;max-width:190px}.v9-featured-copy h3{font-size:30px}.v9-secondary-product{padding:20px 16px;gap:12px;flex-wrap:wrap}.v9-secondary-mark{width:48px;height:48px}.v9-secondary-product>div{flex:1;min-width:170px}.v9-secondary-product h3{font-size:16px}.v9-secondary-network{margin-left:60px}.bvi-product-art{min-height:300px}.v9-featured-copy>p{font-size:14px}}
 @media(prefers-reduced-motion:reduce){.v9-featured-product,.v9-secondary-product{transition:none}}
+
+/* V12 brand line: two lines on desktop, three on compact screens. */
+.brand-hero .brand-copy h1.brand-slogan{font-size:clamp(40px,4.2vw,64px);line-height:1.12;letter-spacing:-.045em}
+.brand-slogan-lead,.brand-slogan em{display:block;white-space:nowrap}
+.footer-brand p.footer-slogan{max-width:330px;font-size:14px;line-height:1.6;letter-spacing:-.01em}
+@media(max-width:600px){
+ .brand-hero .brand-copy h1.brand-slogan{font-size:clamp(38px,10.8vw,56px);line-height:1.1;letter-spacing:-.035em}
+ .brand-slogan-lead>span{display:block}
+}

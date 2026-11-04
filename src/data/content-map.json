@@ -104,8 +104,8 @@
         "en": "Physical Asset Backing"
       },
       "copy": {
-        "zh": "7709.HK 實盤持有，合規持牌券商托管\n1:1 支持",
-        "en": "Actual 7709.HK holdings in compliant, licensed broker custody\n1:1 backing"
+        "zh": "7709.HK 單位由合規持牌券商託管，以實際持倉提供 1:1 支持。",
+        "en": "Actual holdings of 7709.HK units are held in custody by a licensed broker and provide 1:1 backing."
       },
       "id": "backing"
     },
@@ -115,8 +115,8 @@
         "en": "Deep Order Books by Top Market Makers"
       },
       "copy": {
-        "zh": "全球頂級做市商 7x24 深盤口\n二級市場透過訂單簿形成交易價格",
-        "en": "7x24 deep order books from leading global market makers\nSecondary-market prices are formed through the order book"
+        "zh": "全球領先做市商全天候提供買賣報價，支持訂單簿深度。在採用訂單簿的交易場所，二級市場透過訂單簿形成交易價格。",
+        "en": "Leading global market makers provide two-way quotes around the clock to support order-book depth. On order-book venues, secondary-market prices are formed through the order book."
       },
       "id": "liquidity"
     },
@@ -126,8 +126,8 @@
         "en": "No Brokerage Account Required"
       },
       "copy": {
-        "zh": "免券商開戶，24/7 錢包直連。",
-        "en": "Direct wallet access 24/7 without opening a brokerage account."
+        "zh": "投資者可直接透過錢包在支援的二級市場交易，毋須開立券商帳戶。",
+        "en": "Investors can trade on supported secondary markets directly from their wallets without opening a brokerage account."
       },
       "id": "access"
     }
@@ -162,8 +162,8 @@
   ],
   "investmentTheme": {
     "hbmTitle": {
-      "zh": "2026 年第二季，SK 海力士佔全球高頻寬記憶體（HBM）營收約 50%，排名第一。",
-      "en": "SK hynix led the global high-bandwidth memory (HBM) market in Q2 2026, accounting for approximately 50% of industry revenue."
+      "zh": "2026 年第二季，SK 海力士的高頻寬記憶體（HBM）營收位居全球第一。",
+      "en": "SK hynix ranked first globally by high-bandwidth memory (HBM) revenue in Q2 2026."
     },
     "hbmSource": "https://counterpointresearch.com/en/insights/global-dram-and-hbm-market-share",
     "dailyObjective": {

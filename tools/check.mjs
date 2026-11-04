@@ -7,6 +7,11 @@ import assert from 'node:assert/strict';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const site = root;
+const config = JSON.parse(fs.readFileSync(path.join(root,'src/data/site-config.json'),'utf8'));
+for (const name of Object.values(config.downloadFiles)) {
+ const bytes = fs.readFileSync(path.join(root,'downloads',name));
+ assert.equal(bytes.subarray(0,5).toString(),'%PDF-',name+' PDF format');
+}
 const legal = /\b(?:ADGM|BVI)\b|阿布[扎達紮]比|英[屬属][維维英]|Abu Dhabi|British Virgin Islands/i;
 const retired = /7709\s*·\s*SK hynix|同一底層資產，|選擇接入渠道|代幣 7709|仲裁|HKIAC|arbitrat/i;
 const visible = html => [
@@ -27,7 +32,7 @@ const aliases = [
 ];
 const results = [];
 for (const lang of ['zh-Hant','en']) for (const width of [390,1280]) {
- const file = lang==='en'?'WAGMIx_English_V11.html':'WAGMIx_繁體中文_V11.html';
+ const file = lang==='en'?'WAGMIx_English_V12.html':'WAGMIx_繁體中文_V12.html';
  const html = fs.readFileSync(path.join(site,file),'utf8');
  const app = {innerHTML:''}, switcher = {};
  const location = {hash:'#/',replace(hash){this.hash=hash;}};
@@ -50,14 +55,25 @@ for (const lang of ['zh-Hant','en']) for (const width of [390,1280]) {
   assert.equal(location.hash,aliases.find(([old])=>old===route)?.[1]??route);
   assert.ok(app.innerHTML.includes('<main'),route);
   assert.ok(!retired.test(visible(app.innerHTML)),route+' retired wording');
-  assert.ok(switcher.href.endsWith(location.hash) && switcher.href.includes('_V11.html'),route+' language switch');
+  assert.ok(switcher.href.endsWith(location.hash) && switcher.href.includes('_V12.html'),route+' language switch');
   const ids=Array.from(app.innerHTML.matchAll(/ id="([^"]+)"/g),m=>m[1]);
   assert.equal(new Set(ids).size,ids.length,route+' duplicate IDs');
+  for (const href of app.innerHTML.matchAll(/href="(downloads\/[^"]+)"/g))
+    assert.ok(fs.existsSync(path.join(root,href[1])),route+' download exists');
   if (['home','catalog','ecosystem'].includes(document.body.dataset.page))
     assert.ok(!legal.test(visible(app.innerHTML)),route+' architecture outside disclosure');
   const logo = app.innerHTML.match(/class="site-logo"[^>]*>[\s\S]*?<img[^>]* src="([^"]+)"/)?.[1];
   assert.equal(logo,run(document.body.dataset.variant==='adgm'?'LOGO_LIGHT':'LOGO'),route+' brand mark');
  }
+ const home = run('home()');
+ const slogan = 'Define The Next Wave On‑Chain';
+ assert.equal(home.match(/<h1[^>]*lang="en"[^>]*>([\s\S]*?)<\/h1>/)?.[1].replace(/<[^>]+>/g,''),slogan,'home slogan');
+ assert.ok(run("footer('home')").includes(slogan),'footer slogan');
+ const homeSettlement = home.match(/class="cap-disclaimer">([\s\S]*?)<\/p>/)?.[1];
+ assert.ok(homeSettlement?.includes('SKHY2Lw') && homeSettlement.includes(lang==='en'?'Other products':'其他產品'),'home T0 scope');
+ const factsheet = 'downloads/'+config.downloadFiles[lang==='en'?'factsheetEn':'factsheetZh'];
+ assert.ok(factsheet.endsWith('_R2.pdf') && run('product()').includes('href="'+factsheet+'"'),'R2 download language');
+ assert.ok(run('docsDownloads()').includes('href="downloads/'+config.downloadFiles.whitepaper+'"'),'English whitepaper download');
  for (const [code,internal,expr,termsId] of [['7709.W','adgm','adgmProduct()','adgm-terms'],['SKHY2Lw','bvi','product()','product-terms']]) {
   const body=run(expr);
   const pos=body.indexOf('id="'+termsId+'"');
@@ -87,5 +103,5 @@ for (const lang of ['zh-Hant','en']) for (const width of [390,1280]) {
  for(const mark of ['adgm','bvi']) assert.ok(!legal.test(visible(run("productMark('"+mark+"')"))));
  results.push({language:lang,simulatedWidth:width,routes:pages.length+docs.length+1+aliases.length});
 }
-console.log('PASS. Routed bilingual output, code-based navigation, restricted terminology, product-specific terms, logos, catalogue, filters and legacy links.');
+console.log('PASS. Bilingual routes, navigation, product-specific terms, logos, catalogue, filters, legacy links, slogan, T0 scope and PDF downloads.');
 console.log(results);

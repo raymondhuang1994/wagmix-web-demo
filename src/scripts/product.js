@@ -2,7 +2,7 @@
 const productMarketingNotes = {
  funding:
  t('0% 資金費不代表所有費用為零。白皮書 E.3 列有申贖、托管及網絡費用；F.2 列有每日再平衡、路徑依賴及跟蹤偏差風險，不能據此視為對沖或套利收益保證。','Zero funding fees do not mean zero total costs. White paper E.3 lists subscription, redemption, custody and network fees. F.2 describes daily rebalancing, path dependency and tracking difference; this claim is not a guarantee of hedging effectiveness or arbitrage income.'),
- backing:t('營運資產可包括 7709.HK 單位、現金或現金等價物。每枚代幣代表一份無抵押票據，持有人依交易文件取得對 7709.HK 的合約經濟敞口。這些營運資產屬於發行人，不構成票據抵押品。','Operational assets may include 7709.HK units, cash or cash equivalents. Each token represents one unsecured Note and gives holders contractual economic exposure to 7709.HK under the transaction documents. These operational assets belong to the issuer and do not secure the Notes.'),
+ backing:t('營運資產可包括 7709.HK 單位、現金或現金等價物。每枚代幣代表一份無抵押票據，持有人依交易文件取得對 7709.HK 的合約經濟敞口，並不擁有底層資產。這些營運資產屬於發行人，不構成票據抵押品，亦不為持有人設置信託。','Operational assets may include 7709.HK units, cash or cash equivalents. Each token represents one unsecured Note and gives holders contractual economic exposure to 7709.HK under the transaction documents, without ownership of the underlying assets. These operational assets belong to the issuer, do not secure the Notes and are not held on trust for holders.'),
  liquidity:t('做市商可支持二級流動性，但不保證市場持續活躍或具流動性；報價及交易可能受限制或暫停。','Market makers may support secondary liquidity, but an active or liquid market is not guaranteed. Quotations and trading may be restricted or suspended.'),
  access:t('錢包接入不豁免投資者資格、交易平台及轉讓限制。申贖須符合 KYC／AML／KYT 等要求；稅務待遇取決於持有人情況及司法管轄區，應取得獨立稅務意見。','Wallet access does not waive eligibility, venue or transfer restrictions. Creation and redemption remain subject to KYC/AML/KYT and other requirements. Tax treatment depends on the holder and jurisdiction; independent tax advice should be obtained.')
 };
@@ -22,7 +22,7 @@ function product() {
     <div class="p-hero-copy">
      <span class="pill">${t('即將上線','Coming soon')}</span>
      <h1>WAGMIx SK Hynix<br><em>Daily Max (2x)</em></h1>
-     <p class="p-hero-slogan">${t('全球首個支援 24/7 二級市場交易、<br>港股交易時段內以貨銀對付模式進行 T0 申贖交收的代幣化產品³。','The world’s first tokenized product with 24/7 secondary-market trading and T0 settlement for primary subscriptions and redemptions under DvP during Hong Kong trading hours.³')}</p>
+     <p class="p-hero-slogan">${t('全球首個支援 24/7 交易及一級申贖 T0 交收³的代幣化產品','World’s first tokenized product with 24/7 trading and T0³ settlement for primary subscriptions and redemptions')}</p>
      <div class="p-hero-meta">
       <span>${t('底層資產','Underlying asset')} <b>7709.HK</b></span>
       <span>${t('計劃首發','Planned launch')} <b>${launchDateLabel('long')}</b></span>
@@ -118,20 +118,47 @@ function productTerms() {
   [t('底層參考資產','Underlying reference asset'), t('南方東英 SK 海力士每日槓桿最多（2x）產品（7709.HK）','CSOP SK Hynix Daily Max (2x) Leveraged Product (7709.HK)')],
   [t('票據性質','Instrument'), t('永續、無抵押、非後償票據','Perpetual, unsecured, unsubordinated Notes')],
   [t('計價貨幣','Denomination'), 'USDT / USDC'],
+  [t('計劃交易對','Planned trading pairs'), t(
+   'SKHY2Lw/USDT、SKHY2Lw/USDC；實際上線時間及交易對以交易場所支援及公告為準。',
+   'SKHY2Lw/USDT and SKHY2Lw/USDC; availability and launch timing are subject to venue support and announcements.'
+  )],
   [t('一級申購','Primary subscriptions'), t(
-   '獲批參與交易商（PD）可用現金、支持的穩定幣，或以發行人接納的合資格資產作實物交付。',
+   '獲批參與交易商（PD）可用現金、支援的穩定幣，或以發行人接納的合資格資產作實物交付。',
    'Approved participating dealers (PDs) may subscribe in cash, in supported stablecoins or by delivering eligible assets accepted by the issuer.'
   )],
+  [t('受控鑄造','Controlled minting'), t(
+   '全額收到已結清款項或適用的合資格資產，並滿足發行及交收條件後，方受控鑄造及交付代幣。每枚代幣代表一份票據。',
+   'Tokens are minted under controlled permissions and delivered only after receipt in full of cleared funds or applicable eligible assets and satisfaction of issuance and settlement conditions. Each token represents one Note.'
+  )],
   [t('一級贖回','Primary redemptions'), t(
-   '須經獲批 PD 辦理，交付方式及程序依最終交易文件的約定。',
-   'Redemptions must go through an approved PD. The definitive transaction documents govern delivery and procedures.'
+   '須經獲批 PD 辦理。最終交易文件允許時，可用現金、支援的穩定幣或實物交收；贖回後相應代幣會銷毀或註銷。交付方式及程序依最終交易文件的約定。',
+   'Redemptions must go through an approved PD. Settlement may be in cash, supported stablecoins or in kind where permitted by the definitive transaction documents; the corresponding tokens are burned or cancelled following redemption. Those documents govern delivery and procedures.'
   )],
   [t('一級申贖門檻','Primary minimum'), t(
-   '一般為 100,000 份票據。最終交易文件可另訂或同意其他最低數量或倍數。',
-   'The usual minimum is 100,000 Notes. A different minimum or multiple may be specified or agreed under the definitive transaction documents.'
+   '一級市場每筆申購或贖回最低為 100,000 份票據；此門檻不適用於二級市場交易。最終交易文件另有指定或議定最低數量或倍數者除外。',
+   'The minimum is 100,000 Notes per primary subscription or redemption (this minimum does not apply to secondary-market trades), unless another minimum or multiple is specified or agreed under the definitive transaction documents.'
+  )],
+  [t('資金費與一級申贖費','Funding and primary dealing fees'), t(
+   '產品不收取資金費。獲批 PD 的申購費及贖回費各為相應交易總額的 0.10%。',
+   'The product charges no funding fee. Approved PDs pay 0.10% of the transaction amount on each subscription and 0.10% on each redemption.'
+  )],
+  [t('託管及網絡費','Custody and network fees'), t(
+   '年度託管費按營運儲備帳戶持有的 7709.HK 單位價值的 0.25% 計收，網絡費另計。發行人可調整費用，並可按個案批准較低託管費。',
+   'Annual custody is 0.25% of the value of 7709.HK units held in the operational reserve account. Network fees apply separately. The issuer may adjust fees and approve a lower custody fee on a case-by-case basis.'
   )],
   [t('發行人','Issuer'), t('Cocoa Issuer Limited · 英屬維爾京群島特殊目的公司','Cocoa Issuer Limited · BVI SPV')],
-  [t('代幣化、計算與登記','Tokenisation, calculation & registrar'), 'WAGMIx Company Limited'],
+  [t('底層資產託管','Underlying asset custody'), t(
+   '復星國際證券有限公司（Fosun International Securities Limited，FISL）託管發行人持有的底層 7709.HK 單位。',
+   'Fosun International Securities Limited (FISL) holds the issuer’s underlying 7709.HK units in custody.'
+  )],
+  [t('代幣化、計算與登記','Tokenisation, calculation & registrar'), t(
+   'WAGMIx Company Limited 擔任代幣化代理、計算代理及代幣登記機構，並負責代幣化及 1:1 持倉核對。',
+   'WAGMIx Company Limited acts as Tokenisation Agent, Calculation Agent and Token Registrar, handling tokenization and 1:1 holdings reconciliation.'
+  )],
+  [t('技術及區塊鏈付款代理','Technology & blockchain paying agent'), t(
+   'Finloop Finance Limited 提供技術支援並擔任區塊鏈付款代理。',
+   'Finloop Finance Limited provides technology support and acts as Blockchain Paying Agent.'
+  )],
   [t('適用法律','Governing law'), t('英格蘭法律','English law')]
  ];
  return `<section class="p-section" id="product-terms">
@@ -147,7 +174,8 @@ function productTerms() {
     <div class="p-rights"><span class="p-small-label">${t('持有人權利','HOLDER RIGHTS')}</span>
      <h3>${t('每枚代幣代表一份無抵押票據。','Each token represents one unsecured Note.')}</h3>
      <div class="p-rights-count"><span>1 <small>${t('代幣','Token')}</small></span><i>=</i><span>1 <small>${t('票據','Note')}</small></span></div>
-     <p>${t('持有人按交易文件取得對 7709.HK 的合約經濟敞口及轉讓權利。發行人可持有 7709.HK 單位、現金或現金等價物作對沖及營運用途。該等資產不構成票據抵押，亦不為持有人設置信託。','Holders have contractual economic exposure to 7709.HK and transfer rights under the transaction documents. The issuer may hold 7709.HK units, cash or cash equivalents for hedging and operations. These assets do not secure the Notes and are not held on trust for holders.')}</p>
+     <p>${t('持有人享有與 7709.HK 掛鈎的合約經濟利益，可在適用轉讓限制下全天候轉讓代幣，亦可透過獲批參與交易商申請贖回。','Holders receive contractual economic benefits linked to 7709.HK. They may transfer their tokens around the clock, subject to applicable transfer restrictions, and request redemption through an approved PD.')}</p>
+     <p>${t('持有人並不取得底層 7709.HK 單位的所有權或實益權益。發行人可持有 7709.HK 單位、現金或現金等價物作對沖及營運用途。該等資產不構成票據抵押，亦不為持有人設置信託。權利、贖回及交收均須遵守最終交易文件。','Holders do not acquire ownership or a beneficial interest in the underlying 7709.HK units. The issuer may hold 7709.HK units, cash or cash equivalents for hedging and operations. These assets do not secure the Notes and are not held on trust for holders. Rights, redemption and settlement remain subject to the definitive transaction documents.')}</p>
      <a class="text-link" href="#/whitepaper/rights">${t('閱讀持有人權利','Read holder rights')} ↗</a>
     </div>
    </div>

@@ -7,8 +7,8 @@ const localLink=(path)=>'#/'+path;
 const chapterNames={information:t('閱讀前須知','Before you read'),summary:t('產品總覽','Product summary'),issuer:t('發行人與服務機構','Issuer & service providers'),token:t('代幣與參考資產','Token & reference asset'),offer:t('申贖、交易與定價','Creation, trading & pricing'),rights:t('持有人權利','Holder rights'),technology:t('技術、控制與費用','Technology, controls & fees'),risks:t('投資及營運風險','Investment & operational risks'),roadmap:t('發展規劃','Roadmap'),disclaimer:t('免責聲明','Disclaimer')};
 const shortRefs=['01','02','A','B','C','D','E','F','G','10'];
 const primarySettlementTerms = t(
-  '合資格專業投資者的一級申購及贖回須經獲批參與交易商（PD）辦理。T0 交收僅適用於香港交易時段內的貨銀對付（DvP）安排。休市或無法可靠估值或交收時，交收順延。',
-  'Eligible professional investors subscribe and redeem through approved participating dealers (PDs). T0 settlement applies only during Hong Kong trading hours under delivery versus payment (DvP). Settlement is deferred when the market is closed or reliable valuation or settlement is unavailable.'
+  '一級申贖只可經獲批參與交易商（PD）辦理。PD 須符合專業投資者、非美國人士及白皮書所列適用資格與合規要求。T0 交收僅適用於香港交易時段內的貨銀對付（DvP）安排。休市或無法可靠估值或交收時，交收順延。',
+  'Primary subscriptions and redemptions are available only through approved Participating Dealers (PDs). Those PDs must meet the professional-investor, non-U.S. person and other eligibility and compliance requirements in the white paper. T0 settlement applies only during Hong Kong trading hours under delivery versus payment (DvP). Settlement is deferred when the market is closed or reliable valuation or settlement is unavailable.'
 );
 const t0 = '³ ' + t(
   '二級市場支援全天候交易，須遵守交易平台規則。',
