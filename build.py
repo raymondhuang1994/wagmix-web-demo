@@ -13,16 +13,16 @@ STYLES = (
     'docs-v4.css', 'navigation-v5.css', 'home-v6.css', 'navigation-v6.css',
     'home-v7.css', 'ecosystem-v7.css', 'product-v7.css', 'docs-v7.css',
     'navigation-v7.css', 'home-v9.css', 'catalog-v9.css', 'ecosystem-v9.css',
-    'adgm-v9.css',
+    'adgm-v9.css', 'geoban.css',
 )
 SCRIPTS = (
     'shared.js', 'product-marks.js', 'whitepaper-data.js', 'product.js',
-    'adgm.js', 'docs.js', 'ecosystem.js', 'main.js', 'catalog.js', 'sidebar.js',
+    'adgm.js', 'docs.js', 'ecosystem.js', 'main.js', 'catalog.js', 'geoban.js', 'sidebar.js',
 )
 EDITIONS = (
-    ('zh-Hant', 'WAGMIx_繁體中文_V14.html', 'WAGMIx｜機構級代幣化平台',
+    ('zh-Hant', 'WAGMIx_繁體中文_V15.html', 'WAGMIx｜機構級代幣化平台',
      'WAGMIx 整合五項能力，連接真實資產與全天候鏈上市場。查閱以港交所 7709.HK 為底層資產的 7709.W 及 SKHY2Lw。'),
-    ('en', 'WAGMIx_English_V14.html', 'WAGMIx | Institutional Tokenization',
+    ('en', 'WAGMIx_English_V15.html', 'WAGMIx | Institutional Tokenization',
      'Explore WAGMIx and two tokenized products referencing HKEX-listed 7709.HK, 7709.W and SKHY2Lw.'),
 )
 MIME = {'.webp':'image/webp', '.png':'image/png', '.svg':'image/svg+xml', '.jpg':'image/jpeg'}
@@ -68,7 +68,7 @@ def build():
 <html lang="{lang}"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="description" content="{description}"><meta name="theme-color" content="#c6e5ff">
 <link rel="icon" href="data:,"><title>{title}</title><style>{css}</style></head>
-<body><div id="app"></div><noscript>{notice}</noscript><script>{js}</script></body></html>
+<body><div id="app"></div><div id="geo-root"></div><noscript>{notice}</noscript><script>{js}</script></body></html>
 '''
         (ROOT / filename).write_text(html, encoding='utf-8')
         if lang == 'zh-Hant':

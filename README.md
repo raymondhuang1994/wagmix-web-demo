@@ -1,10 +1,12 @@
-# WAGMIx 网站设计与双语网页 · V14
+# WAGMIx 网站设计与双语网页 · V15
 
 ![WAGMIx](assets/wagmix.png)
 
 本项目是 WAGMIx 官网的本地 HTML 设计样稿，包含平台介绍、7709 产品目录、两款产品详情、产品文件阅读器及生态目录。**接手设计请先读 [DESIGN.md](DESIGN.md)**，其中有产品图例、导航层级、响应式规则和对应源码。
 
-V14 的双语首页采用同一句英文口号 **Define The Next Wave On‑Chain.** 及英文品牌介绍。两款产品使用同尺寸横幅，生态名录按机构官网校正，并为 Finloop 白色标志增加深色底板。SKHY2Lw 的营销内容及产品参数采用 R2，英文白皮书提供完整产品条款。
+V15 新增美国地区访问限制的双语交互演示，并更新中英文产品单页下载件。产品单页采用 WAGMIx 蓝色视觉、右上角品牌标志、等尺寸核心卖点及放大的品牌能力区域。网页主体延续 V14，英文白皮书提供完整产品条款。
+
+**当前 IP 检测为演示模式，不会读取真实 IP，也不会请求第三方定位服务。** 页面上的演示控件可以切换正常访问、美国受限及无法验证三种状态。正式检测及访问限制的接入要求见 [GEO_ACCESS.md](GEO_ACCESS.md)。
 
 | 产品代码 | 底层资产 | 网络 | 页面识别 |
 |---|---|---|---|
@@ -13,7 +15,9 @@ V14 的双语首页采用同一句英文口号 **Define The Next Wave On‑Chain
 
 ### 在本地查看
 
-下载并解压完整仓库，打开 `index.html` 进入繁中版，或打开 `WAGMIx_English_V14.html` 进入英文版。两页都能直接在本地浏览器运行。PDF 从旁边的 `downloads/` 目录读取。行情模块展示 7709.HK 的历史快照，数据截至 2026 年 10 月 28 日。
+下载并解压完整仓库，打开 `index.html` 进入繁中版，或打开 `WAGMIx_English_V15.html` 进入英文版。两页都能直接在本地浏览器运行。PDF 从旁边的 `downloads/` 目录读取。行情模块展示 7709.HK 的历史快照，数据截至 2026 年 10 月 28 日。
+
+美国限制示例可通过 `WAGMIx_English_V15.html?geoPreview=US` 或繁中页面的同一参数打开；直接打开页面默认显示正常浏览示例。所有模拟状态都带演示标识。
 
 ### 修改后重新生成网页
 
@@ -22,10 +26,12 @@ V14 的双语首页采用同一句英文口号 **Define The Next Wave On‑Chain
 ```sh
 python3 build.py
 node tools/check.mjs
+node tools/check-geoban.mjs
 ```
 
 | 要修改的内容 | 源文件 |
 |---|---|
+| 地区限制弹窗、预览状态及服务端检测接入 | [geoban.js](src/scripts/geoban.js) · [geoban.css](src/styles/geoban.css) · [接入说明](GEO_ACCESS.md) |
 | 双语顶部菜单、侧栏、语言切换和章节跳转 | [sidebar.js](src/scripts/sidebar.js) |
 | 首页、产品目录、生态目录 | [main.js](src/scripts/main.js) · [catalog.js](src/scripts/catalog.js) · [ecosystem.js](src/scripts/ecosystem.js) |
 | 7709.W 产品条款及深色详情页 | [adgm.js](src/scripts/adgm.js) · [adgm-v9.css](src/styles/adgm-v9.css) |

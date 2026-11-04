@@ -45,7 +45,7 @@ function header(page, variant) {
         <a data-top-key="ecosystem" href="#/ecosystem" class="${page === 'ecosystem' ? 'active' : ''}" ${page === 'ecosystem' ? 'aria-current="page"' : ''}>${t('生態','Ecosystem')}</a>
         <a class="mobile-contact" data-top-key="contact-mobile" href="#/home/contact">${t('聯絡我們','Contact us')}</a>
       </nav>
-      <div class="header-actions"><a class="header-contact btn" data-top-key="contact" href="#/home/contact">${t('聯絡我們','Contact us')} <span aria-hidden="true">↗</span></a><a id="language-switch" class="lang-switch" lang="${L === 'zh' ? 'en' : 'zh-Hant'}" href="${L === 'zh' ? 'WAGMIx_English_V14.html' : 'WAGMIx_繁體中文_V14.html'}${location.hash || '#/'}">${t('EN','繁中')}</a><button class="mobile-toggle" aria-label="${t('網站選單','Site menu')}" aria-controls="site-nav" aria-expanded="false"><span aria-hidden="true">☰</span></button></div>
+      <div class="header-actions"><a class="header-contact btn" data-top-key="contact" href="#/home/contact">${t('聯絡我們','Contact us')} <span aria-hidden="true">↗</span></a><a id="language-switch" class="lang-switch" lang="${L === 'zh' ? 'en' : 'zh-Hant'}" href="${geoLanguageHref()}">${t('EN','繁中')}</a><button class="mobile-toggle" aria-label="${t('網站選單','Site menu')}" aria-controls="site-nav" aria-expanded="false"><span aria-hidden="true">☰</span></button></div>
     </header>`;
 }
 
@@ -172,7 +172,7 @@ function route() {
     document.title = title + t('｜繁體中文',' | English');
   }
   lastRoute = {page,chapter,variant};
-  document.getElementById('language-switch').href = (L === 'zh' ? 'WAGMIx_English_V14.html' : 'WAGMIx_繁體中文_V14.html') + (location.hash || '#/');
+  document.getElementById('language-switch').href = geoLanguageHref();
   closeNavigation();
   if (page === 'home') selectCapability(parts[1] === 'capabilities' ? parts[2] || 0 : activeCapability);
   setActiveNav(page === 'product' ? 'product-' + section : page === 'adgmguide' ? 'product-documents' : page === 'whitepaper' ? 'wp-' + chapter : page === 'docs' ? 'docs' : 'cap-' + activeCapability);
