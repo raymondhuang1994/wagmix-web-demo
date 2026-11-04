@@ -9,16 +9,17 @@ const v9EcoInstitutions = [
     intro:{zh:'南方東英提供交易所買賣基金、槓桿及反向產品，以及共同基金，涵蓋多個市場及資產類別。',en:'CSOP offers exchange-traded funds, leveraged and inverse products, and mutual funds across markets and asset classes.'},
     source:'https://www.csopasset.com/en/about/overview'},
   {id:'fosun',name:'Fosun International Securities',legal:'Fosun International Securities Limited',logo:'fosun',relations:[v9EcoRelations.bnb,v9EcoRelations.solana],
-    intro:{zh:'復星國際證券是復星財富控股旗下的香港證券公司。集團提供證券交易、財富管理及其他金融服務。',en:'Fosun International Securities is a Hong Kong securities company within Fosun Wealth. The group provides securities dealing, wealth management and other financial services.'},
-    source:'https://www.fosunwealth.com/zhCn/us?index=1'},
-  {id:'finloop',name:'Finloop',legal:'Finloop Finance Limited',logo:'finloop',relations:[v9EcoRelations.bnb,v9EcoRelations.solana],
-    intro:{zh:'Finloop 及其附屬公司為金融機構提供財富管理產品與科技方案，業務涵蓋傳統及數碼資產。Finloop Finance 為集團旗下香港持牌法團。',en:'Finloop and its subsidiaries provide wealth management products and technology solutions to financial institutions across traditional and digital assets. Finloop Finance is the group’s Hong Kong licensed corporation.'},
+    intro:{zh:'復星國際證券有限公司是復星財富控股旗下全資子公司，提供證券及虛擬資產交易服務。',en:'Fosun International Securities Limited is a wholly owned subsidiary of Fosun Wealth Holdings, providing securities and virtual-asset trading services.'},
+    brandNote:{zh:'圖示為復星財富控股集團標誌。',en:'The logo represents Fosun Wealth Holdings.'},
+    source:'https://www.fosunwealth.hk/us?index=1'},
+  {id:'finloop',name:'Finloop',legal:'Finloop Finance Technology Holding Limited',logo:'finloop',relations:[v9EcoRelations.bnb,v9EcoRelations.solana],
+    intro:{zh:'Finloop 為金融機構提供財富管理產品與科技方案，業務涵蓋傳統資產、數碼資產及 RWA 代幣化。Finloop Finance Limited 為旗下香港持牌子公司。',en:'Finloop provides wealth management products and technology solutions to financial institutions across traditional assets, digital assets and RWA tokenization. Finloop Finance Limited is its Hong Kong licensed subsidiary.'},
     source:'https://finloop.global/en/about'},
   {id:'beosin',name:'Beosin',legal:'Beosin',logo:'beosin',relations:[v9EcoRelations.auditedEvm],
-    intro:{zh:'Beosin 提供區塊鏈安全及合規科技服務，涵蓋智能合約審計、鏈上風險監控及虛擬資產追蹤。SKHY2Lw 產品文件列出的審計範圍僅涵蓋指定 EVM 合約。',en:'Beosin provides blockchain security and compliance technology, including smart-contract audits, on-chain risk monitoring and digital-asset tracing. The audit scope in the SKHY2Lw product documents is limited to specified EVM contracts.'},
-    source:'https://www.beosin.com/download'},
+    intro:{zh:'Beosin 提供區塊鏈安全與合規解決方案，業務涵蓋智能合約安全審計、反洗錢監控及加密資產追蹤。',en:'Beosin provides blockchain security and compliance solutions, including smart-contract security audits, anti-money-laundering monitoring and crypto-asset tracing.'},
+    source:'https://www.beosin.com/'},
   {id:'bnb',name:'BNB Smart Chain',legal:'BNB Smart Chain',symbol:'bnb',relations:[v9EcoRelations.bnb],
-    intro:{zh:'BNB Smart Chain 是 BNB Chain 生態內兼容 EVM 的區塊鏈網絡。7709.W 的初期網絡規劃為 BNB Smart Chain。',en:'BNB Smart Chain is the EVM-compatible blockchain within the BNB Chain ecosystem. It is the planned initial network for 7709.W.'},
+    intro:{zh:'BNB Smart Chain 是兼容 EVM 的第一層區塊鏈，支援 DeFi、NFT 及其他 Web3 應用。',en:'BNB Smart Chain is an EVM-compatible Layer 1 blockchain supporting DeFi, NFTs and other Web3 applications.'},
     source:'https://www.bnbchain.org/en/bnb-smart-chain'},
   {id:'solana',name:'Solana',legal:'Solana',symbol:'solana',relations:[v9EcoRelations.solana],
     intro:{zh:'Solana 是支援資本市場、支付及加密應用的高效能區塊鏈網絡。',en:'Solana is a high-performance blockchain network for capital markets, payments and crypto applications.'},
@@ -40,7 +41,7 @@ function v9EcoCard(entry, index) {
     </button>
     <div class="eco-v9-info" id="eco-v9-info-${entry.id}" role="region" aria-label="${esc(entry.name)} ${t('機構介紹','introduction')}">
       <button type="button" class="eco-v9-info-close" data-eco-v9-close aria-label="${t('關閉介紹','Close introduction')}">×</button>
-      <h3>${esc(entry.name)}</h3>${entry.legal === entry.name ? '' : `<p class="eco-v9-legal">${esc(entry.legal)}</p>`}<p>${esc(pick(entry.intro))}</p>
+      <h3>${esc(entry.name)}</h3>${entry.legal === entry.name ? '' : `<p class="eco-v9-legal">${esc(entry.legal)}</p>`}<p>${esc(pick(entry.intro))}</p>${entry.brandNote ? `<p class="eco-v9-brand-note">${esc(pick(entry.brandNote))}</p>` : ''}
       <a href="${entry.source}" target="_blank" rel="noopener noreferrer">${t('官方介紹','Official introduction')} <span aria-hidden="true">↗</span></a>
     </div>
   </article>`;

@@ -20,9 +20,9 @@ SCRIPTS = (
     'adgm.js', 'docs.js', 'ecosystem.js', 'main.js', 'catalog.js', 'sidebar.js',
 )
 EDITIONS = (
-    ('zh-Hant', 'WAGMIx_繁體中文_V13.html', 'WAGMIx｜機構級代幣化平台',
+    ('zh-Hant', 'WAGMIx_繁體中文_V14.html', 'WAGMIx｜機構級代幣化平台',
      'WAGMIx 整合五項能力，連接真實資產與全天候鏈上市場。查閱以港交所 7709.HK 為底層資產的 7709.W 及 SKHY2Lw。'),
-    ('en', 'WAGMIx_English_V13.html', 'WAGMIx | Institutional Tokenization',
+    ('en', 'WAGMIx_English_V14.html', 'WAGMIx | Institutional Tokenization',
      'Explore WAGMIx and two tokenized products referencing HKEX-listed 7709.HK, 7709.W and SKHY2Lw.'),
 )
 MIME = {'.webp':'image/webp', '.png':'image/png', '.svg':'image/svg+xml', '.jpg':'image/jpeg'}

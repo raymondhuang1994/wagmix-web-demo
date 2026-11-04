@@ -1,16 +1,32 @@
 .product-emblem{display:block;width:100%;height:100%;overflow:visible}
 .v9-home-products{padding-top:90px;padding-bottom:90px}
-.v9-featured-product{position:relative;display:grid;grid-template-columns:1.3fr 1fr;gap:30px;padding:58px 64px;background:radial-gradient(ellipse at 86% 42%,#203d7c 0%,#111d37 34%,#080d18 75%);color:#f5f8ff;border:1px solid #2b4070;border-radius:30px;text-decoration:none;overflow:hidden;transition:border-color .3s,box-shadow .3s}
-.v9-featured-product:hover,.v9-featured-product:focus-visible{border-color:#719cff;box-shadow:0 18px 60px #193f6828}
-.v9-featured-copy{position:relative;z-index:1}.v9-product-status{display:inline-block;color:#a9c5ff;font-size:11px;letter-spacing:.12em;border-bottom:1px solid #4d6f9c;padding-bottom:10px}
-.v9-featured-copy h3{color:#fff;font-size:clamp(28px,3vw,43px);line-height:1.2;letter-spacing:-.035em;margin:25px 0 16px}
-.v9-featured-copy>p{color:#afbed5;font-size:15px;line-height:1.8;max-width:480px}
-.v9-platform-line{display:flex;flex-wrap:wrap;gap:13px 20px;margin:26px 0;font-size:12px;color:#b3c6e9}.v9-platform-line span{display:inline-flex;align-items:center;gap:7px}.v9-platform-line svg{width:21px;height:21px}.v9-featured-link{display:inline-block;color:#fff;font-size:14px;border-bottom:1px solid #758bac;padding-bottom:6px}
-.v9-featured-art{position:relative;align-self:center;max-width:330px;width:100%;justify-self:center}.v9-featured-art .product-emblem{filter:drop-shadow(0 25px 30px #0007)}.v9-featured-art>span{display:block;font-size:11px;text-align:center;letter-spacing:.3em;color:#a5bff2;margin-top:8px}
-.v9-secondary-product{display:flex;align-items:center;gap:20px;margin-top:18px;padding:25px 32px;border:1px solid #cfdeed;border-radius:22px;text-decoration:none;color:#17314c;background:#f4f8fc;transition:background .2s}.v9-secondary-product:hover{background:#eaf3fc}.v9-secondary-mark{width:66px;height:66px;flex:none}.v9-secondary-product h3{font-size:19px;margin:5px 0;color:#132e4f}.v9-secondary-product p,.v9-secondary-product div>span{margin:0;color:#637d96;font-size:12px}.v9-secondary-network{margin-left:auto;display:flex;align-items:center;gap:8px;font-size:13px;white-space:nowrap}.v9-secondary-network svg{width:24px;height:24px}.v9-product-context{color:#6b8299;font-size:12px;line-height:1.8;margin:20px 0 0;max-width:800px}
+/* Both products share one banner layout; the themes only change colour. */
+.v14-product-banners{display:grid;grid-template-columns:minmax(0,1fr);grid-auto-rows:1fr;gap:20px}
+.v14-product-banner{--banner-ink:#f5f8ff;--banner-muted:#b8c8de;--banner-accent:#b8d1ff;--banner-line:#607ba6;position:relative;display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);align-items:center;gap:30px;min-height:410px;padding:50px 60px;border:1px solid #2b4070;border-radius:30px;overflow:hidden;text-decoration:none;color:var(--banner-ink);background:radial-gradient(ellipse at 86% 42%,#203d7c 0%,#111d37 34%,#080d18 75%);transition:border-color .25s,box-shadow .25s}
+.v14-product-banner-light{--banner-ink:#132e4f;--banner-muted:#48647e;--banner-accent:#275b8f;--banner-line:#98b5cf;border-color:#cfdeed;background:radial-gradient(ellipse at 86% 42%,#d7e8ff 0%,#edf5ff 38%,#f4f8fc 75%)}
+.v14-product-banner:hover{border-color:#719cff;box-shadow:0 18px 60px #193f6828}
+.v14-product-banner:focus-visible{outline:3px solid #086be8;outline-offset:5px}
+.v14-product-copy{position:relative;z-index:1;min-width:0}
+.v14-product-status{display:inline-block;color:var(--banner-accent);font-size:11px;letter-spacing:.1em;border-bottom:1px solid var(--banner-line);padding-bottom:10px}
+.v14-product-copy h3{color:var(--banner-ink);font-size:clamp(28px,3vw,43px);line-height:1.2;letter-spacing:-.035em;margin:24px 0 14px}
+.v14-product-copy .v14-product-name{color:var(--banner-muted);font-size:15px;line-height:1.8;min-height:3.6em;max-width:480px;margin:0}
+.v14-product-network{display:flex;align-items:center;gap:8px;min-height:24px;margin:18px 0 24px;font-size:13px;line-height:1.7;color:var(--banner-accent)}
+.v14-product-network svg{width:22px;height:22px;flex:none}
+.v14-product-link{display:inline-flex;align-items:center;gap:10px;color:var(--banner-ink);font-size:14px;line-height:1.6;border-bottom:1px solid var(--banner-line);padding-bottom:6px}
+.v14-product-art{position:relative;width:min(300px,100%);aspect-ratio:1;justify-self:center;align-self:center}
+.v14-product-art .product-emblem{filter:drop-shadow(0 20px 26px #0005)}
+.v14-product-banner-light .product-emblem{filter:drop-shadow(0 20px 26px #1f4b7229)}
 .bvi-product-art{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:380px}.bvi-product-mark{width:min(290px,70vw);height:auto;filter:drop-shadow(0 25px 25px #1f4b7229)}.bvi-mark-caption{text-align:center;display:grid;gap:8px}.bvi-mark-caption span{font-size:18px;letter-spacing:.08em;color:#193e6f}.bvi-mark-caption strong{font-size:12px;color:#47729c}.bvi-mark-caption small{font-size:11px;color:#7f9bb7}
-@media(max-width:760px){.v9-home-products{padding:60px 0}.v9-featured-product{grid-template-columns:1fr;padding:30px 25px;gap:25px;border-radius:24px}.v9-featured-art{grid-row:1;max-width:190px}.v9-featured-copy h3{font-size:30px}.v9-secondary-product{padding:20px 16px;gap:12px;flex-wrap:wrap}.v9-secondary-mark{width:48px;height:48px}.v9-secondary-product>div{flex:1;min-width:170px}.v9-secondary-product h3{font-size:16px}.v9-secondary-network{margin-left:60px}.bvi-product-art{min-height:300px}.v9-featured-copy>p{font-size:14px}}
-@media(prefers-reduced-motion:reduce){.v9-featured-product,.v9-secondary-product{transition:none}}
+@media(max-width:760px){
+ .v9-home-products{padding:60px 0}
+ .v14-product-banner{grid-template-columns:minmax(0,1fr);grid-template-rows:auto 1fr;gap:28px;padding:30px 25px;border-radius:24px;min-height:0;align-items:start}
+ .v14-product-art{grid-row:1;width:min(190px,100%)}
+ .v14-product-copy h3{font-size:32px;margin-top:20px}
+ .v14-product-copy .v14-product-name{font-size:14px}
+ .v14-product-network{font-size:12px}
+ .bvi-product-art{min-height:300px}
+}
+@media(prefers-reduced-motion:reduce){.v14-product-banner{transition:none}}
 
 /* V12 brand line: two lines on desktop, three on compact screens. */
 .brand-hero .brand-copy h1.brand-slogan{font-size:clamp(40px,4.2vw,64px);line-height:1.12;letter-spacing:-.045em}
@@ -21,12 +37,10 @@
  .brand-slogan-lead>span{display:block}
 }
 
-/* V13 platform introduction follows the brand line in normal document flow. */
+/* V14 uses the same approved English introduction in both editions. */
 .brand-hero .brand-copy{min-width:0}
 .brand-introduction{max-width:560px}
-.brand-hero .brand-copy .brand-positioning{max-width:none;margin:0;font-size:clamp(18px,1.55vw,20px);font-weight:600;line-height:1.6;color:#173b5d}
-.brand-hero .brand-copy .brand-description{max-width:530px;margin:14px 0 0;font-size:16px;font-weight:400;line-height:1.85;color:#36556f}
+.brand-hero .brand-copy .brand-description{max-width:550px;margin:0;font-size:18px;font-weight:400;line-height:1.8;color:#36556f}
 @media(max-width:600px){
- .brand-hero .brand-copy .brand-positioning{font-size:17px;line-height:1.65}
- .brand-hero .brand-copy .brand-description{font-size:14px;line-height:1.85;margin-top:12px}
+ .brand-hero .brand-copy .brand-description{font-size:16px;line-height:1.8}
 }

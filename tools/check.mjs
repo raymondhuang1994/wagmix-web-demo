@@ -32,7 +32,7 @@ const aliases = [
 ];
 const results = [];
 for (const lang of ['zh-Hant','en']) for (const width of [390,1280]) {
- const file = lang==='en'?'WAGMIx_English_V13.html':'WAGMIx_繁體中文_V13.html';
+ const file = lang==='en'?'WAGMIx_English_V14.html':'WAGMIx_繁體中文_V14.html';
  const html = fs.readFileSync(path.join(site,file),'utf8');
  const app = {innerHTML:''}, switcher = {};
  const location = {hash:'#/',replace(hash){this.hash=hash;}};
@@ -55,7 +55,7 @@ for (const lang of ['zh-Hant','en']) for (const width of [390,1280]) {
   assert.equal(location.hash,aliases.find(([old])=>old===route)?.[1]??route);
   assert.ok(app.innerHTML.includes('<main'),route);
   assert.ok(!retired.test(visible(app.innerHTML)),route+' retired wording');
-  assert.ok(switcher.href.endsWith(location.hash) && switcher.href.includes('_V13.html'),route+' language switch');
+  assert.ok(switcher.href.endsWith(location.hash) && switcher.href.includes('_V14.html'),route+' language switch');
   const ids=Array.from(app.innerHTML.matchAll(/ id="([^"]+)"/g),m=>m[1]);
   assert.equal(new Set(ids).size,ids.length,route+' duplicate IDs');
   for (const href of app.innerHTML.matchAll(/href="(downloads\/[^"]+)"/g))
@@ -67,7 +67,7 @@ for (const lang of ['zh-Hant','en']) for (const width of [390,1280]) {
  }
  const home = run('home()');
  const slogan = 'Define The Next Wave On‑Chain';
- assert.equal(home.match(/<h1[^>]*lang="en"[^>]*>([\s\S]*?)<\/h1>/)?.[1].replace(/<[^>]+>/g,''),slogan,'home slogan');
+ assert.equal(home.match(/<h1[^>]*lang="en"[^>]*>([\s\S]*?)<\/h1>/)?.[1].replace(/<[^>]+>/g,''),slogan+'.','home slogan');
  assert.ok(run("footer('home')").includes(slogan),'footer slogan');
  const homeSettlement = home.match(/class="cap-disclaimer">([\s\S]*?)<\/p>/)?.[1];
  assert.ok(homeSettlement?.includes('SKHY2Lw') && homeSettlement.includes(lang==='en'?'Other products':'其他產品'),'home T0 scope');
