@@ -20,3 +20,13 @@
  .brand-hero .brand-copy h1.brand-slogan{font-size:clamp(38px,10.8vw,56px);line-height:1.1;letter-spacing:-.035em}
  .brand-slogan-lead>span{display:block}
 }
+
+/* V13 platform introduction follows the brand line in normal document flow. */
+.brand-hero .brand-copy{min-width:0}
+.brand-introduction{max-width:560px}
+.brand-hero .brand-copy .brand-positioning{max-width:none;margin:0;font-size:clamp(18px,1.55vw,20px);font-weight:600;line-height:1.6;color:#173b5d}
+.brand-hero .brand-copy .brand-description{max-width:530px;margin:14px 0 0;font-size:16px;font-weight:400;line-height:1.85;color:#36556f}
+@media(max-width:600px){
+ .brand-hero .brand-copy .brand-positioning{font-size:17px;line-height:1.65}
+ .brand-hero .brand-copy .brand-description{font-size:14px;line-height:1.85;margin-top:12px}
+}
