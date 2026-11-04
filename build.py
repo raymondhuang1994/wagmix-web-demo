@@ -13,16 +13,16 @@ STYLES = (
     'docs-v4.css', 'navigation-v5.css', 'home-v6.css', 'navigation-v6.css',
     'home-v7.css', 'ecosystem-v7.css', 'product-v7.css', 'docs-v7.css',
     'navigation-v7.css', 'home-v9.css', 'catalog-v9.css', 'ecosystem-v9.css',
-    'adgm-v9.css', 'geoban.css',
+    'adgm-v9.css', 'geoban.css', 'reading-v16.css',
 )
 SCRIPTS = (
     'shared.js', 'product-marks.js', 'whitepaper-data.js', 'product.js',
     'adgm.js', 'docs.js', 'ecosystem.js', 'main.js', 'catalog.js', 'geoban.js', 'sidebar.js',
 )
 EDITIONS = (
-    ('zh-Hant', 'WAGMIx_繁體中文_V15.html', 'WAGMIx｜機構級代幣化平台',
+    ('zh-Hant', 'WAGMIx_繁體中文_V16.html', 'WAGMIx｜機構級代幣化平台',
      'WAGMIx 整合五項能力，連接真實資產與全天候鏈上市場。查閱以港交所 7709.HK 為底層資產的 7709.W 及 SKHY2Lw。'),
-    ('en', 'WAGMIx_English_V15.html', 'WAGMIx | Institutional Tokenization',
+    ('en', 'WAGMIx_English_V16.html', 'WAGMIx | Institutional Tokenization',
      'Explore WAGMIx and two tokenized products referencing HKEX-listed 7709.HK, 7709.W and SKHY2Lw.'),
 )
 MIME = {'.webp':'image/webp', '.png':'image/png', '.svg':'image/svg+xml', '.jpg':'image/jpeg'}
@@ -42,7 +42,7 @@ def build():
     constants = {
         'CONTENT': read_data('content-map.json'), 'HISTORY': read_data('7709-history.json'),
         'SITE_CONFIG': config, 'SKHYNIX': read_data('skhynix-data.json'),
-        'LOGO': image_uri('wagmix.png'), 'LOGO_LIGHT': image_uri('wagmix-light.png'),
+        'LOGO': image_uri('wagmix.svg'), 'LOGO_LIGHT': image_uri('wagmix-light.svg'),
         'ASSETS': {'hero': image_uri('wagmix-x-hero.webp')},
         'INSTITUTION_LOGOS': {key: image_uri('institutions/' + file) for key, file in {
             'csop': 'csop-official.jpg', 'fosun': 'fosunwealth-official.png',

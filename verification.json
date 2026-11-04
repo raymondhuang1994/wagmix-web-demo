@@ -1,0 +1,31 @@
+{
+  "version": "V16",
+  "date": "2026-11-04",
+  "checks": {
+    "bilingual_route_cases": 172,
+    "geo_assertions": 97,
+    "source_and_built_outputs_identical": true,
+    "whitepaper_original_and_52_sections_preserved": true,
+    "original_logo_paths_and_gradients_preserved": true,
+    "exact_approved_home_introduction_preserved": true,
+    "browser_visual_validation": "not performed; local browser access unavailable"
+  },
+  "geo": {
+    "mode": "preview",
+    "restrictedCountries": [
+      "US"
+    ],
+    "liveIPDetection": false,
+    "serverEnforcementVerified": false
+  },
+  "sha256": {
+    "index.html": "8769c975eee42a9015ccf5cf3a107382b4f5fd341422e6ca7819988a2be8392a",
+    "WAGMIx_繁體中文_V16.html": "8769c975eee42a9015ccf5cf3a107382b4f5fd341422e6ca7819988a2be8392a",
+    "WAGMIx_English_V16.html": "2205684104a1930814ea7352633de0c65155ca6e25cb3d38e20fe55e839360f7",
+    "assets/wagmix.svg": "8ca149b495c0b591987fb673faa4139650032c0dd817637f134e708600857bb4",
+    "assets/wagmix-light.svg": "584db71b335a3250966a6a07c50f1945d6ba7501c496609475c9355d5a158a36",
+    "downloads/WAGMIx_SKHY2Lw_Whitepaper_EN.pdf": "e3c70cbced396e46ee04d9a4afe4081ddfd28dbc3fe2310b071ca05cfaee8b0a",
+    "downloads/WAGMIx_7709_Factsheet_EN_Hum_Revised.pdf": "68a51d37c1d9003e97b1680213295815fc33a746273e27183f899c1fb037849c",
+    "downloads/WAGMIx_7709_產品單頁_繁體中文_Hum_Revised.pdf": "48551e8557bbb9f96e79deae44ec436672c7af6d8436535fa5c4a9a4d585ce7a"
+  }
+}

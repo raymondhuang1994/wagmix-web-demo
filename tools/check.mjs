@@ -32,7 +32,7 @@ const aliases = [
 ];
 const results = [];
 for (const lang of ['zh-Hant','en']) for (const width of [390,1280]) {
- const file = lang==='en'?'WAGMIx_English_V15.html':'WAGMIx_繁體中文_V15.html';
+ const file = (lang==='en'?'WAGMIx_English_':'WAGMIx_繁體中文_')+config.version+'.html';
  const html = fs.readFileSync(path.join(site,file),'utf8');
  const app = {innerHTML:''}, switcher = {};
  const location = {hash:'#/',replace(hash){this.hash=hash;}};
@@ -55,7 +55,7 @@ for (const lang of ['zh-Hant','en']) for (const width of [390,1280]) {
   assert.equal(location.hash,aliases.find(([old])=>old===route)?.[1]??route);
   assert.ok(app.innerHTML.includes('<main'),route);
   assert.ok(!retired.test(visible(app.innerHTML)),route+' retired wording');
-  assert.ok(switcher.href.endsWith(location.hash) && switcher.href.includes('_V15.html'),route+' language switch');
+  assert.ok(switcher.href.endsWith(location.hash) && switcher.href.includes('_'+config.version+'.html'),route+' language switch');
   const ids=Array.from(app.innerHTML.matchAll(/ id="([^"]+)"/g),m=>m[1]);
   assert.equal(new Set(ids).size,ids.length,route+' duplicate IDs');
   for (const href of app.innerHTML.matchAll(/href="(downloads\/[^"]+)"/g))
@@ -72,7 +72,7 @@ for (const lang of ['zh-Hant','en']) for (const width of [390,1280]) {
  const homeSettlement = home.match(/class="cap-disclaimer">([\s\S]*?)<\/p>/)?.[1];
  assert.ok(homeSettlement?.includes('SKHY2Lw') && homeSettlement.includes(lang==='en'?'Other products':'其他產品'),'home T0 scope');
  const factsheet = 'downloads/'+config.downloadFiles[lang==='en'?'factsheetEn':'factsheetZh'];
- assert.ok(factsheet.endsWith('_R3.pdf') && run('product()').includes('href="'+factsheet+'"'),'R3 download language');
+ assert.ok(factsheet.endsWith('_Hum_Revised.pdf') && run('product()').includes('href="'+factsheet+'"'),'approved factsheet download language');
  assert.ok(run('docsDownloads()').includes('href="downloads/'+config.downloadFiles.whitepaper+'"'),'English whitepaper download');
  for (const [code,internal,expr,termsId] of [['7709.W','adgm','adgmProduct()','adgm-terms'],['SKHY2Lw','bvi','product()','product-terms']]) {
   const body=run(expr);
@@ -88,7 +88,7 @@ for (const lang of ['zh-Hant','en']) for (const width of [390,1280]) {
   } else assert.ok(/<button[^>]*disabled[^>]*>[\s\S]*?Solana/.test(body));
   assert.ok(body.includes(lang==='en'?'Coming soon':'即將上線'));
   if(code==='7709.W') assert.ok(!/DvP|\bT0\b|SKHY2Lw|2026 年 11 月 20 日|20 November 2026/.test(visible(body)));
-  else assert.ok(visible(body).includes('DvP') && visible(body).includes(lang==='en'?'20 November 2026':'2026 年 11 月 20 日'));
+  else assert.ok(!visible(body).includes('DvP') && visible(body).includes(lang==='en'?'20 November 2026':'2026 年 11 月 20 日'));
  }
  const catalog = run('catalog()');
  const rows=catalog.match(/<tr class="catalog-row[\s\S]*?<\/tr>/g);

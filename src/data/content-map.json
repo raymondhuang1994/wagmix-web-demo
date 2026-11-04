@@ -9,11 +9,11 @@
       "copy": {
         "zh": [
           "標的研究與市場分析",
-          "產品機制與投資邏輯"
+          "解析產品機制與邏輯"
         ],
         "en": [
           "Asset research & market analysis",
-          "Product mechanics & investment rationale"
+          "Product mechanics & rationale"
         ]
       }
     },
@@ -54,12 +54,12 @@
     {
       "id": "custody",
       "title": {
-        "zh": "持牌券商托管",
+        "zh": "持牌券商託管",
         "en": "Licensed Broker Custody"
       },
       "copy": {
         "zh": [
-          "香港持牌券商托管資產",
+          "香港持牌券商託管資產",
           "配合鏈上鏈下持倉核對"
         ],
         "en": [
@@ -76,12 +76,12 @@
       },
       "copy": {
         "zh": [
-          "支援全天候二級交易",
-          "按各產品文件辦理發行與申贖"
+          "二級市場 24/7 交易",
+          "SKHY2Lw 支持 T0 申贖交收¹"
         ],
         "en": [
-          "Supports round-the-clock secondary trading",
-          "Product-specific issuance and redemption arrangements"
+          "24/7 secondary trading",
+          "SKHY2Lw T0¹ subscriptions and redemptions"
         ]
       }
     }
@@ -89,12 +89,12 @@
   "sellingPoints": [
     {
       "title": {
-        "zh": "0 資金費 + 資金費套利機會",
-        "en": "Zero Funding Fees + Funding-Rate Arbitrage Opportunities"
+        "zh": "0 資金費＋資金費套利機會",
+        "en": "Zero Funding Fees + Funding Arbitrage"
       },
       "copy": {
-        "zh": "產品不收取資金費，可配合永續合約策略，尋找資金費套利機會。實際結果取決於資金費率、對沖安排及相關成本。",
-        "en": "The product charges no funding fees and may be used alongside perpetual-contract strategies to seek funding-rate arbitrage opportunities. Outcomes depend on funding rates, hedging arrangements and related costs."
+        "zh": "相較永續合約，本產品不收取資金費。\n可配合永續合約對沖策略，尋找潛在資金費套利機會；實際結果取決於資金費率、對沖安排及相關成本。",
+        "en": "Unlike perpetual contracts, the product has no funding fees.\nPerpetual-contract hedges may offer funding-rate arbitrage opportunities. Outcomes depend on funding rates, hedging arrangements and costs."
       },
       "id": "funding"
     },
@@ -115,8 +115,8 @@
         "en": "Deep Order Books by Top Market Makers"
       },
       "copy": {
-        "zh": "全球領先做市商全天候提供買賣報價，支持訂單簿深度。在採用訂單簿的交易場所，二級市場透過訂單簿形成交易價格。",
-        "en": "Leading global market makers provide two-way quotes around the clock to support order-book depth. On order-book venues, secondary-market prices are formed through the order book."
+        "zh": "全球領先做市商全天候提供買賣報價，維持訂單簿深度。二級市場透過訂單簿形成交易價格。",
+        "en": "Leading global market makers provide two-way quotes around the clock to support order-book depth. Secondary-market prices are formed through the order book."
       },
       "id": "liquidity"
     },
@@ -126,7 +126,7 @@
         "en": "No Brokerage Account Required"
       },
       "copy": {
-        "zh": "投資者可直接透過錢包在支援的二級市場交易，毋須開立券商帳戶。",
+        "zh": "投資者可直接透過錢包在支持的二級市場交易，毋須開立券商帳戶。",
         "en": "Investors can trade on supported secondary markets directly from their wallets without opening a brokerage account."
       },
       "id": "access"
@@ -139,7 +139,7 @@
       "zhLabel": "7709.HK 歷史月成交額峰值",
       "enLabel": "7709.HK historical monthly turnover peak",
       "period": "2026-07",
-      "source": "Onepager slide 1, note 1"
+      "source": "Hum Revised factsheet, note 3"
     },
     {
       "value": 14.0,
@@ -147,7 +147,7 @@
       "zhLabel": "峰值月份日均成交",
       "enLabel": "Peak-month daily average turnover",
       "period": "2026-07",
-      "source": "Onepager slide 1, note 1"
+      "source": "Hum Revised factsheet, note 3"
     },
     {
       "value": 132,
@@ -162,13 +162,13 @@
   ],
   "investmentTheme": {
     "hbmTitle": {
-      "zh": "2026 年第二季，SK 海力士的高頻寬記憶體（HBM）營收位居全球第一。",
+      "zh": "2026 年第二季度，SK 海力士的高頻寬記憶體（HBM）營收位居全球第一。",
       "en": "SK hynix ranked first globally by high-bandwidth memory (HBM) revenue in Q2 2026."
     },
     "hbmSource": "https://counterpointresearch.com/en/insights/global-dram-and-hbm-market-share",
     "dailyObjective": {
-      "zh": "7709.HK 追求在扣除費用及開支前，取得最多相當於 SK 海力士股票每日表現兩倍的投資結果。",
-      "en": "7709.HK seeks to deliver, before fees and expenses, up to twice the daily performance of SK hynix shares."
+      "zh": "底層產品 7709.HK 旨在扣除費用及支出前，追蹤 SK 海力士股票的每日目標槓桿表現。",
+      "en": "7709.HK seeks to track SK hynix’s targeted daily leveraged performance before fees and expenses."
     }
   }
 }

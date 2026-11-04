@@ -54,8 +54,8 @@ window.WHITEPAPER = [
       "en": "SKHY2Lw provides contractual exposure to 7709 and carries issuer credit risk."
     },
     "summary": {
-      "zh": "每枚代幣代表 Cocoa Issuer Limited 發行的一份無抵押票據。持有人不擁有 7709 單位或發行人資產；一級申贖須透過獲批參與交易商辦理。",
-      "en": "Each Token represents one unsecured Note issued by Cocoa Issuer Limited. Holders do not own units of 7709 or assets of the Issuer. Primary creation and redemption require an approved Participating Dealer."
+      "zh": "每枚 SKHY2Lw 代幣代表一份無抵押票據，提供與 7709.HK 掛鈎的合約經濟利益。獲發行人批准的投資者可透過參與交易商（PD），以現金、支持的穩定幣或合資格資產實物申購及贖回。",
+      "en": "Each SKHY2Lw token represents one unsecured Note and provides contractual economic benefits linked to 7709.HK. Issuer-approved investors may subscribe and redeem in cash, supported stablecoins or in kind with eligible assets via a Participating Dealer (PD)."
     },
     "sections": [
       {
@@ -102,7 +102,8 @@ window.WHITEPAPER = [
         "fieldZh": "有關發售及獲准交易的主要資料",
         "contentZh": "目前的推出目標為 2026 年第四季。代幣預期首先在 Solana 上推出，其後擬部署至其他區塊鏈網絡，惟須視法律、監管、審計、技術及市場條件而定。\n\n一級市場的申購及贖回僅向獲發行人批准，且符合適用的專業投資者、非美國人士、准入及其他資格要求的參與交易商開放。\n\n代幣其後可在獲批的中心化交易所、去中心化交易所或其他交易場所提供二級交易，包括可能向零售用戶提供接入的場所。任何此等交易均須遵守適用法律、銷售限制、投資者資格要求、相關場所的規則及管控措施，以及適用的錢包或轉讓限制。代幣可於某交易場所買賣，並不構成發行人向任何不具備購入或持有代幣資格的人士作出要約或招攬。"
       }
-    ]
+    ],
+    "summarySource": "factsheet-hum-revised"
   },
   {
     "id": "issuer",
@@ -112,8 +113,8 @@ window.WHITEPAPER = [
       "en": "Cocoa Issuer issues the Notes and WAGMIx manages tokenisation and operations."
     },
     "summary": {
-      "zh": "發行人為英屬維爾京群島孤兒特殊目的公司。WAGMIx 擔任代幣化代理、計算代理及代幣登記機構；Finloop Finance Limited 擔任區塊鏈支付代理。相關服務商不為票據提供擔保。",
-      "en": "The Issuer is a British Virgin Islands orphan special purpose vehicle. WAGMIx acts as Tokenisation Agent, Calculation Agent and Token Registrar. Finloop Finance Limited is the Blockchain Paying Agent. The named underlying-product parties provide no guarantee or credit support for the Notes."
+      "zh": "WAGMIx 全天候代幣化平台負責全流程代幣化架構及營運，並由 Finloop Finance Limited 提供技術支持。復星國際證券有限公司作為持牌券商承擔託管職責，持有底層 7709.HK 單位，以實際持倉提供 1:1 支持。",
+      "en": "WAGMIx, the 24/7 tokenization platform, handles end-to-end tokenization structuring and operations, supported by Finloop Finance Limited. Fosun International Securities Limited, a licensed broker acting as custodian, holds the underlying 7709.HK units, with actual holdings providing 1:1 backing."
     },
     "sections": [
       {
@@ -248,7 +249,8 @@ window.WHITEPAPER = [
         "fieldZh": "與底層資產有關的各方",
         "contentZh": "CSOP Asset Management Limited 擔任管理人，HSBC Institutional Trust Services (Asia) Limited 擔任受託人、托管人及登記機構，均僅以其就 7709 作為上市交易所買賣產品的現有身份行事。Fosun International Securities Limited 擔任發行人持有的底層資產的托管人。發行人為孤兒型特殊目的公司，與上述任何一方均無關聯，亦未獲其贊助或認可。上述各方均不就票據提供保證或其他信貸支持。"
       }
-    ]
+    ],
+    "summarySource": "factsheet-hum-revised"
   },
   {
     "id": "token",
@@ -393,8 +395,8 @@ window.WHITEPAPER = [
       "en": "Primary creation and redemption require an approved PD, and secondary prices may differ from indicative value."
     },
     "summary": {
-      "zh": "一級申贖限符合專業投資者、非美國人士及合規要求的獲批參與交易商。一般最低規模為 100,000 份票據，最終交易文件可另訂或同意其他最低規模或倍數。二級交易受平台及轉讓限制約束，流動性並無保證。",
-      "en": "Primary creation and redemption require an approved participating dealer that meets professional-investor, non-U.S. person and compliance requirements. The usual minimum is 100,000 Notes. A different minimum or multiple may be specified or agreed under the definitive transaction documents. Secondary trading is subject to venue and transfer restrictions, and liquidity is not guaranteed."
+      "zh": "獲發行人批准的投資者可透過參與交易商（PD），以現金、支持的穩定幣或合資格資產實物申購及贖回。一級申贖由獲批 PD 為合資格專業投資者辦理。港股交易時段內外均可進行 T0 交收；如無法可靠估值或交收，交收將順延；港股非交易時段的價格僅供參考。一般最低一級申贖規模為 100,000 份票據，最終交易文件另有指定或議定最低數量或倍數者除外。二級交易須遵守適用法律及銷售限制。",
+      "en": "Issuer-approved investors may subscribe and redeem in cash, supported stablecoins or in kind with eligible assets via a Participating Dealer (PD). Primary orders are processed through approved PDs for eligible professional investors. T0 settlement is available both during and outside Hong Kong market hours and is deferred when reliable valuation or settlement is unavailable. Prices outside Hong Kong market hours are indicative. The usual primary minimum is 100,000 Notes, unless another minimum or multiple is specified or agreed in the definitive transaction documents. Secondary trading remains subject to applicable laws and selling restrictions."
     },
     "sections": [
       {
@@ -452,7 +454,8 @@ window.WHITEPAPER = [
         "fieldZh": "目標市場及分銷方式",
         "contentZh": "本產品旨在提供鏈上接入 7709 經濟敞口的途徑。在完成適用的法律、合規、審計及技術要求後，分銷可涉及獲批准的中心化交易所、去中心化交易所、錢包整合及其他交易場所。\n\n營銷活動擬以教育為主，並以符合合規要求為前提。代幣可透過二級市場交易場所取得，包括可能向零售用戶提供接入的交易場所，並不構成發行人向任何在法律上不具備取得或持有代幣資格的人士作出發售或招攬。"
       }
-    ]
+    ],
+    "summarySource": "factsheet-hum-revised"
   },
   {
     "id": "rights",
@@ -462,8 +465,8 @@ window.WHITEPAPER = [
       "en": "Definitive transaction documents govern holder rights and redemption procedures."
     },
     "summary": {
-      "zh": "持有人取得合約經濟及轉讓權利，不享有 7709 或 SK 海力士的所有權、投票權或管理權。贖回須經獲批 PD，並可能暫停或延遲。票據適用英格蘭法律。",
-      "en": "Holders receive contractual economic and transfer rights, without ownership, voting or management rights in 7709 or SK hynix. Redemption requires an approved PD and may be suspended or delayed. English law governs the Notes."
+      "zh": "持有人享有與 7709.HK 掛鈎的合約經濟利益，可在適用轉讓限制下全天候轉讓代幣。獲發行人批准的投資者可透過 PD，以現金、支持的穩定幣或合資格資產實物贖回。持有人不直接擁有底層產品單位。",
+      "en": "Holders receive contractual economic benefits linked to 7709.HK and may transfer their tokens around the clock, subject to applicable transfer restrictions. Issuer-approved investors may redeem in cash, supported stablecoins or in kind with eligible assets via a PD. Holders do not directly own units of the underlying product."
     },
     "sections": [
       {
@@ -532,7 +535,8 @@ window.WHITEPAPER = [
         "fieldZh": "適用法律",
         "contentZh": "票據及因票據引起或與票據有關的任何非合約義務，均受英格蘭法律管轄。"
       }
-    ]
+    ],
+    "summarySource": "factsheet-hum-revised"
   },
   {
     "id": "technology",
@@ -542,8 +546,8 @@ window.WHITEPAPER = [
       "en": "On-chain transfers are subject to compliance controls, and creation, redemption and custody fees apply."
     },
     "summary": {
-      "zh": "鏈上控制包括受控鑄造與銷毀、黑名單、錢包監控及持倉核對。PD 的申購費及贖回費各為相應交易總額的 0.10%。托管費按營運儲備賬戶所持 7709 單位價值的每年 0.25% 計算，網絡費另計。發行人可調整費率，並可按個案批准較低的托管費。",
-      "en": "On-chain controls include governed minting and burning, blacklists, wallet monitoring and reconciliation. PDs pay 0.10% of each subscription or redemption amount. The annual custody fee is 0.25% of the value of 7709 units held in the operating reserve account. Network fees also apply. The issuer may change these rates and approve a lower custody fee on a case-by-case basis."
+      "zh": "產品不收取資金費。獲發行人批准的投資者每次申購及贖回各支付 0.10% 的費用，另按託管底層資產計收每年 0.25% 的託管費。較低費率須逐案獲批。WAGMIx 負責全流程代幣化架構及營運，Finloop Finance Limited 提供技術支持。",
+      "en": "The product charges no funding fee. Issuer-approved investors pay 0.10% on each subscription and 0.10% on each redemption, and a 0.25% per annum custody fee based on the Underlying Asset under Custody. Lower fees are subject to approval on a case-by-case basis. WAGMIx handles end-to-end tokenization structuring and operations, supported by Finloop Finance Limited."
     },
     "sections": [
       {
@@ -601,7 +605,8 @@ window.WHITEPAPER = [
         "fieldZh": "審計",
         "contentZh": "用於部署至 Solana 的智能合約框架已完成適用的官方審計程序。用於部署至 Ethereum 及其他 EVM 兼容區塊鏈網絡的 ERC20W-Factory 智能合約，已由 Beosin 審計。相關審計報告將刊載於 WAGMIx 官方網站。"
       }
-    ]
+    ],
+    "summarySource": "factsheet-hum-revised"
   },
   {
     "id": "risks",
