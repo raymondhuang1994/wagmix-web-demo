@@ -1,6 +1,6 @@
-# WAGMIx · V20 设计交接
+# WAGMIx · V21 设计交接
 
-本版保留 V19 页面视觉和 V8 单页内容，仅修改地区提示。后续修改应从 src 源文件进入，再运行 build.py；不要只改生成 HTML。
+本版保留现有视觉和 V8 营销内容，更新 7709w 产品披露、文件入口及免责声明，并修正 T0 脚注定位。后续修改应从 src 源文件进入，再运行 build.py；不要只改生成 HTML。
 
 ## 导航与路径
 
@@ -37,9 +37,9 @@ V8 脚注为 HBM ¹、Bloomberg 成交额与 AUM ²、T0 与平台角色 ³。V8
 
 ## 实施与验收
 
-最后一层样式为 interface-v19.css、home-v19.css、product-v19.css；基础字号和 V18 视觉仍由前面的样式提供。新增 Contact 渲染器在 sidebar.js 路由之前加载。
+最后一层样式为 product-v21.css，其前为 interface-v19.css、home-v19.css、product-v19.css；基础字号和 V18 视觉仍由前面的样式提供。新增 Contact 渲染器在 sidebar.js 路由之前加载。
 
-检查命令及结果见 README.md、RELEASE_V19.md 和 verification.json。通用路由检查包括语言切换与历史链接；地区提示另有可关闭交互、规则匹配、缓存和失败状态的专门检查。网页尚未作浏览器截图验收，接手 agent 需在实际浏览器检查桌面和移动端。
+检查命令及结果见 README.md、RELEASE_V21.md 和 verification.json。通用路由检查包括语言切换与历史链接；地区提示另有可关闭交互、规则匹配、缓存和失败状态的专门检查。网页尚未作浏览器截图验收，接手 agent 需在实际浏览器检查桌面和移动端。
 
 行情为历史快照，地区限制为预览；正式上线须独立配置行情和服务端地区检测；地区检测仅用于提示，不实施网页封锁。此交付不启用 GitHub Pages。
 
@@ -48,3 +48,9 @@ V8 脚注为 HBM ¹、Bloomberg 成交额与 AUM ²、T0 与平台角色 ³。V8
 弹窗使用通用文案，不展示国家名单或展开入口。主按钮、右上角关闭、Esc、背景点击均可关闭。检测中正常浏览，检测失败仅有可关闭提醒。同会话内按地区和文案版本记录提示关闭状态；该状态不是投资资格确认。
 
 地区配置在 site-config.json，交互和样式分别在 geoban.js、geoban.css。只在普通弹窗打开时暂时管理背景滚动和焦点，关闭必须完整恢复。不要重新引入依据 restricted/error 状态持续锁页的逻辑。完整匹配与部署说明见 GEO_ACCESS.md。
+
+## V21 定位与产品披露
+
+首页 T0³ 使用 `#/products/7709/SKHY2Lw/overview/footnote-3`，定位并聚焦 `product-source-note-3`。保留产品总览菜单选中状态及语言切换定位。
+
+7709w 产品文件区仅保留待提供的 Prospectus 入口；旧导读链接继续兼容，其 AP 和请求时段口径与产品资料一致。专用免责声明位于产品页底部，使用深色背景下可读的脚注样式。完整修改说明见 RELEASE_V21.md。

@@ -1,0 +1,6 @@
+/* V21: a single pending document entry and the approved product-specific notice. */
+.adgm-documents-compact .adgm-section-head { margin-bottom: 24px; }
+.adgm-documents-compact .adgm-prospectus-pending { font-size: var(--reading-ui, 17px); min-height: 48px; padding: 14px 20px; color: #bdcfe4; border-color: #3a526e; opacity: 1; cursor: default; }
+.adgm-page .adgm-disclaimer { color: #b0c5dd; }
+.adgm-page .adgm-disclaimer p { border-color: #2b415c; color: #b0c5dd; }
+.adgm-page .adgm-disclaimer p + p { border-top: 0; padding-top: 14px; }

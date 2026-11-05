@@ -113,6 +113,16 @@ function capabilityOffset() {
 function scrollToCapability(target) {
   window.scrollTo({top:Math.max(0,window.scrollY + target.getBoundingClientRect().top - capabilityOffset()),behavior:'instant'});
 }
+function scrollToProductFootnote(target) {
+  // Keep the note below the fixed header and the mobile product directory.
+  const selectors = innerWidth <= 900 ? ['.site-header','[data-context="product"]'] : ['.site-header'];
+  const bottom = Math.max(0,...selectors.map(selector => {
+    const rect = document.querySelector(selector)?.getBoundingClientRect();
+    return rect ? (rect.bottom ?? rect.top + rect.height) : 0;
+  }));
+  const offset = Math.max(innerWidth <= 600 ? 202 : 120,bottom + 18);
+  window.scrollTo({top:Math.max(0,window.scrollY + target.getBoundingClientRect().top - offset),behavior:'instant'});
+}
 function closeContext() {
   document.querySelectorAll('.context-nav.is-open').forEach(nav => {
     nav.classList.remove('is-open');
@@ -148,7 +158,7 @@ function route() {
     location.replace('#/products/7709/SKHY2Lw/documents');
     return;
   }
-  let page = 'home', variant = '', section = '', chapter = '';
+  let page = 'home', variant = '', section = '', chapter = '', settlementFootnote = false;
   if (parts[0] === 'products') {
     page = parts[1] === '7709' ? 'product' : 'catalog';
     if (page === 'product') {
@@ -160,7 +170,8 @@ function route() {
       if (section === 'mechanics') section = 'terms';
       if (variant === 'adgm' && section === 'guide') page = 'adgmguide';
       if (!productSections.some(entry => entry[0] === section) && page === 'product') section = 'overview';
-      const canonicalHash = '#/products/7709/' + productCode(variant) + '/' + section;
+      settlementFootnote = hasProduct && variant === 'bvi' && section === 'overview' && parts[3] === 'overview' && parts[4] === 'footnote-3' && parts.length === 5;
+      const canonicalHash = '#/products/7709/' + productCode(variant) + '/' + section + (settlementFootnote ? '/footnote-3' : '');
       if (location.hash !== canonicalHash) {
         location.replace(canonicalHash);
         return;
@@ -189,12 +200,13 @@ function route() {
   setActiveNav(page === 'product' ? 'product-' + section : page === 'adgmguide' ? 'product-documents' : page === 'whitepaper' ? 'wp-' + chapter : page === 'docs' ? 'docs' : 'cap-' + activeCapability);
   const capabilityRoute = page === 'home' && parts[1] === 'capabilities' && parts[2] !== undefined;
   const ids = variant === 'adgm' ? adgmSectionIds : bviSectionIds;
-  const anchor = page === 'home' ? (capabilityRoute ? 'capability-' + activeCapability : parts[1]) : page === 'product' ? ids[section] : page === 'ecosystem' && parts[1] === 'directory' ? 'ecosystem-directory' : page === 'whitepaper' && parts[2] ? 'wp-' + parts[2] : null;
+  const anchor = settlementFootnote ? 'product-source-note-3' : page === 'home' ? (capabilityRoute ? 'capability-' + activeCapability : parts[1]) : page === 'product' ? ids[section] : page === 'ecosystem' && parts[1] === 'directory' ? 'ecosystem-directory' : page === 'whitepaper' && parts[2] ? 'wp-' + parts[2] : null;
   requestAnimationFrame(() => {
     const target = (anchor && document.getElementById(anchor)) || document.getElementById('main');
     if (!target) return;
-    if (fromMenu) { target.setAttribute('tabindex','-1'); target.focus({preventScroll:true}); }
-    if (capabilityRoute) scrollToCapability(target);
+    if (fromMenu || settlementFootnote) { target.setAttribute('tabindex','-1'); target.focus({preventScroll:true}); }
+    if (settlementFootnote) scrollToProductFootnote(target);
+    else if (capabilityRoute) scrollToCapability(target);
     else if (anchor && document.getElementById(anchor)) target.scrollIntoView({behavior:'instant',block:'start'});
     else window.scrollTo({top:0,behavior:'instant'});
   });
