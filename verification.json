@@ -1,6 +1,6 @@
 {
-  "version": "V17",
-  "date": "2026-11-04",
+  "version": "V18",
+  "date": "2026-11-05",
   "checks": {
     "bilingual_route_cases": 172,
     "geo_assertions": 97,
@@ -10,8 +10,14 @@
     "exact_approved_home_introduction_preserved": true,
     "browser_visual_validation": "not performed; local browser access unavailable",
     "localized_home_and_footer_copy": true,
-    "hero_decorative_location_strip_removed": true,
-    "product_content_and_downloads_unchanged_from_V16": true
+    "capability_titles_aligned_to_approved_image": true,
+    "home_capability_navigation_removed": true,
+    "non_home_contact_blocks_removed": true,
+    "product_content_and_downloads_unchanged_from_V17": true,
+    "institution_descriptions_and_relations_preserved": true,
+    "public_delivery_private_material_scan_passed": true,
+    "fonts_embedded_with_open_font_licenses": true,
+    "responsive_review": "source cascade and glyph metrics only; no browser layout verification"
   },
   "geo": {
     "mode": "preview",
@@ -22,13 +28,13 @@
     "serverEnforcementVerified": false
   },
   "sha256": {
-    "index.html": "c90a7391e0ddad47fad1f11b30289bdffc36876c0e169a7980f2eb04560363c0",
-    "WAGMIx_繁體中文_V17.html": "c90a7391e0ddad47fad1f11b30289bdffc36876c0e169a7980f2eb04560363c0",
-    "WAGMIx_English_V17.html": "306e8f913e6d7c5cc608b9ee5afdfe3c78774c586065fd89d71a2f9732fb80de",
+    "index.html": "330f2e966fb9b89022a9bb8107739969ebe22128e86a8fdaf0e2e04d3ab32df5",
+    "WAGMIx_繁體中文_V18.html": "330f2e966fb9b89022a9bb8107739969ebe22128e86a8fdaf0e2e04d3ab32df5",
+    "WAGMIx_English_V18.html": "763e4ff13f482d09d22d3b714ef1f636eef05e744bd8566b274a0ccfb59f597d",
     "assets/wagmix.svg": "8ca149b495c0b591987fb673faa4139650032c0dd817637f134e708600857bb4",
     "assets/wagmix-light.svg": "584db71b335a3250966a6a07c50f1945d6ba7501c496609475c9355d5a158a36",
+    "downloads/WAGMIx_7709_產品單頁_繁體中文_Hum_Revised.pdf": "48551e8557bbb9f96e79deae44ec436672c7af6d8436535fa5c4a9a4d585ce7a",
     "downloads/WAGMIx_SKHY2Lw_Whitepaper_EN.pdf": "e3c70cbced396e46ee04d9a4afe4081ddfd28dbc3fe2310b071ca05cfaee8b0a",
-    "downloads/WAGMIx_7709_Factsheet_EN_Hum_Revised.pdf": "68a51d37c1d9003e97b1680213295815fc33a746273e27183f899c1fb037849c",
-    "downloads/WAGMIx_7709_產品單頁_繁體中文_Hum_Revised.pdf": "48551e8557bbb9f96e79deae44ec436672c7af6d8436535fa5c4a9a4d585ce7a"
+    "downloads/WAGMIx_7709_Factsheet_EN_Hum_Revised.pdf": "68a51d37c1d9003e97b1680213295815fc33a746273e27183f899c1fb037849c"
   }
 }

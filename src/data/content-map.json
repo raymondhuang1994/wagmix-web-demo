@@ -3,8 +3,8 @@
     {
       "id": "research",
       "title": {
-        "zh": "傳統金融投研",
-        "en": "TradFi Investment Research"
+        "zh": "深度投研鎖定風口",
+        "en": "In-Depth Research on Emerging Themes"
       },
       "copy": {
         "zh": [
@@ -20,8 +20,8 @@
     {
       "id": "structuring",
       "title": {
-        "zh": "RWA 架構",
-        "en": "RWA Structuring"
+        "zh": "機構級金融資產上鏈",
+        "en": "Institutional Financial Assets Onchain"
       },
       "copy": {
         "zh": [
@@ -38,7 +38,7 @@
       "id": "liquidity",
       "title": {
         "zh": "頂級做市流動性",
-        "en": "Top-Tier Liquidity"
+        "en": "Top-Tier Market-Making Liquidity"
       },
       "copy": {
         "zh": [
@@ -54,8 +54,8 @@
     {
       "id": "custody",
       "title": {
-        "zh": "持牌券商託管",
-        "en": "Licensed Broker Custody"
+        "zh": "持牌券商提供託管",
+        "en": "Custody by Licensed Brokers"
       },
       "copy": {
         "zh": [
@@ -71,8 +71,8 @@
     {
       "id": "platform",
       "title": {
-        "zh": "全天候代幣化平台",
-        "en": "24/7 Tokenization Platform"
+        "zh": "提供全天候鏈上資產",
+        "en": "Always-On Onchain Assets"
       },
       "copy": {
         "zh": [

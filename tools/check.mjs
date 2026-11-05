@@ -69,8 +69,22 @@ for (const lang of ['zh-Hant','en']) for (const width of [390,1280]) {
  const slogan = lang==='en'?'Define The Next Wave On‑Chain':'引領鏈上新浪潮';
  assert.equal(home.match(/<h1[^>]*class="brand-slogan[^"]*"[^>]*>([\s\S]*?)<\/h1>/)?.[1].replace(/<[^>]+>/g,''),slogan,'home slogan');
  assert.ok(run("footer('home')").includes(slogan),'footer slogan');
- const homeSettlement = home.match(/class="cap-disclaimer">([\s\S]*?)<\/p>/)?.[1];
- assert.ok(homeSettlement?.includes('SKHY2Lw') && homeSettlement.includes(lang==='en'?'Other products':'其他產品'),'home T0 scope');
+ assert.ok(!home.includes('cap-disclaimer') && !home.includes('data-context="capabilities"'), 'title-only capability showcase');
+ assert.equal((home.match(/class="capability-column"/g)||[]).length,5, 'five visible capability titles');
+ for (const title of run('CAPABILITIES.map(c=>pick(c.title))')) assert.ok(home.includes(title),'source-aligned capability title');
+ for (const page of ['catalog','product','ecosystem','docs','whitepaper','adgmguide']) {
+  const closing=run("footer('"+page+"')");
+  assert.ok(!closing.includes('contact-channels') && !closing.includes('closing-brand'),page+' compact footer');
+ }
+ const topHeader=run("header('catalog')");
+ assert.ok(topHeader.indexOf('header-socials')>topHeader.indexOf('header-actions'),'socials in right header group');
+ for(const code of codes) assert.ok(topHeader.includes(slug(code)+'overview'),'product dropdown direct link '+code);
+ for(const expr of ['product()','adgmProduct()','catalog()','ecosystem()']) assert.ok(!run(expr).includes('breadcrumb'),'no repeated breadcrumbs');
+ for(const expr of ['product()','adgmProduct()']){
+  assert.ok(run(expr).includes('p-market-notes')&&!run(expr).includes('p-market-context'),'market notes are unboxed');
+ }
+ assert.ok(home.includes('launch-spark'),'coming soon visual mark');
+
  const factsheet = 'downloads/'+config.downloadFiles[lang==='en'?'factsheetEn':'factsheetZh'];
  assert.ok(factsheet.endsWith('_Hum_Revised.pdf') && run('product()').includes('href="'+factsheet+'"'),'approved factsheet download language');
  assert.ok(run('docsDownloads()').includes('href="downloads/'+config.downloadFiles.whitepaper+'"'),'English whitepaper download');
@@ -103,5 +117,5 @@ for (const lang of ['zh-Hant','en']) for (const width of [390,1280]) {
  for(const mark of ['adgm','bvi']) assert.ok(!legal.test(visible(run("productMark('"+mark+"')"))));
  results.push({language:lang,simulatedWidth:width,routes:pages.length+docs.length+1+aliases.length});
 }
-console.log('PASS. Bilingual routes, navigation, product-specific terms, logos, catalogue, filters, legacy links, slogan, T0 scope and PDF downloads.');
+console.log('PASS. Bilingual routes, navigation, product-specific terms, logos, catalogue, filters, legacy links, slogan, V18 layout structure and PDF downloads.');
 console.log(results);

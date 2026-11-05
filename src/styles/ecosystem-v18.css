@@ -1,0 +1,229 @@
+/* V18: a blue-lit ecosystem directory. The graph only depicts documented networks. */
+.eco-v18-page {
+  --eco-ink: #f4f8ff;
+  --eco-muted: #aec1db;
+  --eco-line: #2a4569;
+  background: #071427;
+  color: var(--eco-ink);
+}
+.eco-v18-page .eco-v9-hero {
+  position: relative;
+  isolation: isolate;
+  padding: 158px 0 54px;
+  background: radial-gradient(ellipse at 78% 40%, #17427d69, transparent 52%), #071427;
+  border: 0;
+  overflow: hidden;
+}
+.eco-v18-page .eco-v9-hero::after {
+  content: '';
+  position: absolute;
+  inset: auto 0 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #3d6999, transparent);
+}
+.eco-v18-hero-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.12fr) minmax(0, .88fr);
+  gap: 30px;
+  align-items: center;
+}
+.eco-v18-page .eco-v9-hero h1 {
+  font-size: clamp(44px, 4.6vw, 68px);
+  font-weight: 650;
+  line-height: 1.08;
+  letter-spacing: -.045em;
+  margin: 0;
+  color: #fff;
+  max-width: 740px;
+  text-wrap: balance;
+}
+.eco-v18-page .eco-v9-hero p {
+  font-size: 20px;
+  line-height: 1.7;
+  color: #b7cce5;
+  margin: 25px 0 0;
+  max-width: 44ch;
+}
+.eco-v18-network { position: relative; aspect-ratio: 520 / 350; min-width: 0; }
+.eco-v18-circuit { width: 100%; height: 100%; display: block; overflow: visible; }
+.eco-v18-hub {
+  position: absolute;
+  left: 50%; top: 53%;
+  transform: translate(-50%, -50%);
+  display: grid;
+  place-items: center;
+  width: 45%; min-height: 23%;
+  padding: 19px;
+  background: #0a213ce6;
+  border: 1px solid #60b8fc80;
+  border-radius: 18px;
+  box-shadow: 0 0 50px #297cff38, inset 0 1px 0 #b4e4ff30;
+  backdrop-filter: blur(12px);
+}
+.eco-v18-hub img { display: block; width: 100%; height: auto; }
+.eco-v18-network-node {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  position: absolute;
+  border: 1px solid #466890;
+  border-radius: 12px;
+  padding: 15px 19px;
+  background: #0c213be8;
+  box-shadow: 0 10px 30px #020b1960;
+  transition: opacity .22s ease, border-color .22s ease, box-shadow .22s ease;
+}
+.eco-v18-network-node .chain-icon { width: 31px; height: 31px; flex: 0 0 auto; }
+.eco-v18-network-node strong { display: block; font-size: 21px; line-height: 1.2; color: #fff; }
+.eco-v18-network-node small { display: block; font-size: 14px; margin-top: 6px; color: #bdd1e9; }
+.eco-v18-network-bnb { left: 0; top: 8%; }
+.eco-v18-network-solana { right: 0; bottom: 2%; }
+.eco-v18-network-node.is-muted { opacity: .3; box-shadow: none; }
+.eco-v18-page .eco-v9-directory { padding: 44px 0 92px; scroll-margin-top: 120px; }
+.eco-v18-page .eco-v9-heading { margin: 0 0 23px; display: flex; }
+.eco-v18-page .eco-v9-search {
+  width: 100%; max-width: none; min-width: 0; min-height: 58px;
+  background: #10223c; border: 1px solid #355274;
+  padding: 0 20px; border-radius: 12px; margin: 0;
+}
+.eco-v18-page .eco-v9-search input {
+  padding: 14px 0; color: #f0f6ff; font-size: 18px; line-height: 1.6; min-height: 56px;
+}
+.eco-v18-page .eco-v9-search input::placeholder { color: #9db5d2; opacity: 1; }
+.eco-v18-page .eco-v9-search svg { width: 22px; height: 22px; stroke: #99c3eb; }
+.eco-v18-page .eco-v9-search:focus-within { border-color: #88ccff; box-shadow: 0 0 0 3px #499be933; }
+.eco-v18-page .eco-v9-filter-bar {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) auto;
+  gap: 22px;
+  padding: 0;
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+}
+.eco-v18-page .eco-v9-filter-bar label { min-width: 0; }
+.eco-v18-page .eco-v9-filter-bar label > span {
+  font-size: 16px; line-height: 1.5; color: #b9cde3; letter-spacing: 0; margin: 0 0 9px;
+}
+.eco-v18-page .eco-v9-filter-bar select {
+  color: #fff; background: #10223c; border: 1px solid #355274;
+  height: 56px; min-width: 0; padding: 0 14px; border-radius: 10px;
+  font-size: 18px; line-height: 1.5; color-scheme: dark;
+}
+.eco-v18-page .eco-v9-filter-bar > button {
+  min-height: 56px; height: auto; font-size: 17px; color: #9ed7ff; padding: 0 10px;
+}
+.eco-v18-page .eco-v9-filter-bar > button:hover { color: #fff; }
+.eco-v18-page .eco-v9-directory-meta {
+  font-size: 15px; color: #a8bfd9; margin: 30px 0 18px;
+}
+.eco-v18-page .eco-v9-directory-meta > span:first-child { color: #a8bfd9; }
+.eco-v18-page .eco-v9-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 22px; }
+.eco-v18-page .eco-v9-card {
+  border: 1px solid #304969;
+  border-radius: 18px;
+  background: radial-gradient(ellipse at 50% 110%, #2a5d9e45, transparent 68%), #0d2039;
+  box-shadow: inset 0 1px 0 #abcff90c;
+  transition: border-color .2s, box-shadow .2s;
+}
+.eco-v18-page .eco-v9-card:hover,
+.eco-v18-page .eco-v9-card:focus-within,
+.eco-v18-page .eco-v9-card.is-open {
+  border-color: #68b7ef;
+  box-shadow: 0 0 35px #3279c322, inset 0 1px 0 #afdfff22;
+}
+.eco-v18-page .eco-v9-card-front {
+  min-height: 226px; height: auto; padding: 33px 24px 28px; gap: 24px; color: #f3f8ff;
+}
+.eco-v18-page .eco-v9-logo-space {
+  width: 190px; max-width: 100%; height: 70px;
+  background: #f8fbff; padding: 12px 15px; border-radius: 8px;
+}
+.eco-v18-page .eco-v9-logo-space-finloop { background: #071a2e; border: 1px solid #243d59; }
+.eco-v18-page .eco-v9-logo-space-beosin { background: #102b35; }
+.eco-v18-page .eco-v9-logo-space-csop { padding: 0; overflow: hidden; }
+.eco-v18-page .eco-v9-logo-csop { object-fit: contain; }
+.eco-v18-page .eco-v9-logo-space-bnb,
+.eco-v18-page .eco-v9-logo-space-solana { background: transparent; padding: 0; }
+.eco-v18-page .eco-v9-logo-space-bnb svg,
+.eco-v18-page .eco-v9-logo-space-solana svg { width: 62px; height: 62px; }
+.eco-v18-page .eco-v9-name { color: #f4f8ff; font-size: 20px; line-height: 1.4; font-weight: 550; }
+.eco-v18-page .eco-v9-info-icon {
+  height: 24px; width: 24px; top: 14px; right: 14px;
+  color: #bfd7ee; border-color: #6582a5; font-size: 14px;
+}
+.eco-v18-page .eco-v9-info {
+  color: #eef6ff; background: #122b48;
+  border: 1px solid #68b7ef; border-top: 0;
+  border-radius: 0 0 18px 18px;
+  padding: 24px; box-shadow: 0 20px 35px #01071380;
+  left: -1px; right: -1px; width: auto;
+}
+.eco-v18-page .eco-v9-info h3 { font-size: 23px; line-height: 1.4; color: #fff; margin: 0 34px 8px 0; }
+.eco-v18-page .eco-v9-info p { font-size: 17px; line-height: 1.7; color: #c6d8ea; }
+.eco-v18-page .eco-v9-info .eco-v9-legal,
+.eco-v18-page .eco-v9-info .eco-v9-brand-note { font-size: 14px; line-height: 1.6; color: #adc6df; }
+.eco-v18-page .eco-v9-info > a { color: #9fddff; font-size: 17px; min-height: 44px; }
+.eco-v18-page .eco-v9-info-close { width: 44px; height: 44px; color: #d6e9fc; top: 13px; right: 10px; }
+.eco-v18-page .eco-v9-info-close:hover { background: #285075; color: #fff; }
+.eco-v18-page .eco-v9-empty { background: #0e223b; border-color: #44658a; }
+.eco-v18-page .eco-v9-empty h3 { color: #f1f7ff; font-size: 27px; }
+.eco-v18-page .eco-v9-empty p { color: #b9cfe5; font-size: 18px; }
+.eco-v18-page .eco-v9-empty .btn { color: #072b4e; background: #d9eeff; min-height: 48px; }
+.eco-v18-page .eco-v9-scope { color: #aabfd6; font-size: 15px; line-height: 1.75; border-color: #294363; max-width: none; margin-top: 38px; }
+.eco-v18-page :is(button, select, a):focus-visible { outline: 3px solid #8dd5ff; outline-offset: 4px; }
+@media (max-width: 1100px) {
+  .eco-v18-hero-grid { grid-template-columns: 1fr 1fr; gap: 22px; }
+  .eco-v18-page .eco-v9-hero h1 { font-size: 48px; }
+  .eco-v18-page .eco-v9-hero p { font-size: 18px; }
+  .eco-v18-network-node { padding: 12px; gap: 9px; }
+  .eco-v18-network-node strong { font-size: 18px; }
+  .eco-v18-network-node small { font-size: 14px; }
+  .eco-v18-page .eco-v9-name { font-size: 18px; }
+}
+@media (max-width: 780px) {
+  .eco-v18-page .eco-v9-hero { padding: 130px 0 34px; }
+  .eco-v18-hero-grid { grid-template-columns: 1fr; gap: 20px; }
+  .eco-v18-page .eco-v9-hero h1 { font-size: clamp(36px, 6.5vw, 48px); max-width: 640px; }
+  .eco-v18-page .eco-v9-hero p { max-width: 55ch; }
+  .eco-v18-network { width: min(100%, 460px); margin: 0 auto; }
+  .eco-v18-page .eco-v9-directory { padding: 32px 0 64px; }
+  .eco-v18-page .eco-v9-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
+  .eco-v18-page .eco-v9-filter-bar { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+  .eco-v18-page .eco-v9-filter-bar > button { grid-column: 1/-1; justify-self: end; min-height: 44px; }
+  .eco-v18-page .eco-v9-card-front { min-height: 215px; padding: 30px 17px 24px; }
+  .eco-v18-page .eco-v9-info { width: calc(200% + 20px); left: -1px; right: auto; border-top: 1px solid #68b7ef; border-radius: 14px; }
+  .eco-v18-page .eco-v9-card.eco-v9-at-right .eco-v9-info { left: auto; right: -1px; }
+}
+@media (max-width: 540px) {
+  .eco-v18-page .eco-v9-hero { padding-top: 120px; }
+  .eco-v18-page .eco-v9-hero h1 { font-size: 36px; line-height: 1.14; letter-spacing: -.035em; }
+  .eco-v18-page .eco-v9-hero p { font-size: 18px; margin-top: 22px; }
+  .eco-v18-network-node strong { font-size: 17px; }
+  .eco-v18-network-node small { font-size: 14px; }
+  .eco-v18-network-node .chain-icon { width: 26px; height: 26px; }
+  .eco-v18-hub { border-radius: 12px; padding: 12px; }
+  .eco-v18-page .eco-v9-search input { font-size: 16px; }
+  .eco-v18-page .eco-v9-filter-bar { grid-template-columns: 1fr; gap: 16px; }
+  .eco-v18-page .eco-v9-filter-bar select { font-size: 16px; height: 52px; }
+  .eco-v18-page .eco-v9-filter-bar > button { font-size: 16px; }
+  .eco-v18-page .eco-v9-grid { gap: 14px; }
+  .eco-v18-page .eco-v9-card-front { min-height: 198px; padding: 30px 11px 22px; gap: 18px; }
+  .eco-v18-page .eco-v9-name { font-size: 17px; line-height: 1.4; }
+  .eco-v18-page .eco-v9-logo-space { height: 58px; padding: 9px; }
+  .eco-v18-page .eco-v9-logo-space-csop { padding: 0; }
+  .eco-v18-page .eco-v9-info { width: calc(200% + 16px); padding: 22px 20px; }
+  .eco-v18-page .eco-v9-info h3 { font-size: 23px; }
+  .eco-v18-page .eco-v9-info p { font-size: 16px; }
+  .eco-v18-page .eco-v9-info .eco-v9-legal { font-size: 14px; }
+  .eco-v18-page .eco-v9-scope { font-size: 14px; }
+}
+@media (hover: none) {
+  .eco-v18-page .eco-v9-card:not(.is-open) .eco-v9-info { opacity: 0; visibility: hidden; pointer-events: none; }
+  .eco-v18-page .eco-v9-card.is-open .eco-v9-info { opacity: 1; visibility: visible; pointer-events: auto; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .eco-v18-page *, .eco-v18-page *::before, .eco-v18-page *::after { transition: none !important; animation: none !important; }
+}
+
+@media(max-width:600px){.eco-v18-page .eco-v9-hero{padding-top:156px}}

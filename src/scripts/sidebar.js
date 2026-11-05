@@ -30,7 +30,6 @@ function header(page, variant) {
   return `<a class="skip" href="#main">${t('跳至內容','Skip to content')}</a>
     <header class="site-header">
       <a class="site-logo" href="#/" aria-label="WAGMIx ${t('首頁','home')}"><img src="${variant === 'adgm' ? LOGO_LIGHT : LOGO}" alt="WAGMIx"></a>
-      ${headerSocials()}
       <nav class="site-nav" id="site-nav" aria-label="${t('網站選單','Site navigation')}">
         <a data-top-key="home" href="#/" class="${page === 'home' ? 'active' : ''}" ${page === 'home' ? 'aria-current="page"' : ''}>${t('關於 WAGMIx','About WAGMIx')}</a>
         <details class="product-menu"><summary data-top-key="products" class="${inProduct ? 'active' : ''}">${t('產品','Products')} <span aria-hidden="true">⌄</span></summary>
@@ -40,12 +39,15 @@ function header(page, variant) {
               <span class="menu-underlying-code">${t('底層資產：港交所 · ','Underlying asset: HKEX · ')}<b>7709.HK</b></span>
               <span class="menu-underlying-name">${t('南方東英 SK 海力士每日槓桿最多（2x）產品','CSOP SK Hynix Daily Max (2x) Leveraged Product')}</span>
             </a>
+            <div class="menu-products" aria-label="${t('7709 產品','7709 products')}">
+              ${['adgm','bvi'].map(v=>`<a class="menu-product" href="#/products/7709/${productCode(v)}/overview"><span class="menu-product-mark" aria-hidden="true">${productMark(v)}</span><span><strong>${productCode(v)}</strong><small>${chainIcon(v==='adgm'?'bnb':'solana')}${v==='adgm' ? 'BNB Smart Chain' : 'Solana'}</small></span><span aria-hidden="true">↗</span></a>`).join('')}
+            </div>
           </div>
         </details>
         <a data-top-key="ecosystem" href="#/ecosystem" class="${page === 'ecosystem' ? 'active' : ''}" ${page === 'ecosystem' ? 'aria-current="page"' : ''}>${t('生態','Ecosystem')}</a>
         <a class="mobile-contact" data-top-key="contact-mobile" href="#/home/contact">${t('聯絡我們','Contact us')}</a>
       </nav>
-      <div class="header-actions"><a class="header-contact btn" data-top-key="contact" href="#/home/contact">${t('聯絡我們','Contact us')} <span aria-hidden="true">↗</span></a><a id="language-switch" class="lang-switch" lang="${L === 'zh' ? 'en' : 'zh-Hant'}" href="${geoLanguageHref()}">${t('EN','繁中')}</a><button class="mobile-toggle" aria-label="${t('網站選單','Site menu')}" aria-controls="site-nav" aria-expanded="false"><span aria-hidden="true">☰</span></button></div>
+      <div class="header-actions">${headerSocials()}<a class="header-contact btn" data-top-key="contact" href="#/home/contact">${t('聯絡我們','Contact us')} <span aria-hidden="true">↗</span></a><a id="language-switch" class="lang-switch" lang="${L === 'zh' ? 'en' : 'zh-Hant'}" href="${geoLanguageHref()}">${t('EN','繁中')}</a><button class="mobile-toggle" aria-label="${t('網站選單','Site menu')}" aria-controls="site-nav" aria-expanded="false"><span aria-hidden="true">☰</span></button></div>
     </header>`;
 }
 
@@ -106,7 +108,7 @@ function selectCapability(index) {
 }
 function capabilityOffset() {
   const nav = document.querySelector('[data-context="capabilities"]');
-  return innerWidth <= 900 && nav ? 88 + nav.getBoundingClientRect().height + 18 : 120;
+  return innerWidth <= 900 && nav ? 88 + nav.getBoundingClientRect().height + 18 : (innerWidth <= 600 ? 144 : 120);
 }
 function scrollToCapability(target) {
   window.scrollTo({top:Math.max(0,window.scrollY + target.getBoundingClientRect().top - capabilityOffset()),behavior:'instant'});

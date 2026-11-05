@@ -13,16 +13,16 @@ STYLES = (
     'docs-v4.css', 'navigation-v5.css', 'home-v6.css', 'navigation-v6.css',
     'home-v7.css', 'ecosystem-v7.css', 'product-v7.css', 'docs-v7.css',
     'navigation-v7.css', 'home-v9.css', 'catalog-v9.css', 'ecosystem-v9.css',
-    'adgm-v9.css', 'geoban.css', 'reading-v16.css', 'brand-v17.css',
+    'adgm-v9.css', 'geoban.css', 'reading-v16.css', 'brand-v17.css', 'interface-v18.css', 'home-v18.css', 'ecosystem-v18.css',
 )
 SCRIPTS = (
     'shared.js', 'product-marks.js', 'whitepaper-data.js', 'product.js',
     'adgm.js', 'docs.js', 'ecosystem.js', 'main.js', 'catalog.js', 'geoban.js', 'sidebar.js',
 )
 EDITIONS = (
-    ('zh-Hant', 'WAGMIx_繁體中文_V17.html', 'WAGMIx｜機構級代幣化平台',
+    ('zh-Hant', 'WAGMIx_繁體中文_V18.html', 'WAGMIx｜機構級代幣化平台',
      'WAGMIx 整合五項能力，連接真實資產與全天候鏈上市場。查閱以港交所 7709.HK 為底層資產的 7709.W 及 SKHY2Lw。'),
-    ('en', 'WAGMIx_English_V17.html', 'WAGMIx | Institutional Tokenization',
+    ('en', 'WAGMIx_English_V18.html', 'WAGMIx | Institutional Tokenization',
      'Explore WAGMIx and two tokenized products referencing HKEX-listed 7709.HK, 7709.W and SKHY2Lw.'),
 )
 MIME = {'.webp':'image/webp', '.png':'image/png', '.svg':'image/svg+xml', '.jpg':'image/jpeg'}
@@ -35,6 +35,15 @@ def image_uri(filename):
 
 def read_data(filename):
     return json.loads((DATA / filename).read_text(encoding='utf-8'))
+
+
+def font_css():
+    font_root = ROOT / 'assets/fonts'
+    css = (font_root / 'fonts.css').read_text()
+    for font in font_root.glob('*.woff'):
+        uri = 'data:font/woff;base64,' + base64.b64encode(font.read_bytes()).decode('ascii')
+        css = css.replace(font.name, uri)
+    return css
 
 
 def build():
@@ -55,7 +64,7 @@ def build():
             raise ValueError(f'Expected a PDF at {name}')
         constants[const] = name
 
-    css = '\n'.join((SRC / 'styles' / file).read_text(encoding='utf-8') for file in STYLES)
+    css = font_css() + '\n' + '\n'.join((SRC / 'styles' / file).read_text(encoding='utf-8') for file in STYLES)
     js = '\n'.join(
         [f'const {key}=' + json.dumps(value, ensure_ascii=False) + ';' for key, value in constants.items()]
         + [(SRC / 'scripts' / file).read_text(encoding='utf-8') for file in SCRIPTS]

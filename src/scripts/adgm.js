@@ -35,7 +35,7 @@ function adgmHero() {
   return `<section class="adgm-hero" id="adgm-overview">
     <div class="adgm-grid-light" aria-hidden="true"></div>
     <div class="wrap">
-      <div class="adgm-breadcrumb"><a href="#/products">${t('代幣化股票／ETF', 'Tokenized Stocks / ETFs')}</a><span>/</span><span>7709.W</span></div>
+
       <div class="adgm-hero-grid">
         <div class="adgm-hero-copy">
           <div class="adgm-eyeline"><span class="adgm-status"><i aria-hidden="true"></i>${t('即將上線', 'Coming soon')}</span></div>

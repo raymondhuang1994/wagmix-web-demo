@@ -47,14 +47,26 @@ function v9EcoCard(entry, index) {
   </article>`;
 }
 function ecosystem() {
-  return `<main id="main" class="eco-v9-page">
-    <section class="eco-v9-hero"><div class="wrap">
-      <span class="pill">WAGMIx / ${t('生態','Ecosystem')}</span><h1>${t('7709.W 擬部署於 BNB Smart Chain，<br><em>SKHY2Lw 採用 Solana 網絡。</em>','7709.W is planned for BNB Smart Chain.<br><em>SKHY2Lw uses Solana.</em>')}</h1>
-      <div class="eco-v9-hero-line"><span>7709.W</span><i aria-hidden="true"></i><img src="${LOGO}" alt="WAGMIx"><i aria-hidden="true"></i><span>SKHY2Lw</span></div>
+  const title=t('合作夥伴與生態參與者','Partners and Ecosystem Participants');
+  return `<main id="main" class="eco-v9-page eco-v18-page">
+    <section class="eco-v9-hero"><div class="wrap eco-v18-hero-grid">
+      <div class="eco-v18-hero-copy"><h1 id="eco-v18-title">${title}</h1>
+        <p>${t('7709.W 擬部署於 BNB Smart Chain，SKHY2Lw 採用 Solana 網絡。','7709.W is planned for BNB Smart Chain. SKHY2Lw uses Solana.')}</p>
+      </div>
+      <div class="eco-v18-network" aria-hidden="true">
+        <svg class="eco-v18-circuit" viewBox="0 0 520 350" fill="none">
+          <defs><linearGradient id="eco-v18-beam" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#0a54da" stop-opacity=".12"/><stop offset=".5" stop-color="#7bd7ff" stop-opacity=".65"/><stop offset="1" stop-color="#235afa" stop-opacity=".12"/></linearGradient></defs>
+          <path d="M156 33 260 137 364 33 412 81 308 185 412 289 364 337 260 233 156 337 108 289 212 185 108 81Z" fill="url(#eco-v18-beam)" stroke="#62b7fa" stroke-opacity=".35"/>
+          <path d="M65 84h79l116 101M455 286h-80L260 185" stroke="#6abdf9" stroke-width="1.5"/>
+          <circle cx="65" cy="84" r="4" fill="#a5eaff"/><circle cx="455" cy="286" r="4" fill="#a5eaff"/>
+        </svg>
+        <div class="eco-v18-hub"><img src="${LOGO_LIGHT}" alt=""></div>
+        <div class="eco-v18-network-node eco-v18-network-bnb" data-eco-v18-network="bnb">${chainIcon('bnb')}<span><strong>7709.W</strong><small>BNB Smart Chain</small></span></div>
+        <div class="eco-v18-network-node eco-v18-network-solana" data-eco-v18-network="solana">${chainIcon('solana')}<span><strong>SKHY2Lw</strong><small>Solana</small></span></div>
+      </div>
     </div></section>
-    <section id="ecosystem-directory" class="eco-v9-directory"><div class="wrap">
-      <div class="eco-v9-heading"><h2>${t('機構與網絡','Institutions and networks')}</h2>
-      <label class="eco-v9-search"><span class="eco-v9-sr">${t('搜尋機構或網絡','Search institutions or networks')}</span><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10" cy="10" r="6"></circle><path d="m15 15 5 5"></path></svg><input data-eco-v9-search type="search" maxlength="100" placeholder="${t('搜尋機構或網絡','Search institutions or networks')}" aria-label="${t('搜尋機構或網絡','Search institutions or networks')}"></label></div>
+    <section id="ecosystem-directory" class="eco-v9-directory" aria-labelledby="eco-v18-title"><div class="wrap">
+      <div class="eco-v9-heading"><label class="eco-v9-search"><span class="eco-v9-sr">${t('搜尋機構或網絡','Search institutions or networks')}</span><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10" cy="10" r="6"></circle><path d="m15 15 5 5"></path></svg><input data-eco-v9-search type="search" maxlength="100" placeholder="${t('搜尋機構或網絡','Search institutions or networks')}" aria-label="${t('搜尋機構或網絡','Search institutions or networks')}"></label></div>
       <div class="eco-v9-filter-bar">${v9EcoFilters.map(field=>`<label><span>${t(...field.label)}</span><select data-eco-v9-field="${field.id}" aria-label="${t(...field.label)}">${field.options.map(([id,zh,en])=>`<option value="${id}">${t(zh,en)}</option>`).join('')}</select></label>`).join('')}<button type="button" data-eco-v9-reset>${t('清除篩選','Clear filters')} <span aria-hidden="true">↺</span></button></div>
       <div class="eco-v9-directory-meta"><span data-eco-v9-results role="status" aria-live="polite">${t(`共 ${v9EcoInstitutions.length} 項`,`${v9EcoInstitutions.length} results`)}</span></div>
       <div class="eco-v9-grid">${v9EcoInstitutions.map(v9EcoCard).join('')}</div>
@@ -82,6 +94,13 @@ function updateV9EcosystemDirectory() {
   });
   page.querySelector('[data-eco-v9-results]').textContent = t(`共 ${count} 項`, count === 1 ? '1 result' : `${count} results`);
   page.querySelector('[data-eco-v9-empty]').hidden = count > 0;
+  // Emphasise only the already documented product/network combination.
+  page.querySelectorAll('[data-eco-v18-network]').forEach(node=>{
+    const network=node.dataset.ecoV18Network;
+    const relation=network==='bnb' ? v9EcoRelations.bnb : v9EcoRelations.solana;
+    const active=Object.entries(values).every(([key,value])=>value==='all'||relation[key]===value);
+    node.classList.toggle('is-muted',!active);
+  });
 }
 function handleEcosystemInput(event) {
   if (event.target.matches('[data-eco-v9-search],[data-eco-v9-field]')) updateV9EcosystemDirectory();
@@ -117,3 +136,15 @@ function handleEcosystemClick(event) {
     card.querySelector('[data-eco-v9-toggle]').setAttribute('aria-expanded','false');
   });
 }
+
+/* Dismiss official introductions without leaving the current filter state. */
+document.addEventListener('keydown',event=>{
+  if(event.key!=='Escape') return;
+  const focused=document.activeElement?.closest?.('[data-eco-v9-card]');
+  document.querySelectorAll('[data-eco-v9-card]').forEach(card=>{
+    card.classList.remove('is-open');
+    card.classList.add('is-dismissed');
+    card.querySelector('[data-eco-v9-toggle]').setAttribute('aria-expanded','false');
+  });
+  focused?.querySelector('[data-eco-v9-toggle]')?.focus();
+});
