@@ -1,14 +1,16 @@
-# WAGMIx 网站设计与双语网页 · V19
+# WAGMIx 网站设计与双语网页 · V20
 
 ![WAGMIx](assets/wagmix.svg)
 
 本项目包含平台介绍、产品目录、7709w 和 SKHY2Lw 产品详情、文件阅读器、生态目录及联系页。它是可交接给设计与开发 agent 的 HTML 样稿和源码，未启用 GitHub Pages。
 
-V19 按最新 V8 双语单页更新关于 WAGMIx、产品前四节和 SKHY2Lw 免责声明，保留四个核心卖点及 V18 的产品菜单层级。具体对比见 [RELEASE_V19.md](RELEASE_V19.md)，设计与文件分工见 [DESIGN.md](DESIGN.md)。
+V20 将地区限制改为可关闭提示，采用通用双语文案，不提供国家／地区名单查看入口。正在检测、检测失败及提示关闭后均可继续浏览。规则按客户提供的 17 项地区配置为 44 个国家代码。具体变更见 [RELEASE_V20.md](RELEASE_V20.md)。
+
+产品内容、V8 双语单页、原白皮书及 V19 视觉维持不变。此前内容对齐记录见 [RELEASE_V19.md](RELEASE_V19.md)，设计分工见 [DESIGN.md](DESIGN.md)。
 
 ## 打开交付文件
 
-下载并解压完整仓库，打开 [繁体中文 HTML](WAGMIx_繁體中文_V19.html) 或 [English HTML](WAGMIx_English_V19.html)。`index.html` 同为繁中入口。字体、图片、样式和脚本均内嵌；PDF 位于旁边的 `downloads/` 目录，请保留完整目录。
+下载并解压完整仓库，打开 [繁体中文 HTML](WAGMIx_繁體中文_V20.html) 或 [English HTML](WAGMIx_English_V20.html)。`index.html` 同为繁中入口。字体、图片、样式和脚本均内嵌；PDF 位于旁边的 `downloads/` 目录，请保留完整目录。
 
 | 产品代码 | 底层资产 | 网络 | 页面识别 |
 |---|---|---|---|
@@ -17,7 +19,7 @@ V19 按最新 V8 双语单页更新关于 WAGMIx、产品前四节和 SKHY2Lw �
 
 旧 7709.W 路径保留跳转。两款产品的资格、权利和文件分别维护；V8 的 SKHY2Lw 免责声明未直接套用于 7709w。
 
-**行情为截至 2026 年 10 月 28 日的历史快照。IP 检测及地区限制为演示模式，不会读取真实 IP。** 预览美国受限状态可使用 `WAGMIx_English_V19.html?geoPreview=US`，也可在页面演示控件中切换状态。正式接入说明见 [GEO_ACCESS.md](GEO_ACCESS.md)。
+**行情仍为截至 2026 年 10 月 28 日的历史快照。IP 检测仍为演示模式，没有接入真实 IP 服务。** 演示控件可切换正常浏览、地区提示及检测失败。地区提示可以关闭，不封锁内容或 PDF 下载。真实检测需配置同源服务端接口，详见 [GEO_ACCESS.md](GEO_ACCESS.md)。
 
 ## 修改与构建
 

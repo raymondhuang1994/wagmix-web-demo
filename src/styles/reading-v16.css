@@ -280,7 +280,7 @@ body[data-variant="adgm"] .context-heading > small { color: #9db6ce; }
 .p-factsheet-summary-note { font-size: 15px; line-height: 1.8; color: #3c5f7b; }
 .wp-body { max-width: 78ch; margin-inline: auto; }
 
-/* Regional dialog uses the same type system; access-control behavior is unchanged. */
+/* The dismissible regional notice uses the same type system. */
 .geo-dialog, .geo-contact-links, .geo-preview { font-family: var(--font); }
 .geo-dialog h2 { font-size: 28px; line-height: 1.35; }
 .geo-dialog p { font-size: 16px; line-height: 1.8; }

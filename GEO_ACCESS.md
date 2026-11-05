@@ -1,59 +1,97 @@
-# 地区访问限制：交互与正式接入
+# 地区提示与 IP 检测接入 · V20
 
-本仓库交付可离线打开的双语 HTML 设计稿。V17 默认运行 **preview** 模式，没有实际 IP 定位，没有生产访问限制，也不会向第三方发送访客信息。演示开关用于验收设计；不能作为正式访问授权。
+V20 将地区逻辑改为可关闭的信息提示。网页不会因为正在检测、命中地区、超时或检测失败而持续封锁。当前交付仍默认 `preview` 模式，没有接入真实 IP 检测服务。
 
-## 已确认的美国示例文案
+## 用户可见内容
 
-英文：
+标题：**地區提示 / Jurisdiction Notice**。
 
-> The products and services on this website are not intended for individuals in the United States. Nothing on this website is intended to be construed as a solicitation of any individual in the United States.
+英文正文：
 
-繁中：
+> The products and services described on this website are not intended for persons located in restricted jurisdictions. Nothing on this website is intended to constitute an offer or solicitation to persons in those jurisdictions.
+>
+> Access to this website does not establish eligibility for any product or service.
 
-> 本網站所載產品及服務並非面向位於美國的人士。本網站的任何內容均不應被解讀為向任何位於美國的人士作出招攬。
+繁中正文：
 
-这是一项站点访问规则的示例，不是对访客国籍、居民身份或投资者资格的认定。当前限制清单只有 `US`。其他地区的限制及法律文案需单独确认。
+> 本網站所述產品及服務並非面向位於受限制司法管轄區的人士。本網站的任何內容均不應被解讀為向該等地區的任何人士作出要約或招攬。
+>
+> 瀏覽本網站並不代表您符合任何產品或服務的參與資格。
 
-## 本地演示
+弹窗不展示国家／地区清单，不提供“查看具体地区”、展开清单或相关跳转，也不显示访客具体地区。规则在配置中维护，不作为弹窗内容。
 
-- 正常访问：默认状态，或 `?geoPreview=ALLOW`。
-- 美国受限：`?geoPreview=US`。
-- 无法验证：`?geoPreview=UNKNOWN`。
-- 页面提供有明确演示标识的状态选择，切换语言时保留状态和当前章节。
-- 美国受限与无法验证时，主体不可操作，背景点击及 Escape 不解除限制；可切换语言、重试或通过邮箱、X、Telegram 联系。
-- 未知结果不会显示为美国。正式模式不接受演示参数或客户端选择的国家作为授权依据。
+主按钮为 **我已了解 / I Understand**。右上角 ×、Esc 和背景点击均可关闭。关闭只代表已提示，不代表确认投资资格或取消产品自身限制。
 
-## 接手 agent 的服务端接入要求
+## 交互
 
-配置在 `src/data/site-config.json` 的 `geoAccess`：
+- 检测在后台进行，页面正常展示和操作。
+- 命中地区时显示可关闭的提示。
+- 弹窗打开时采用正常的焦点循环和临时背景滚动管理；所有关闭方式均解除这些状态并恢复焦点。
+- 检测失败、超时或返回无法识别的国家代码时，页面继续可用，仅显示可关闭的失败提示及重试入口，不猜测访客所在国家。
+- 同一会话内，已关闭的同一地区、同一文案版本提示不因刷新或页面／语言切换反复弹出。地区或文案版本变化时可重新提示。
+- 浏览器存储不可用时使用内存降级，不因保存失败封锁页面。离线文件的跨文件会话存储行为取决于浏览器。
+- 前端不显示或保存完整 IP，只使用国家代码结果和本地提示状态。
 
-```json
-{
-  "mode": "preview",
-  "endpoint": "",
-  "restrictedCountries": ["US"],
-  "timeoutMs": 6000
-}
+## 规则清单（仅供配置与交接）
+
+以下为客户提供的 17 项，不是 IP 服务商对法律适用范围的判断。下表不会显示在弹窗。
+
+| 客户指定地区 | 匹配方式 |
+|---|---|
+| Abu Dhabi Global Market（ADGM） | 与 DIFC、阿联酋其余地区合并匹配 AE |
+| British Virgin Islands（英屬維爾京群島） | VG |
+| Dubai International Financial Centre（DIFC） | AE |
+| European Economic Area（歐洲經濟區） | 下列 30 个成员国代码 |
+| Hong Kong（香港） | HK |
+| Kingdom of Bahrain（巴林） | BH |
+| Macau（澳門） | MO |
+| Malaysia（馬來西亞） | MY |
+| People’s Republic of China（中國內地，不含港澳台） | CN；HK、MO、TW 分别配置 |
+| Qatar（卡塔爾，含 QFC） | QA |
+| Saudi Arabia（沙特阿拉伯） | SA |
+| Singapore（新加坡） | SG |
+| Taiwan（台灣） | TW |
+| Thailand（泰國） | TH |
+| United Arab Emirates（阿聯酋，不含 DIFC 和 ADGM） | AE；与以上两金融区合并覆盖阿联酋 |
+| United Kingdom（英國） | GB |
+| United States（美國） | US |
+
+EEA 为欧盟 27 国加冰岛、列支敦士登和挪威，配置为：
+
+```text
+AT BE BG HR CY CZ DK EE FI FR DE GR HU IE IT LV LT LU MT NL PL PT RO SK SI ES SE IS LI NO
 ```
 
-正式部署使用 `mode: "server"`，并配置同源 HTTPS 检测端点，例如 `/api/geo-access`。成功响应应为 JSON：
+另有 14 个国家／地区代码：
+
+```text
+AE VG HK BH MO MY CN QA SA SG TW TH GB US
+```
+
+合计 44 个独立代码。BVI 不匹配美属维尔京群岛 VI；英国使用 GB。名单不自动延伸至未列出的海外属地。普通国家级 IP 结果不用于推断 ADGM、DIFC 或 QFC 的具体区内位置。
+
+参考：[EEA 范围（EFTA）](https://www.efta.int/eea) · [IP 定位及精度限制（Cloudflare）](https://developers.cloudflare.com/network/ip-geolocation/)。
+
+## 接入正式检测
+
+配置位于 `src/data/site-config.json` 的 `geoAccess`，包括 `mode`、`endpoint`、`restrictedCountries`、`timeoutMs`、`noticeVersion`。
+
+正式部署时使用 `mode: "server"`，配置网站同源 HTTPS 接口，例如 `/api/geo-access`。接口由部署平台可信的国家信息或既有 IP 定位服务返回：
 
 ```json
 {"country":"US"}
 ```
 
-`country` 应为服务端可信定位结果的 ISO 3166-1 alpha-2 大写代码；无法确定时返回 `null` 或适当错误。前端在结果为空、格式无效、超时或接口错误时显示无法验证状态并暂停访问，不自行放行。接口返回 `Cache-Control: private, no-store`；CDN 不得跨访客缓存地区判定。端点只需返回国家代码，不必返回完整 IP。
+只返回 ISO 3166-1 alpha-2 大写国家代码；无法确定时返回 `null`。地区来自请求的可信服务端信息，不能使用浏览器自报国家或未经验证的代理请求头。
 
-后端应从部署平台或 CDN 提供的可信请求信息读取地区，不能信任浏览器提交的国家代码，也不能无条件信任可伪造的转发请求头。若使用 Cloudflare，应确保源站访问受到保护、相关请求确实经过可信边缘层。
+建议接口响应为 `Cache-Control: private, no-store`，防止不同访客共用检测结果。前端验证同源 HTTPS、响应状态及代码格式，设置超时；任何失败仅影响提示，不影响网页可用性。正式模式忽略演示参数。
 
-**前端检测和遮罩不是访问控制边界。** 正式规则必须在服务器或 CDN 对页面、API、交易入口和受限制下载文件的请求同时执行。直接访问 PDF、关闭 JavaScript、删除遮罩或改变前端状态均不得获取受限制资源。当前已嵌入 HTML 的内容，以及公开 GitHub 仓库内的 PDF，仍然公开；部署规则不能收回已公开的副本。
+本模块负责提示，不实施页面、API、交易或 PDF 下载封锁。它不代替发行人或交易平台自身的投资者资格规则。当前项目没有服务器／CDN 拦截部署，本次也不创建此类拦截。已存在于其他系统的访问规则不由本前端修改。
 
-如采用全站边缘拦截，可返回与弹窗相同品牌和措辞的独立限制页面。若先提供公共外壳再检测，则在服务器批准之前不应下发受限制的正文或文件。联系入口及所需静态品牌资源应保持可用。
+## 本地演示和验收
 
-IP 定位只是连接位置估计，不等同于国籍、住所或投资者资格。此原型不包含 KYC、反代理识别或身份验证。
+使用页面上的“正常瀏覽 / 地區提示 / 檢測失敗”控件验收；演示不请求真实 IP。
 
-## 验收
+验收需覆盖中英文通用文案、没有地区清单入口、44 个代码匹配、关闭按钮／×／Esc／背景、刷新和语言切换、存储不可用、地区变化、超时、错误响应及重试。桌面和手机均须能关闭，长内容不得把关闭入口挤出可操作范围。
 
-检查繁中及英文的三种状态、语言切换、键盘焦点、Escape/背景点击、路由变化、重试、超时、错误响应和服务端模式忽略演示参数。Node 检查使用模拟 DOM，不替代真实浏览器视觉验收。当前环境的本地网页访问策略限制了实机视觉验收；正式接手时应在获准的部署环境完成桌面及手机验收。
-
-官方接入参考：[Cloudflare IP geolocation](https://developers.cloudflare.com/network/ip-geolocation/) · [按地区拦截请求](https://developers.cloudflare.com/waf/custom-rules/use-cases/block-by-geographical-location/)。
+自动化检查为逻辑检查，不能替代实际浏览器视觉验收。原有 V19 强制锁页方案已由本文件取代。

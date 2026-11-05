@@ -1,59 +1,36 @@
 {
-  "version": "V19",
+  "version": "V20",
   "date": "2026-11-06",
   "checks": {
     "bilingual_route_cases": 204,
-    "geo_assertions": 97,
-    "whitepaper_original_and_52_sections_preserved": true,
-    "original_logo_paths_and_gradients_preserved": true,
-    "homepage_product_introduction_preserved": true,
-    "v8_capability_order_titles_and_body": true,
-    "v8_four_feature_titles_and_body_both_products": true,
-    "v8_hbm_market_t0_footnotes": true,
-    "v8_disclaimer_exact_skhy2lw_only": true,
-    "w_certificate_rights_and_pending_status_preserved": true,
-    "product_menu_hierarchy_and_two_direct_links_preserved": true,
-    "legacy_product_links_redirect": true,
-    "dedicated_contact_route": true,
-    "original_source_pptx_files_unchanged": true,
+    "jurisdiction_notice_assertions": 534,
+    "approved_jurisdictions": 17,
+    "distinct_country_codes": 44,
+    "product_content_and_three_pdfs_unchanged_from_v19": true,
+    "original_logo_unchanged": true,
+    "generic_bilingual_notice_without_country_list": true,
+    "acknowledge_close_escape_backdrop_supported": true,
+    "checking_and_errors_nonblocking": true,
+    "session_version_and_country_dismissal_memory": true,
+    "original_focus_and_main_fallback_verified": true,
+    "source_and_built_outputs_identical": true,
     "public_delivery_private_material_scan_passed": true,
-    "fonts_embedded_with_open_font_licenses": true,
     "browser_visual_validation": "not performed; local browser access unavailable",
-    "responsive_review": "source cascade and wrapping review; no browser layout verification",
-    "source_and_built_outputs_identical": true
+    "live_ip_validation": "not performed; endpoint not configured"
   },
   "geo": {
     "mode": "preview",
-    "restrictedCountries": [
-      "US"
-    ],
+    "hardLock": false,
+    "dismissibleNotice": true,
+    "countryListVisible": false,
     "liveIPDetection": false,
-    "serverEnforcementVerified": false
-  },
-  "v8_factsheet_pdf_export": {
-    "en": {
-      "source_sha256": "766a8aa6c8aedf443b59acf9fb5000580d19017fd3d478f73c28c2343507fa31",
-      "pdf_sha256": "0eea7c5627c1d7aae55c1c121e794ae34c2ecd56b7f2988b43287cdaa29c9d89",
-      "pdf_file": "WAGMIx_7709_Factsheet_EN_V8.pdf",
-      "pages": 1,
-      "all_67_source_shapes_preserved": true,
-      "visual_review": "Full page compared to V8 source preview. No clipped text, missing glyphs or missing logo. Font/layout line wrapping differs slightly under LibreOffice; content and original artwork retained.",
-      "export_notes": "Installed Arial and PingFang HK fontconfig, fonts embedded. Chinese temporary export copy adds standard fillRect to existing picture stretch to preserve original PNG logo. Original PPTXs unchanged."
-    },
-    "zh": {
-      "source_sha256": "8901657e7508cf1e2ef87efb8a0a8cbc05c64ef76e6dfcdb4359f1598bfaf76d",
-      "pdf_sha256": "2ec5bfaf879e940f6be735502366af82e4e584a68e1fbb7d2ee86b1af30caf97",
-      "pdf_file": "WAGMIx_7709_產品單頁_繁體中文_V8.pdf",
-      "pages": 1,
-      "all_67_source_shapes_preserved": true,
-      "visual_review": "Full page compared to V8 source preview. No clipped text, missing glyphs or missing logo. Font/layout line wrapping differs slightly under LibreOffice; content and original artwork retained.",
-      "export_notes": "Installed Arial and PingFang HK fontconfig, fonts embedded. Chinese temporary export copy adds standard fillRect to existing picture stretch to preserve original PNG logo. Original PPTXs unchanged."
-    }
+    "endpointConfigured": false,
+    "serverAccessBlockingImplemented": false
   },
   "sha256": {
-    "index.html": "fdb53cd33daa166996d9fc8a155c631d44d652ed3d368c57d84ae89ed3dd7318",
-    "WAGMIx_繁體中文_V19.html": "fdb53cd33daa166996d9fc8a155c631d44d652ed3d368c57d84ae89ed3dd7318",
-    "WAGMIx_English_V19.html": "ab1863f3d1d9a72a6a9b5d6c83e61a1e54d9dbda7f2bfbbb85bea59d11e073de",
+    "index.html": "d7d0005cdb0da6ff412fa2b1883f04c6fe66a4f4201eb6af18e11fd3a82359d8",
+    "WAGMIx_繁體中文_V20.html": "d7d0005cdb0da6ff412fa2b1883f04c6fe66a4f4201eb6af18e11fd3a82359d8",
+    "WAGMIx_English_V20.html": "69e149732b0847c880104aba0168b1ca1ebad30db50feda04886082f217ac2a4",
     "assets/wagmix.svg": "8ca149b495c0b591987fb673faa4139650032c0dd817637f134e708600857bb4",
     "assets/wagmix-light.svg": "584db71b335a3250966a6a07c50f1945d6ba7501c496609475c9355d5a158a36",
     "downloads/WAGMIx_7709_產品單頁_繁體中文_V8.pdf": "2ec5bfaf879e940f6be735502366af82e4e584a68e1fbb7d2ee86b1af30caf97",
