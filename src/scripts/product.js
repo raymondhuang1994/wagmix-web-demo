@@ -1,4 +1,4 @@
-/* BVI SKHY2Lw product: approved marketing and formal product terms. */
+/* BVI SKHY2Lw product: V8 factsheet marketing and formal product terms. */
 const productMarketingNotes = {
  funding:
  t('0 資金費不代表所有費用為零，申贖費及託管費仍適用。每日再平衡、路徑依賴及跟蹤偏差可影響對沖結果；套利收益並不獲保證。','Zero funding fees do not mean zero total costs; subscription, redemption and custody fees still apply. Daily rebalancing, path dependency and tracking difference may affect hedging results. Arbitrage income is not guaranteed.'),
@@ -22,25 +22,36 @@ function product() {
     <div class="p-hero-copy">
      <span class="pill">${t('即將上線','Coming soon')}</span>
      <h1>WAGMIx SK Hynix<br><em>Daily Max (2x)</em></h1>
-     <p class="p-hero-slogan">${t('全球首個支持 24/7 交易及一級申贖 T0 交收¹的代幣化產品','World’s first tokenized product with 24/7 trading and T0¹ settlement for primary subscriptions and redemptions')}</p>
+     <p class="p-hero-slogan">${t('全球首個支持 24/7 交易及一級申贖 T0 交收³的代幣化產品','The world’s first tokenized product supporting 24/7 trading and T0 settlement³ for primary subscriptions and redemptions')}</p>
      <div class="p-hero-meta">
       <span>${t('底層資產','Underlying asset')} <b>7709.HK</b></span>
       <span>${t('計劃首發','Planned launch')} <b>${launchDateLabel('long')}</b></span>
      </div>
      <div class="p-hero-actions">
       <a class="btn" href="#/products/7709/SKHY2Lw/terms">${t('查看產品資料','View product details')} ${arrow}</a>
-      <button class="p-trading-pending" type="button" disabled>${chainIcon('solana')}${t('Solana 鏈上交易 · 即將開放','Trade on Solana · Coming soon')}</button>
+      <button class="p-trading-pending" type="button" disabled>${chainIcon('solana')}${t('Solana · 即將開放','Solana · Coming soon')}</button>
      </div>
      <div class="p-hero-download">${downloadLink('factsheet',t('產品單頁下載','Download factsheet'),'p-factsheet-link')}<span>${t('繁體中文 · PDF','English · PDF')}</span></div>
     </div>
     ${productCoin()}
    </div>
-   <p class="p-t0">${t0}</p>
+   <p class="p-t0" id="product-source-note-3">${t0}</p>
   </div></section>
-  <div class="p-tab-content" id="product-content">${productMarket()}${productTheme()}${productFeatures()}${productTerms()}${productWhitepaper()}</div>
+  <div class="p-tab-content" id="product-content">${productMarket()}${productTheme()}${productFeatures()}${productTerms()}${productWhitepaper()}${productDisclaimer()}</div>
  </main>`;
 }
-function productFeatures(){return `<section class="p-section" id="product-features"><div class="wrap"><div class="p-section-heading"><div><div class="eyebrow">${t('核心賣點','Key features')}</div><h2>${t('四大核心賣點，連接鏈上交易<br>與 7709.HK 的經濟敞口。','Four core features connect on-chain trading<br>with economic exposure to 7709.HK.')}</h2></div></div><div class="p-feature-grid">${PRODUCT_FEATURES.map((s,i)=>`<article class="p-feature p-feature-${i}" data-feature="${s.id}"><div class="p-feature-top"><span>0${i+1}</span><div class="p-feature-symbol" aria-hidden="true">${productFeatureMeta[s.id].symbol}</div></div><h3>${esc(pick(s.title))}</h3><p class="p-feature-copy">${esc(pick(s.copy))}</p><div class="p-feature-condition"><strong>${t('適用條件','Conditions')}</strong><p>${productMarketingNotes[s.id]}</p><a href="#/whitepaper/${productFeatureMeta[s.id].chapter}">${t('查看相關條款','Read related terms')} ↗</a></div></article>`).join('')}</div></div></section>`;}
+function productFeatures(){
+ return `<section class="p-section" id="product-features"><div class="wrap">
+  <div class="p-section-heading"><div><div class="eyebrow">${t('核心賣點','Key features')}</div><h2>${t('四大核心賣點','Four Core Selling Points')}</h2></div></div>
+  <div class="p-feature-grid">${PRODUCT_FEATURES.map((s,i)=>`<article class="p-feature p-feature-${i}" data-feature="${s.id}"><div class="p-feature-top"><span>0${i+1}</span><div class="p-feature-symbol" aria-hidden="true">${productFeatureMeta[s.id].symbol}</div></div><h3>${esc(pick(s.title))}<sup class="feature-ref">${String.fromCharCode(97+i)}</sup></h3><p class="p-feature-copy">${esc(pick(s.copy))}</p></article>`).join('')}</div>
+  <ol class="product-feature-notes" type="a" aria-label="${t('賣點適用條件','Feature conditions')}">${PRODUCT_FEATURES.map(s=>`<li>${productMarketingNotes[s.id]} <a href="#/whitepaper/${productFeatureMeta[s.id].chapter}">${t('相關條款','Related terms')} ↗</a></li>`).join('')}</ol>
+ </div></section>`;
+}
+
+function productDisclaimer(){
+ return `<section class="p-disclaimer" aria-label="${t('免責聲明','Disclaimer')}"><div class="wrap"><p>${esc(pick(CONTENT.productDisclaimer))}</p></div></section>`;
+}
+
 function productTheme() {
  const theme = CONTENT.investmentTheme;
  const aum = CONTENT.marketMetrics[2];
@@ -49,7 +60,7 @@ function productTheme() {
   <div class="wrap">
    <div class="p-section-heading">
     <div><div class="eyebrow">${t('底層資產投資主題與市場數據','Underlying asset investment theme and market data')}</div>
-     <h2>${esc(pick(theme.hbmTitle))}<sup>²</sup></h2>
+     <h2>${esc(pick(theme.hbmTitle))}<sup>¹</sup></h2>
     </div>
    </div>
    <div class="p-metrics p-metrics-four">
@@ -61,27 +72,26 @@ function productTheme() {
     <article class="p-metric">
      <div class="p-metric-label">${t('單月成交額峰值','Peak monthly turnover')}</div>
      <div class="p-metric-value"><small>${t('約','Approx.')}</small>${t('3,078','307.8')}</div>
-     <div class="p-metric-unit">${t('億港元³','HK$ billion³')}</div>
+     <div class="p-metric-unit">${t('億港元²','HK$ billion²')}</div>
      <p>${t('2026 年 7 月 · 22 個交易日','July 2026 · 22 trading days')}</p>
     </article>
     <article class="p-metric">
      <div class="p-metric-label">${t('峰值月份日均成交額','Average daily turnover in the peak month')}</div>
      <div class="p-metric-value"><small>${t('約','Approx.')}</small>${t('140','14.0')}</div>
-     <div class="p-metric-unit">${t('億港元／日³','HK$ billion / day³')}</div>
+     <div class="p-metric-unit">${t('億港元／日²','HK$ billion / day²')}</div>
      <p>${t('2026 年 7 月','July 2026')}</p>
     </article>
     <article class="p-metric">
      <div class="p-metric-label">${t('7709.HK 資產管理規模','7709.HK assets under management')}</div>
      <div class="p-metric-value"><small>${t('超過','Over')}</small>${aumThreshold}</div>
-     <div class="p-metric-unit">${t('億港元⁴','HK$ billion⁴')}</div>
+     <div class="p-metric-unit">${t('億港元²','HK$ billion²')}</div>
      <p>${t('2026 年 6 月','June 2026')}</p>
     </article>
    </div>
    <div class="p-metric-equation"><span>${t('月成交額','Monthly turnover')} <b>${t('3,078 億港元','HK$307.8bn')}</b></span><i>÷</i><span><b>22</b> ${t('個交易日','trading days')}</span><i>≈</i><span>${t('日均成交','Daily average')} <b>${t('140 億港元','HK$14.0bn')}</b></span></div>
    <div class="p-source-notes">
-    <p>² <a href="${esc(theme.hbmSource)}" target="_blank" rel="noopener noreferrer">${t('HBM 營收排名來源：Counterpoint Research，全球 HBM 營收市佔率，2026 年第二季度。','Source: Counterpoint Research, Global DRAM and HBM Market Share: Quarterly, Q2 2026. HBM ranking is based on revenue.')} ↗</a></p>
-    <p>${t('³ 成交額來源：彭博。資料截至 2026 年 10 月 20 日，按完整曆月比較。2026 年 7 月共有 22 個交易日。','³ Source: Bloomberg, data through 20 Oct 2026. Monthly turnover compares complete calendar months. July 2026 had 22 trading days.')}</p>
-    <p>⁴ <a href="${esc(aum.sourceUrl)}" target="_blank" rel="noopener noreferrer">${t('資產管理規模來源：港交所披露資料（2026 年 6 月 22 日）。','Source: 7709.HK daily fund disclosure filed with HKEX on 22 Jun 2026.')} ↗</a></p>
+    <p>¹ <a href="${esc(theme.hbmSource)}" target="_blank" rel="noopener noreferrer">${esc(pick(CONTENT.productFootnotes.hbm))} ↗</a></p>
+    <p>² ${esc(pick(CONTENT.productFootnotes.market))}</p>
     <p>${t('歷史數據不代表未來表現、流動性或需求。每日槓桿不等於長期累計兩倍回報。','Historical figures do not indicate future performance, liquidity or demand. Daily leverage does not imply twice the cumulative return over longer periods.')}</p>
    </div>
    ${skHynixProfile()}
@@ -107,7 +117,7 @@ function priceChart(mode='line'){
  return `<svg class="p-price-chart-svg" viewBox="0 0 ${W} ${H}" role="img" aria-label="${t('7709.HK 歷史價格：2026年9月30日至10月28日，已取得的19個交易日，港元。','7709.HK historical prices: 19 available trading days from 30 September to 28 October 2026, in HKD.')}"><defs><linearGradient id="chart-fill" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#1688ee" stop-opacity=".22"/><stop offset="1" stop-color="#1688ee" stop-opacity=".01"/></linearGradient></defs>${grid}${mode==='line'?`<path d="${path} L${x(last.date)},${y(lo)} L${left},${y(lo)} Z" fill="url(#chart-fill)"/><path d="${path}" fill="none" stroke="#1678ed" stroke-width="3" stroke-linejoin="round"/>${points}`:candle}${ticks}<line x1="${left}" x2="${W-right}" y1="${y(last.close)}" y2="${y(last.close)}" stroke="#1688ee" stroke-opacity=".3" stroke-dasharray="4 4"/><rect x="${W-right+8}" y="${y(last.close)-12}" width="53" height="24" rx="5" fill="#1678ed"/><text x="${W-right+34}" y="${y(last.close)+4}" fill="white" font-size="16" text-anchor="middle">${last.close.toFixed(2)}</text></svg>`;
 }
 function marketPanel(){const last=HISTORY.prices.at(-1),prev=HISTORY.prices.at(-2),change=last.close-prev.close;return `<div class="market-panel"><div class="market-head"><div><div class="market-security"><span>7709</span><div><b>${t('港交所','HKEX')} · 7709.HK</b><small>${t('南方東英 SK 海力士每日槓桿最多（2x）產品','CSOP SK Hynix Daily Max (2x) Leveraged Product')}</small></div></div><div class="market-price">${last.close.toFixed(3)}<span>${t('港元','HKD')}</span></div><div class="market-change">+${change.toFixed(3)} (+${(change/prev.close*100).toFixed(2)}%) <span>${t('較前一筆收市價','vs. prior available close')}</span></div></div><div class="market-status"><span>◷ ${t('歷史收市快照 · 非即時行情','HISTORICAL CLOSE · NOT LIVE')}</span><p>${t('2026.10.28 收市快照','28 Oct 2026 · closing snapshot')}</p></div></div><div class="chart-tools"><div class="chart-period">${t('已取得交易日','Available trading days')} <b>2026.09.30 — 10.28</b></div><div class="chart-switch" role="group" aria-label="${t('圖表類型','Chart type')}"><button data-chart="line" class="selected" aria-pressed="true">${t('走勢','Line')}</button><button data-chart="candle" aria-pressed="false">${t('K 線','Candles')}</button></div></div><div class="chart-area" id="price-chart">${priceChart()}</div><div class="market-stats">${[[t('開市','Open'),last.open.toFixed(3)],[t('最高','High'),last.high.toFixed(3)],[t('最低','Low'),last.low.toFixed(3)],[t('成交量','Volume'),t('1.731 億','173.13M')]].map(r=>`<div><small>${r[0]}</small><strong>${r[1]}</strong></div>`).join('')}</div><div class="chart-source">${t('來源：','Source: ')}<a href="https://finance.yahoo.com/quote/7709.HK/history/" target="_blank" rel="noopener">${t('Yahoo 財經','Yahoo Finance')}</a> · ${t('底層上市產品價格，並非 SKHY2Lw 代幣成交價。線段連接已取得的歷史報價，不補算缺失日期。','Underlying listed-product prices, not SKHY2Lw token execution prices. Lines connect available historical observations; missing dates are not imputed.')}</div><details class="chart-data"><summary>${t('查看圖表數據','View chart data')} <span>↓</span></summary><div class="chart-table-scroll"><table><thead><tr><th>${t('日期','Date')}</th><th>${t('收市價（港元）','Close (HKD)')}</th><th>${t('成交量','Volume')}</th></tr></thead><tbody>${HISTORY.prices.map(p=>`<tr><td>${p.date}</td><td>${p.close.toFixed(3)}</td><td>${p.volume.toLocaleString('en-US')}</td></tr>`).join('')}</tbody></table></div></details></div>`;}
-function productMarket(){return `<section class="p-section" id="product-market"><div class="wrap"><div class="p-section-heading"><div><div class="eyebrow">${t('底層行情','Underlying market')}</div><h2>${t('7709.HK 的港股行情可供參考，<br>代幣成交價由二級市場釐定。','7709.HK provides a reference price.<br>Token prices are set in the secondary market.')}</h2></div></div>${marketPanel()}<div class="p-market-notes" role="note"><p><span class="market-note-number" aria-hidden="true">1.</span><strong>${t('底層產品按港股市場時段交易。','The underlying product follows Hong Kong market hours.')}</strong> ${t('圖表為 7709.HK 歷史行情，並非 SKHY2Lw 的二級市場報價。','The chart shows 7709.HK historical prices, not SKHY2Lw secondary-market quotations.')}</p><p><span class="market-note-number" aria-hidden="true">2.</span><strong>${t('代幣成交價可偏離指示價值。','Token execution prices may differ from indicative value.')}</strong> ${t('非底層交易時段的估值僅供指示；報價、交易及申贖可受限制或暫停。','Values outside underlying trading hours are indicative. Quotations, trading and creation or redemption may be limited or suspended.')}</p></div></div></section>`;}
+function productMarket(){return `<section class="p-section" id="product-market"><div class="wrap"><div class="p-section-heading"><div><div class="eyebrow">${t('底層行情','Underlying market')}</div><h2>${t('底層市場價格可作為代幣估值參考，<br>代幣成交價可能與之不同。','Underlying market prices provide a reference for token valuation;<br>token execution prices may differ.')}</h2></div></div>${marketPanel()}<div class="p-market-notes" role="note"><p><span class="market-note-number" aria-hidden="true">1.</span><strong>${t('底層產品按港股市場時段交易。','The underlying product follows Hong Kong market hours.')}</strong> ${t('圖表為 7709.HK 歷史行情，並非 SKHY2Lw 的二級市場報價。','The chart shows 7709.HK historical prices, not SKHY2Lw secondary-market quotations.')}</p><p><span class="market-note-number" aria-hidden="true">2.</span><strong>${t('代幣成交價可偏離指示價值。','Token execution prices may differ from indicative value.')}</strong> ${t('非底層交易時段的估值僅供指示；報價、交易及申贖可受限制或暫停。','Values outside underlying trading hours are indicative. Quotations, trading and creation or redemption may be limited or suspended.')}</p></div></div></section>`;}
 function productTerms() {
  const facts = [
   [t('代幣代碼','Ticker'), 'SKHY2Lw'],
@@ -121,8 +131,8 @@ function productTerms() {
    'SKHY2Lw/USDT and SKHY2Lw/USDC; availability and launch timing are subject to venue support and announcements.'
   )],
   [t('交易與交收時段','Trading and settlement hours'), t(
-   '二級市場全天候交易。一級申贖於港股交易時段內外均可進行 T0 交收¹。',
-   'Secondary trading is available 24/7. Primary subscriptions and redemptions are eligible for T0¹ settlement both during and outside of Hong Kong market hours.'
+   '二級市場全天候交易。一級申贖於港股交易時段內外均可進行 T0 交收³。',
+   'Secondary trading is available 24/7. Primary subscriptions and redemptions are eligible for T0 settlement³ both during and outside of Hong Kong market hours.'
   )],
   [t('一級申購','Primary subscriptions'), t(
    '獲發行人批准的投資者可透過參與交易商（PD），以現金、支持的穩定幣或合資格資產實物申購。',

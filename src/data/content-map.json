@@ -4,16 +4,14 @@
       "id": "research",
       "title": {
         "zh": "深度投研鎖定風口",
-        "en": "In-Depth Research on Emerging Themes"
+        "en": "Investment Research"
       },
       "copy": {
         "zh": [
-          "標的研究與市場分析",
-          "解析產品機制與邏輯"
+          "深入開展標的研究與市場分析，敏銳追蹤產業趨勢並挖掘價值標的。"
         ],
         "en": [
-          "Asset research & market analysis",
-          "Product mechanics & rationale"
+          "Research tracks industry trends and identifies promising assets."
         ]
       }
     },
@@ -21,16 +19,14 @@
       "id": "structuring",
       "title": {
         "zh": "機構級金融資產上鏈",
-        "en": "Institutional Financial Assets Onchain"
+        "en": "Institutional Tokenization"
       },
       "copy": {
         "zh": [
-          "連接資產與代幣權益",
-          "串聯發行與申贖流程"
+          "連接傳統資產與鏈上生態，串聯代幣發行與申贖全流程。"
         ],
         "en": [
-          "Links assets & token rights",
-          "Issuance & subscribe/redeem flows"
+          "Links assets to on-chain issuance, subscriptions and redemptions."
         ]
       }
     },
@@ -38,16 +34,14 @@
       "id": "liquidity",
       "title": {
         "zh": "頂級做市流動性",
-        "en": "Top-Tier Market-Making Liquidity"
+        "en": "Market-Maker Liquidity"
       },
       "copy": {
         "zh": [
-          "整合做市與報價服務",
-          "支持全天候訂單簿交易"
+          "協同頂級做市商提供流動性，持續雙邊報價保障交易深度。"
         ],
         "en": [
-          "Integrated market making & quotes",
-          "24/7 order-book trading"
+          "Top market makers provide two-way quotes and order-book depth."
         ]
       }
     },
@@ -55,16 +49,14 @@
       "id": "custody",
       "title": {
         "zh": "持牌券商提供託管",
-        "en": "Custody by Licensed Brokers"
+        "en": "Licensed Broker Custody"
       },
       "copy": {
         "zh": [
-          "香港持牌券商託管資產",
-          "配合鏈上鏈下持倉核對"
+          "香港持牌券商託管資產，配合鏈上鏈下持倉核對。"
         ],
         "en": [
-          "HK licensed-broker custody",
-          "On/off-chain holdings reconciliation"
+          "HK licensed broker custody with on- and off-chain holdings reconciled."
         ]
       }
     },
@@ -72,16 +64,14 @@
       "id": "platform",
       "title": {
         "zh": "提供全天候鏈上資產",
-        "en": "Always-On Onchain Assets"
+        "en": "24/7 On-Chain Assets"
       },
       "copy": {
         "zh": [
-          "二級市場 24/7 交易",
-          "SKHY2Lw 支持 T0 申贖交收¹"
+          "支持二級市場 24/7 交易，實現一級市場 T0 申贖交收³。"
         ],
         "en": [
-          "24/7 secondary trading",
-          "SKHY2Lw T0¹ subscriptions and redemptions"
+          "Supports 24/7 secondary trading and T0 primary settlement³."
         ]
       }
     }
@@ -89,12 +79,12 @@
   "sellingPoints": [
     {
       "title": {
-        "zh": "0 資金費＋資金費套利機會",
-        "en": "Zero Funding Fees + Funding Arbitrage"
+        "zh": "0資金費＋資金費套利機會",
+        "en": "No Funding Fee + Arbitrage Potential"
       },
       "copy": {
-        "zh": "相較永續合約，本產品不收取資金費。\n可配合永續合約對沖策略，尋找潛在資金費套利機會；實際結果取決於資金費率、對沖安排及相關成本。",
-        "en": "Unlike perpetual contracts, the product has no funding fees.\nPerpetual-contract hedges may offer funding-rate arbitrage opportunities. Outcomes depend on funding rates, hedging arrangements and costs."
+        "zh": "相較永續合約，本產品不收取資金費。可配合永續合約對沖策略，尋找潛在資金費套利機會；實際結果取決於資金費率、對沖安排及相關成本。",
+        "en": "Unlike perpetual contracts, this product charges no funding fee. Hedging with perpetual contracts may create funding-fee arbitrage opportunities. Outcomes depend on funding rates, hedges and costs."
       },
       "id": "funding"
     },
@@ -105,7 +95,7 @@
       },
       "copy": {
         "zh": "7709.HK 單位由合規持牌券商託管，以實際持倉提供 1:1 支持。",
-        "en": "Actual holdings of 7709.HK units are held in custody by a licensed broker and provide 1:1 backing."
+        "en": "7709.HK units are held in custody by a licensed broker, with actual holdings providing 1:1 backing."
       },
       "id": "backing"
     },
@@ -116,7 +106,7 @@
       },
       "copy": {
         "zh": "全球領先做市商全天候提供買賣報價，維持訂單簿深度。二級市場透過訂單簿形成交易價格。",
-        "en": "Leading global market makers provide two-way quotes around the clock to support order-book depth. Secondary-market prices are formed through the order book."
+        "en": "Leading global market makers provide buy and sell quotes around the clock to maintain order-book depth. Secondary-market prices are formed through the order book."
       },
       "id": "liquidity"
     },
@@ -139,7 +129,7 @@
       "zhLabel": "7709.HK 歷史月成交額峰值",
       "enLabel": "7709.HK historical monthly turnover peak",
       "period": "2026-07",
-      "source": "Hum Revised factsheet, note 3"
+      "source": "V8 onepager, note 2: Bloomberg"
     },
     {
       "value": 14.0,
@@ -147,7 +137,7 @@
       "zhLabel": "峰值月份日均成交",
       "enLabel": "Peak-month daily average turnover",
       "period": "2026-07",
-      "source": "Hum Revised factsheet, note 3"
+      "source": "V8 onepager, note 2: Bloomberg"
     },
     {
       "value": 132,
@@ -155,20 +145,38 @@
       "zhLabel": "7709.HK 歷史資產管理規模",
       "enLabel": "7709.HK historical assets under management",
       "period": "2026-06",
-      "source": "CSOP trading information, 22 June 2026, 7709.HK (NAV per unit in HKD × units outstanding)",
-      "comparison": "exceeded",
-      "sourceUrl": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0622/2026062201759.xlsx"
+      "source": "V8 onepager, note 2: Bloomberg",
+      "comparison": "exceeded"
     }
   ],
   "investmentTheme": {
     "hbmTitle": {
       "zh": "2026 年第二季度，SK 海力士的高頻寬記憶體（HBM）營收位居全球第一。",
-      "en": "SK hynix ranked first globally by high-bandwidth memory (HBM) revenue in Q2 2026."
+      "en": "In Q2 2026, SK hynix ranked first globally by high-bandwidth memory (HBM) revenue."
     },
     "hbmSource": "https://counterpointresearch.com/en/insights/global-dram-and-hbm-market-share",
     "dailyObjective": {
-      "zh": "底層產品 7709.HK 旨在扣除費用及支出前，追蹤 SK 海力士股票的每日目標槓桿表現。",
-      "en": "7709.HK seeks to track SK hynix’s targeted daily leveraged performance before fees and expenses."
+      "zh": "底層產品7709.HK旨在扣除費用及支出前，追蹤SK海力士股票的每日目標槓桿表現。",
+      "en": "7709.HK seeks to track SK hynix’s target daily leveraged performance before fees and expenses."
     }
-  }
+  },
+  "productDisclaimer": {
+    "zh": "免責聲明：WAGMIx 僅提供代幣化技術服務，並非 SKHY2Lw 的發行人，亦不營運任何交易場所或提供投資建議。SKHY2Lw 由第三方發行人發行；該發行人可能與 WAGMIx 有關聯，亦可能沒有關聯。本資料僅供資訊參考，不構成出售本產品的要約、購買本產品的要約招攬或收益保證。SKHY2Lw 持有人僅享有與 7709.HK 掛鈎的合約經濟利益，並非直接持有 7709.HK 單位或 SK 海力士股票。產品條款以正式交易文件及適用法律為準。",
+    "en": "Disclaimer: WAGMIx provides tokenization technology services only. It is not the issuer of SKHY2Lw and does not operate any trading venue or provide investment advice. SKHY2Lw is issued by a third-party issuer, which may or may not be affiliated with WAGMIx. This material is for information only and does not constitute an offer to sell, a solicitation of an offer to buy, or a guarantee of returns. SKHY2Lw holders receive contractual economic benefits linked to 7709.HK, not direct ownership of 7709.HK units or SK hynix shares. Product terms are governed by the definitive transaction documents and applicable law."
+  },
+  "productFootnotes": {
+    "hbm": {
+      "zh": "HBM 營收排名來源：Counterpoint Research，全球 HBM 營收市佔率，2026 年第二季度。",
+      "en": "Source: Counterpoint Research, global HBM revenue market share, Q2 2026."
+    },
+    "market": {
+      "zh": "成交額及資產管理規模來源：Bloomberg。成交額資料截至 2026 年 10 月 20 日，按完整曆月比較；2026 年 7 月有 22 個交易日。資產管理規模為 2026 年 6 月數據。",
+      "en": "Turnover and AUM source: Bloomberg. Turnover data through 20 Oct 2026; monthly figures compare full calendar months. July 2026 had 22 trading days. AUM data are for June 2026."
+    },
+    "t0": {
+      "zh": "WAGMIx 僅為代幣化技術服務供應商，不營運任何交易場所。SKHY2Lw 代幣的 24/7 交易及一級申贖的 T0 交收，均於相關第三方交易場所或由獲批參與交易商（僅限合資格專業投資者）執行。港股交易時段內外均可進行 T0 交收；如無法可靠估值或交收，交收將順延。非港股交易時段之價格僅供參考。",
+      "en": "WAGMIx provides tokenization services only and does not operate a trading venue. 24/7 token trading is on third-party venues; T0 primary settlement is through approved PDs for eligible professional investors. T0 may occur in or outside Hong Kong market hours, subject to reliable valuation and settlement; otherwise it is deferred. Off-hours prices are indicative."
+    }
+  },
+  "factsheetVersion": "V8"
 }

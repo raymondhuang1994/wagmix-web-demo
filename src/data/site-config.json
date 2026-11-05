@@ -1,5 +1,5 @@
 {
-  "version": "V18",
+  "version": "V19",
   "geoAccess": {
     "mode": "preview",
     "endpoint": "",
@@ -15,11 +15,11 @@
     "email": "mailto:info@wagmix.com"
   },
   "capabilityOrder": [
+    "research",
     "platform",
-    "custody",
     "liquidity",
-    "structuring",
-    "research"
+    "custody",
+    "structuring"
   ],
   "featureOrder": [
     "backing",
@@ -29,11 +29,11 @@
   ],
   "downloadFiles": {
     "whitepaper": "WAGMIx_SKHY2Lw_Whitepaper_EN.pdf",
-    "factsheetZh": "WAGMIx_7709_產品單頁_繁體中文_Hum_Revised.pdf",
-    "factsheetEn": "WAGMIx_7709_Factsheet_EN_Hum_Revised.pdf"
+    "factsheetZh": "WAGMIx_7709_產品單頁_繁體中文_V8.pdf",
+    "factsheetEn": "WAGMIx_7709_Factsheet_EN_V8.pdf"
   },
   "productRoutes": {
-    "7709.W": "#/products/7709/7709.W/overview",
+    "7709w": "#/products/7709/7709w/overview",
     "SKHY2Lw": "#/products/7709/SKHY2Lw/overview"
   },
   "brand": {

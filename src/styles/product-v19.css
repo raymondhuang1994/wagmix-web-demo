@@ -1,0 +1,17 @@
+/* V19: factsheet copy remains prominent; conditions read as notes below the four features. */
+.context-content .p-feature-copy,
+.adgm-feature > p { white-space: pre-line; }
+.feature-ref { margin-left: .22em; font-size: .55em; font-weight: 500; color: #52738f; vertical-align: super; }
+.product-feature-notes { margin: 25px 0 0; padding: 20px 0 0 1.4em; border-top: 1px solid #cfdeec; color: #4f657b; font-size: var(--reading-note, 15px); line-height: 1.8; }
+.product-feature-notes li { padding-left: .3em; margin: 0 0 10px; }
+.product-feature-notes li:last-child { margin-bottom: 0; }
+.product-feature-notes a { color: #2266a4; text-decoration: underline; text-underline-offset: .18em; }
+.p-disclaimer { padding: 30px 0 40px; color: #4f657b; }
+.p-disclaimer p { margin: 0; padding-top: 24px; border-top: 1px solid #cfdeec; font-size: var(--reading-note, 15px); line-height: 1.85; }
+.adgm-page .product-feature-notes { border-color: #2b415c; color: #b0c5dd; }
+.adgm-page .feature-ref { color: #9cbddd; }
+.adgm-hero h1 > .adgm-token-word { display: inline; font-size: inherit; font-weight: inherit; line-height: inherit; letter-spacing: inherit; color: #fff; }
+@media (max-width: 600px) {
+  .product-feature-notes { margin-top: 20px; padding-top: 18px; }
+  .p-disclaimer { padding: 24px 0 30px; }
+}

@@ -1,0 +1,26 @@
+/* V8 copy restores all five capability descriptions in the approved order. */
+.capability-column { padding: 24px 18px 28px; }
+.capability-column h3 { margin: 0; min-height: 2.8em; }
+.capability-column .capability-copy { margin: 16px 0 0; color: #41627e; font-size: 18px; line-height: 1.7; text-align: left; }
+.capability-copy a { color: #1567b6; text-decoration: underline; text-underline-offset: 3px; }
+@media (min-width: 701px) and (max-width: 1100px) {
+ .capability-showcase { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+ .capability-column { border-top: 1px solid #d3e4f2; }
+ .capability-column:nth-child(-n+2) { border-top: 0; }
+ .capability-column + .capability-column { border-left: 0; }
+ .capability-column:nth-child(even) { border-left: 1px solid #d3e4f2; }
+ .capability-column:last-child { grid-column: 1 / -1; display: grid; gap: 0 24px; text-align: left; align-items: center; padding-inline: 30px; }
+ .capability-column:last-child { grid-template-columns: 140px minmax(0, 1fr); }
+ .capability-column:last-child .capability-icon { grid-row: 1 / 3; }
+ .capability-column:last-child h3 { grid-column: 2; align-self: end; min-height: 0; text-align: left; }
+ .capability-column:last-child .capability-copy { grid-column: 2; margin-top: 10px; }
+}
+@media (max-width: 700px) {
+ .capability-showcase { grid-template-columns: minmax(0, 1fr); }
+ .capability-column, .capability-column:last-child { display: grid; grid-column: auto; grid-template-columns: 82px minmax(0, 1fr); gap: 8px 18px; padding: 24px 0; text-align: left; }
+ .capability-column + .capability-column { border-left: 0; border-top: 1px solid #d3e4f2; }
+ .capability-column .capability-icon, .capability-column:last-child .capability-icon { grid-row: 1 / 3; height: 90px; margin: 0; align-self: center; }
+ .capability-column .capability-glass-icon { width: 82px; }
+ .capability-column h3, .en .capability-column h3 { grid-column: 2; min-height: 0; font-size: 23px; line-height: 1.3; }
+ .capability-column .capability-copy { grid-column: 2; margin: 0; font-size: 17px; line-height: 1.65; }
+}

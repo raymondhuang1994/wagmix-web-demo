@@ -1,29 +1,25 @@
-# WAGMIx 网站设计与双语网页 · V18
+# WAGMIx 网站设计与双语网页 · V19
 
 ![WAGMIx](assets/wagmix.svg)
 
-本项目是 WAGMIx 官网的本地 HTML 设计样稿，包含平台介绍、7709 产品目录、两款产品详情、产品文件阅读器及生态目录。**接手设计请先读 [DESIGN.md](DESIGN.md)**，其中有产品图例、导航层级、响应式规则和对应源码。
+本项目包含平台介绍、产品目录、7709w 和 SKHY2Lw 产品详情、文件阅读器、生态目录及联系页。它是可交接给设计与开发 agent 的 HTML 样稿和源码，未启用 GitHub Pages。
 
-V18 按获批方案优化首页、产品目录、全站阅读层级及生态展示。首页五项能力采用最新截图标题，桌面五列、手机 2＋2＋1；产品页保留独立目录与原有条款。顶部产品菜单提供两款产品的直达入口，非首页移除重复的联络区。Geist 与 Noto Sans TC 字体内嵌在 HTML 中。
+V19 按最新 V8 双语单页更新关于 WAGMIx、产品前四节和 SKHY2Lw 免责声明，保留四个核心卖点及 V18 的产品菜单层级。具体对比见 [RELEASE_V19.md](RELEASE_V19.md)，设计与文件分工见 [DESIGN.md](DESIGN.md)。
 
-具体修改与验证边界见 [RELEASE_V18.md](RELEASE_V18.md)，此前产品文件差异见 [RELEASE_V16.md](RELEASE_V16.md)。原始英文白皮书 PDF、逐条中英文引文和原有单页未改；最新版单页与原白皮书中的部分安排存在版本差异，网页导读已标明。
+## 打开交付文件
 
-**当前 IP 检测为演示模式，不会读取真实 IP，也不会请求第三方定位服务。** 页面上的演示控件可以切换正常访问、美国受限及无法验证三种状态。正式检测及访问限制的接入要求见 [GEO_ACCESS.md](GEO_ACCESS.md)。
+下载并解压完整仓库，打开 [繁体中文 HTML](WAGMIx_繁體中文_V19.html) 或 [English HTML](WAGMIx_English_V19.html)。`index.html` 同为繁中入口。字体、图片、样式和脚本均内嵌；PDF 位于旁边的 `downloads/` 目录，请保留完整目录。
 
 | 产品代码 | 底层资产 | 网络 | 页面识别 |
 |---|---|---|---|
-| **7709.W** | 港交所 7709.HK | BNB Smart Chain（拟部署） | 深色产品页、方形标识，目录首位 |
-| **SKHY2Lw** | 港交所 7709.HK | Solana | 浅色产品页、圆形标识 |
+| 7709w | 港交所 7709.HK | BNB Smart Chain（拟部署） | 深色页面、方形标识 |
+| SKHY2Lw | 港交所 7709.HK | Solana | 浅色页面、圆形标识 |
 
-### 在本地查看
+旧 7709.W 路径保留跳转。两款产品的资格、权利和文件分别维护；V8 的 SKHY2Lw 免责声明未直接套用于 7709w。
 
-下载并解压完整仓库，打开 [繁体中文 HTML](WAGMIx_繁體中文_V18.html) 或 [English HTML](WAGMIx_English_V18.html)。`index.html` 同样进入繁中版。页面字体、样式、图片和脚本均已内嵌，PDF 从旁边的 `downloads/` 目录读取，请保留完整目录。行情模块展示 7709.HK 的历史快照，数据截至 2026 年 10 月 28 日。
+**行情为截至 2026 年 10 月 28 日的历史快照。IP 检测及地区限制为演示模式，不会读取真实 IP。** 预览美国受限状态可使用 `WAGMIx_English_V19.html?geoPreview=US`，也可在页面演示控件中切换状态。正式接入说明见 [GEO_ACCESS.md](GEO_ACCESS.md)。
 
-美国限制示例可通过 `WAGMIx_English_V18.html?geoPreview=US` 或繁中页面的同一参数打开；直接打开页面默认显示正常浏览示例。所有模拟状态都带演示标识。此仓库仅交付设计与代码，不启用 GitHub Pages。
-
-### 修改后重新生成网页
-
-在仓库根目录执行以下命令。构建使用 Python 3 标准库，路由检查使用 Node.js 18 或更高版本。
+## 修改与构建
 
 ```sh
 python3 build.py
@@ -31,16 +27,20 @@ node tools/check.mjs
 node tools/check-geoban.mjs
 ```
 
-| 要修改的内容 | 源文件 |
+| 内容 | 源文件 |
 |---|---|
-| 地区限制弹窗、预览状态及服务端检测接入 | [geoban.js](src/scripts/geoban.js) · [geoban.css](src/styles/geoban.css) · [接入说明](GEO_ACCESS.md) |
-| 双语顶部菜单、侧栏、语言切换和章节跳转 | [sidebar.js](src/scripts/sidebar.js) |
-| 首页、产品目录、生态目录 | [main.js](src/scripts/main.js) · [catalog.js](src/scripts/catalog.js) · [ecosystem.js](src/scripts/ecosystem.js) |
-| 7709.W 产品条款及深色详情页 | [adgm.js](src/scripts/adgm.js) · [adgm-v9.css](src/styles/adgm-v9.css) |
-| SKHY2Lw 产品页及文件阅读器 | [product.js](src/scripts/product.js) · [docs.js](src/scripts/docs.js) · [白皮书节选](src/scripts/whitepaper-data.js) |
-| 品牌色、字号、断点及产品标识 | [样式目录](src/styles) · [标识组件](src/scripts/product-marks.js) · [品牌资源](assets) |
-| V18 字体、导航与首页／生态版式 | [interface-v18.css](src/styles/interface-v18.css) · [home-v18.css](src/styles/home-v18.css) · [ecosystem-v18.css](src/styles/ecosystem-v18.css) |
-| 展示日期、产品顺序及下载文件映射 | [site-config.json](src/data/site-config.json) |
-| 可下载文件 | [英文白皮书及双语产品单页](downloads) |
+| V8 五项能力、四卖点、来源脚注及免责声明 | [content-map.json](src/data/content-map.json) |
+| 版本、品牌文案、产品顺序、下载文件 | [site-config.json](src/data/site-config.json) |
+| 顶部菜单、侧栏、语言切换和旧链接跳转 | [sidebar.js](src/scripts/sidebar.js) |
+| 首页与产品目录 | [main.js](src/scripts/main.js) · [catalog.js](src/scripts/catalog.js) |
+| SKHY2Lw 产品与共用行情／主题 | [product.js](src/scripts/product.js) |
+| 7709w 产品与权利 | [adgm.js](src/scripts/adgm.js) |
+| 生态和联系页 | [ecosystem.js](src/scripts/ecosystem.js) · [contact.js](src/scripts/contact.js) |
+| V19 版式 | [interface-v19.css](src/styles/interface-v19.css) · [home-v19.css](src/styles/home-v19.css) · [product-v19.css](src/styles/product-v19.css) |
+| 地区提示 | [geoban.js](src/scripts/geoban.js) · [GEO_ACCESS.md](GEO_ACCESS.md) |
+| 原白皮书与导读 | [docs.js](src/scripts/docs.js) · [whitepaper-data.js](src/scripts/whitepaper-data.js) |
+| V8 双语单页、英文原白皮书 | [downloads](downloads) |
 
-编辑 `src/` 中的源文件后重新构建，两种语言的 HTML 会同步更新。查看产品条款时按产品代码分别进入对应文件。品牌标志、文件及行情数据保留各自来源和权利标识。
+网页沿用 Geist 与 Noto Sans TC，字体以 WOFF 子集内嵌，许可证在 assets/fonts。添加新字符时需更新子集或使用已配置的系统字体后备。
+
+源码生成的网页已通过路由、内容、下载和地区弹窗逻辑检查。本次未进行浏览器截图验证，模拟宽度检查不能代替真实设备视觉验收。原白皮书与新单页的既有版本差异已在阅读器标注。

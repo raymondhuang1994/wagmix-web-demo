@@ -6,12 +6,9 @@ const arrow='<span class="arrow" aria-hidden="true">↗</span>';
 const localLink=(path)=>'#/'+path;
 const chapterNames={information:t('閱讀前須知','Before you read'),summary:t('產品總覽','Product summary'),issuer:t('發行人與服務機構','Issuer & service providers'),token:t('代幣與參考資產','Token & reference asset'),offer:t('申贖、交易與定價','Creation, trading & pricing'),rights:t('持有人權利','Holder rights'),technology:t('技術、控制與費用','Technology, controls & fees'),risks:t('投資及營運風險','Investment & operational risks'),roadmap:t('發展規劃','Roadmap'),disclaimer:t('免責聲明','Disclaimer')};
 const shortRefs=['01','02','A','B','C','D','E','F','G','10'];
-// Website summaries follow the approved Hum Revised factsheet; the source white paper is retained separately.
-const primarySettlementTerms = t(
-  '一級申贖由獲批參與交易商為合資格專業投資者辦理。港股交易時段內外均可進行 T0 交收；如無法可靠估值或交收，交收將順延。港股非交易時段的價格僅供參考。',
-  'Primary subscriptions and redemptions are processed through approved participating dealers (PDs) for eligible professional investors. T0 settlement is available both during and outside of Hong Kong market hours. Settlement is deferred when reliable valuation or settlement is unavailable. Reference prices outside Hong Kong market hours are indicative.'
-);
-const t0 = '¹ ' + primarySettlementTerms;
+// Website summaries follow the approved V8 factsheet; source whitepaper is retained separately.
+const primarySettlementTerms = pick(CONTENT.productFootnotes.t0);
+const t0 = '³ ' + primarySettlementTerms;
 function icon(i){const paths=[`<path d="M5 27V6m0 21h24M10 20l6-7 6 3 7-10"/><path d="M23 6h6v6"/>`,`<rect x="13" y="3" width="8" height="8" rx="1"/><rect x="3" y="23" width="8" height="8" rx="1"/><rect x="23" y="23" width="8" height="8" rx="1"/><path d="M17 11v6M7 23v-6h20v6"/>`,`<path d="M4 9h18M4 17h26M4 25h14"/><path d="M26 5v8M14 21v8"/>`,`<path d="M17 3l12 5v9c0 7-12 14-12 14S5 24 5 17V8z"/><path d="M11 17l4 4 8-9"/>`,`<circle cx="17" cy="17" r="13"/><path d="M17 8v10l7 4M3 5l3 5M28 25l3 5"/>`];return `<svg viewBox="0 0 34 34" aria-hidden="true">${paths[i]}</svg>`;}
 
 function displayChapterRef(chapter){const zh={information:'資訊及必要聲明',summary:'摘要',issuer:'A 部分',token:'B 部分',offer:'C 部分',rights:'D 部分',technology:'E 部分',risks:'F 部分',roadmap:'G 部分',disclaimer:'免責聲明'};return L==='zh'?(zh[chapter.id]||chapter.ref):chapter.ref;}

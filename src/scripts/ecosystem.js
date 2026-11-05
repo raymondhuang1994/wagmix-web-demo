@@ -1,6 +1,6 @@
 /* Each relation ties a specific product to its documented network. */
 const v9EcoRelations = {
-  bnb: {product:'7709.W',chain:'bnb'},
+  bnb: {product:'7709w',chain:'bnb'},
   solana: {product:'SKHY2Lw',chain:'solana'},
   auditedEvm: {product:'SKHY2Lw',chain:'evm'}
 };
@@ -26,7 +26,7 @@ const v9EcoInstitutions = [
     source:'https://solana.com/'}
 ];
 const v9EcoFilters = [
-  {id:'product',label:['產品','Product'],options:[['all','全部產品','All products'],['7709.W','7709.W','7709.W'],['SKHY2Lw','SKHY2Lw','SKHY2Lw']]},
+  {id:'product',label:['產品','Product'],options:[['all','全部產品','All products'],['7709w','7709w','7709w'],['SKHY2Lw','SKHY2Lw','SKHY2Lw']]},
   {id:'chain',label:['網絡','Network'],options:[['all','全部網絡','All networks'],['bnb','BNB Smart Chain（擬部署）','BNB Smart Chain (planned)'],['solana','Solana','Solana']]}
 ];
 function v9EcoMark(entry) {
@@ -47,22 +47,16 @@ function v9EcoCard(entry, index) {
   </article>`;
 }
 function ecosystem() {
-  const title=t('合作夥伴與生態參與者','Partners and Ecosystem Participants');
+  const title=t('生態合作夥伴','Ecosystem Partners');
   return `<main id="main" class="eco-v9-page eco-v18-page">
     <section class="eco-v9-hero"><div class="wrap eco-v18-hero-grid">
       <div class="eco-v18-hero-copy"><h1 id="eco-v18-title">${title}</h1>
-        <p>${t('7709.W 擬部署於 BNB Smart Chain，SKHY2Lw 採用 Solana 網絡。','7709.W is planned for BNB Smart Chain. SKHY2Lw uses Solana.')}</p>
       </div>
       <div class="eco-v18-network" aria-hidden="true">
         <svg class="eco-v18-circuit" viewBox="0 0 520 350" fill="none">
           <defs><linearGradient id="eco-v18-beam" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#0a54da" stop-opacity=".12"/><stop offset=".5" stop-color="#7bd7ff" stop-opacity=".65"/><stop offset="1" stop-color="#235afa" stop-opacity=".12"/></linearGradient></defs>
           <path d="M156 33 260 137 364 33 412 81 308 185 412 289 364 337 260 233 156 337 108 289 212 185 108 81Z" fill="url(#eco-v18-beam)" stroke="#62b7fa" stroke-opacity=".35"/>
-          <path d="M65 84h79l116 101M455 286h-80L260 185" stroke="#6abdf9" stroke-width="1.5"/>
-          <circle cx="65" cy="84" r="4" fill="#a5eaff"/><circle cx="455" cy="286" r="4" fill="#a5eaff"/>
         </svg>
-        <div class="eco-v18-hub"><img src="${LOGO_LIGHT}" alt=""></div>
-        <div class="eco-v18-network-node eco-v18-network-bnb" data-eco-v18-network="bnb">${chainIcon('bnb')}<span><strong>7709.W</strong><small>BNB Smart Chain</small></span></div>
-        <div class="eco-v18-network-node eco-v18-network-solana" data-eco-v18-network="solana">${chainIcon('solana')}<span><strong>SKHY2Lw</strong><small>Solana</small></span></div>
       </div>
     </div></section>
     <section id="ecosystem-directory" class="eco-v9-directory" aria-labelledby="eco-v18-title"><div class="wrap">
@@ -71,7 +65,6 @@ function ecosystem() {
       <div class="eco-v9-directory-meta"><span data-eco-v9-results role="status" aria-live="polite">${t(`共 ${v9EcoInstitutions.length} 項`,`${v9EcoInstitutions.length} results`)}</span></div>
       <div class="eco-v9-grid">${v9EcoInstitutions.map(v9EcoCard).join('')}</div>
       <div class="eco-v9-empty" data-eco-v9-empty hidden><span aria-hidden="true">⌕</span><h3>${t('目前沒有符合條件的機構或網絡。','No institutions or networks match your selection.')}</h3><p>${t('請更換篩選條件，或查看全部生態。','Change the filters or return to the full ecosystem.')}</p><button class="btn secondary" type="button" data-eco-v9-reset>${t('查看全部','View all')} ↗</button></div>
-      <p class="eco-v9-scope">${t('7709.W 的網絡部署安排以正式產品文件為準。','Deployment plans for 7709.W are subject to the final product documents.')}</p>
     </div></section>
   </main>`;
 }
@@ -94,13 +87,6 @@ function updateV9EcosystemDirectory() {
   });
   page.querySelector('[data-eco-v9-results]').textContent = t(`共 ${count} 項`, count === 1 ? '1 result' : `${count} results`);
   page.querySelector('[data-eco-v9-empty]').hidden = count > 0;
-  // Emphasise only the already documented product/network combination.
-  page.querySelectorAll('[data-eco-v18-network]').forEach(node=>{
-    const network=node.dataset.ecoV18Network;
-    const relation=network==='bnb' ? v9EcoRelations.bnb : v9EcoRelations.solana;
-    const active=Object.entries(values).every(([key,value])=>value==='all'||relation[key]===value);
-    node.classList.toggle('is-muted',!active);
-  });
 }
 function handleEcosystemInput(event) {
   if (event.target.matches('[data-eco-v9-search],[data-eco-v9-field]')) updateV9EcosystemDirectory();

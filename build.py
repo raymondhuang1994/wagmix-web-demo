@@ -13,17 +13,17 @@ STYLES = (
     'docs-v4.css', 'navigation-v5.css', 'home-v6.css', 'navigation-v6.css',
     'home-v7.css', 'ecosystem-v7.css', 'product-v7.css', 'docs-v7.css',
     'navigation-v7.css', 'home-v9.css', 'catalog-v9.css', 'ecosystem-v9.css',
-    'adgm-v9.css', 'geoban.css', 'reading-v16.css', 'brand-v17.css', 'interface-v18.css', 'home-v18.css', 'ecosystem-v18.css',
+    'adgm-v9.css', 'geoban.css', 'reading-v16.css', 'brand-v17.css', 'interface-v18.css', 'home-v18.css', 'ecosystem-v18.css', 'interface-v19.css', 'home-v19.css', 'product-v19.css',
 )
 SCRIPTS = (
     'shared.js', 'product-marks.js', 'whitepaper-data.js', 'product.js',
-    'adgm.js', 'docs.js', 'ecosystem.js', 'main.js', 'catalog.js', 'geoban.js', 'sidebar.js',
+    'adgm.js', 'docs.js', 'ecosystem.js', 'main.js', 'catalog.js', 'geoban.js', 'contact.js', 'sidebar.js',
 )
 EDITIONS = (
-    ('zh-Hant', 'WAGMIx_繁體中文_V18.html', 'WAGMIx｜機構級代幣化平台',
-     'WAGMIx 整合五項能力，連接真實資產與全天候鏈上市場。查閱以港交所 7709.HK 為底層資產的 7709.W 及 SKHY2Lw。'),
-    ('en', 'WAGMIx_English_V18.html', 'WAGMIx | Institutional Tokenization',
-     'Explore WAGMIx and two tokenized products referencing HKEX-listed 7709.HK, 7709.W and SKHY2Lw.'),
+    ('zh-Hant', 'WAGMIx_繁體中文_V19.html', 'WAGMIx｜機構級代幣化平台',
+     'WAGMIx 整合五項能力，連接真實資產與全天候鏈上市場。查閱以港交所 7709.HK 為底層資產的 7709w 及 SKHY2Lw。'),
+    ('en', 'WAGMIx_English_V19.html', 'WAGMIx | Institutional Tokenization',
+     'Explore WAGMIx and two tokenized products referencing HKEX-listed 7709.HK, 7709w and SKHY2Lw.'),
 )
 MIME = {'.webp':'image/webp', '.png':'image/png', '.svg':'image/svg+xml', '.jpg':'image/jpeg'}
 

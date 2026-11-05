@@ -37,8 +37,7 @@ function catalogRow(variant) {
 function catalog() {
   return `<main id="main" class="catalog-page">
     <section class="catalog-hero wrap">
-      <span class="eyebrow">${t('代幣化股票／ETF','Tokenized Stocks / ETFs')}</span>
-      <h1>${t('探索 7709 代幣化產品','Explore 7709 tokenized products')}</h1>
+      <h1>${t('代幣化股票／ETF','Tokenized Stocks / ETFs')}</h1>
     </section>
     <section class="catalog-directory wrap" aria-label="${t('7709 產品列表','7709 product list')}">
       <div class="catalog-table-wrap"><table class="catalog-table">
@@ -56,7 +55,7 @@ function catalog() {
         <div class="catalog-asset-tokens">${['adgm','bvi'].map(v=>`<a href="#/products/7709/${productCode(v)}/overview"><span aria-hidden="true">${productMark(v)}</span><strong>${productCode(v)}</strong><span aria-hidden="true">↗</span></a>`).join('')}</div>
       </div>
       <p class="catalog-learning-note">${t('兩款產品均以 7709.HK 為底層資產；持有人權利、交易資格及產品文件須按各產品分別查閱。','Both products reference 7709.HK. Holder rights, eligibility and documentation must be reviewed separately for each product.')}</p>
-      <div class="catalog-document-links">${['7709.W','SKHY2Lw'].map(code=>`<article><h3>${code}</h3><a href="#/products/7709/${code}/terms">${t('產品資料與權利','Product details & rights')} <span aria-hidden="true">↗</span></a><a href="#/products/7709/${code}/documents">${t('產品文件','Product documents')} <span aria-hidden="true">↗</span></a></article>`).join('')}</div>
+      <div class="catalog-document-links">${['7709w','SKHY2Lw'].map(code=>`<article><h3>${code}</h3><a href="#/products/7709/${code}/terms">${t('產品資料與權利','Product details & rights')} <span aria-hidden="true">↗</span></a><a href="#/products/7709/${code}/documents">${t('產品文件','Product documents')} <span aria-hidden="true">↗</span></a></article>`).join('')}</div>
     </section>
   </main>`;
 }

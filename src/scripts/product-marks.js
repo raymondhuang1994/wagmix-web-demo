@@ -4,7 +4,7 @@ function productMark(variant = 'bvi') {
   const square = variant === 'adgm';
   const shape = square ? 'square' : 'round';
   const id = `wm7709-${shape}-${++productMarkInstance}`;
-  const title = square ? '7709.W' : 'SKHY2Lw';
+  const title = square ? '7709w' : 'SKHY2Lw';
   const shell = square
     ? `<rect x="13" y="13" width="230" height="230" rx="56" fill="#080e20" stroke="#395ae7" stroke-width="2"/><rect x="27" y="27" width="202" height="202" rx="44" fill="url(#${id}-bg)"/><path d="M58 61h45M58 61v21M198 195h-45M198 195v-21" fill="none" stroke="#76cfff" stroke-width="3"/><path d="M31 171c45-97 143-126 199-96" fill="none" stroke="#3d6bff" stroke-width="1.3" opacity=".7"/>`
     : `<circle cx="128" cy="128" r="116" fill="url(#${id}-silver)" stroke="#c3d7ef" stroke-width="2"/><circle cx="128" cy="128" r="102" fill="url(#${id}-bg)"/><circle cx="128" cy="128" r="91" fill="none" stroke="#8ec2f9" stroke-width="1" opacity=".65"/><path d="M46 174a98 98 0 0 0 163-82" fill="none" stroke="#fbfdff" stroke-width="4" opacity=".7"/>`;

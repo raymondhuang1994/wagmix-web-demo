@@ -7,7 +7,7 @@ function headerSocials() {
 if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
 const productSections = [
   ['overview','產品總覽','Product overview'], ['market','底層行情','Underlying market'],
-  ['theme','投資主題','Investment theme'], ['features','核心賣點','Key features'],
+  ['theme','底層資產投資主題','Underlying asset investment theme'], ['features','核心賣點','Key features'],
   ['terms','產品資料與權利','Product details & rights'], ['documents','產品文件','Product documents']
 ];
 const bviSectionIds = {market:'product-market',theme:'product-theme',features:'product-features',terms:'product-terms',documents:'product-whitepaper'};
@@ -22,22 +22,21 @@ function sideLink(href,label,key,extra='') {
 }
 
 function productCode(variant) {
-  return variant === 'adgm' ? '7709.W' : 'SKHY2Lw';
+  return variant === 'adgm' ? '7709w' : 'SKHY2Lw';
 }
 
 function header(page, variant) {
   const inProduct = ['catalog','product','adgmguide','docs','whitepaper'].includes(page);
   return `<a class="skip" href="#main">${t('跳至內容','Skip to content')}</a>
     <header class="site-header">
-      <a class="site-logo" href="#/" aria-label="WAGMIx ${t('首頁','home')}"><img src="${variant === 'adgm' ? LOGO_LIGHT : LOGO}" alt="WAGMIx"></a>
+      <a class="site-logo" href="#/" aria-label="WAGMIx ${t('首頁','home')}"><img src="${LOGO}" alt="WAGMIx"></a>
       <nav class="site-nav" id="site-nav" aria-label="${t('網站選單','Site navigation')}">
         <a data-top-key="home" href="#/" class="${page === 'home' ? 'active' : ''}" ${page === 'home' ? 'aria-current="page"' : ''}>${t('關於 WAGMIx','About WAGMIx')}</a>
         <details class="product-menu"><summary data-top-key="products" class="${inProduct ? 'active' : ''}">${t('產品','Products')} <span aria-hidden="true">⌄</span></summary>
           <div class="product-menu-panel">
             <a class="menu-category" href="#/products">
               <span class="menu-category-title">${t('代幣化股票／ETF','Tokenized Stocks / ETFs')}<span aria-hidden="true">↗</span></span>
-              <span class="menu-underlying-code">${t('底層資產：港交所 · ','Underlying asset: HKEX · ')}<b>7709.HK</b></span>
-              <span class="menu-underlying-name">${t('南方東英 SK 海力士每日槓桿最多（2x）產品','CSOP SK Hynix Daily Max (2x) Leveraged Product')}</span>
+              <span class="menu-powered" lang="en">Powered by WAGMIx</span>
             </a>
             <div class="menu-products" aria-label="${t('7709 產品','7709 products')}">
               ${['adgm','bvi'].map(v=>`<a class="menu-product" href="#/products/7709/${productCode(v)}/overview"><span class="menu-product-mark" aria-hidden="true">${productMark(v)}</span><span><strong>${productCode(v)}</strong><small>${chainIcon(v==='adgm'?'bnb':'solana')}${v==='adgm' ? 'BNB Smart Chain' : 'Solana'}</small></span><span aria-hidden="true">↗</span></a>`).join('')}
@@ -45,9 +44,9 @@ function header(page, variant) {
           </div>
         </details>
         <a data-top-key="ecosystem" href="#/ecosystem" class="${page === 'ecosystem' ? 'active' : ''}" ${page === 'ecosystem' ? 'aria-current="page"' : ''}>${t('生態','Ecosystem')}</a>
-        <a class="mobile-contact" data-top-key="contact-mobile" href="#/home/contact">${t('聯絡我們','Contact us')}</a>
+        <a data-top-key="contact" href="#/contact" class="${page === 'contact' ? 'active' : ''}" ${page === 'contact' ? 'aria-current="page"' : ''}>${t('聯絡我們','Contact')}</a>
       </nav>
-      <div class="header-actions">${headerSocials()}<a class="header-contact btn" data-top-key="contact" href="#/home/contact">${t('聯絡我們','Contact us')} <span aria-hidden="true">↗</span></a><a id="language-switch" class="lang-switch" lang="${L === 'zh' ? 'en' : 'zh-Hant'}" href="${geoLanguageHref()}">${t('EN','繁中')}</a><button class="mobile-toggle" aria-label="${t('網站選單','Site menu')}" aria-controls="site-nav" aria-expanded="false"><span aria-hidden="true">☰</span></button></div>
+      <div class="header-actions">${headerSocials()}<button class="mobile-toggle" aria-label="${t('網站選單','Site menu')}" aria-controls="site-nav" aria-expanded="false"><span aria-hidden="true">☰</span></button><a id="language-switch" class="lang-switch" lang="${L === 'zh' ? 'en' : 'zh-Hant'}" href="${geoLanguageHref()}">${t('EN','繁中')}</a></div>
     </header>`;
 }
 
@@ -76,6 +75,7 @@ function pageBody(page,chapter,variant) {
   if (page === 'home') return home();
   if (page === 'catalog') return catalog();
   if (page === 'ecosystem') return ecosystem();
+  if (page === 'contact') return contactPage();
   if (page === 'docs') return docsHome();
   const isProduct = page === 'product' || page === 'adgmguide';
   const kind = isProduct ? 'product' : 'whitepaper';
@@ -136,6 +136,14 @@ function closeNavigation(returnFocus=false) {
 function route() {
   const fromMenu = Boolean(document.querySelector('.site-nav.open,.context-nav.is-open'));
   const parts = location.hash.replace(/^#\/?/,'').split('/');
+  if (parts[0] === 'product-7709-w') {
+    location.replace('#/products/7709/7709w/overview');
+    return;
+  }
+  if (parts[0] === 'home' && parts[1] === 'contact') {
+    location.replace('#/contact');
+    return;
+  }
   if (parts[0] === 'home' && parts[1] === 'whitepaper') {
     location.replace('#/products/7709/SKHY2Lw/documents');
     return;
@@ -145,8 +153,8 @@ function route() {
     page = parts[1] === '7709' ? 'product' : 'catalog';
     if (page === 'product') {
       const productKey = (parts[2] || '').toLowerCase();
-      variant = ['7709.w','adgm'].includes(productKey) ? 'adgm' : 'bvi';
-      const hasProduct = ['7709.w','skhy2lw','adgm','bvi'].includes(productKey);
+      variant = ['7709w','7709.w','adgm'].includes(productKey) ? 'adgm' : 'bvi';
+      const hasProduct = ['7709w','7709.w','skhy2lw','adgm','bvi'].includes(productKey);
       section = (hasProduct ? parts[3] : parts[2]) || 'overview';
       if (section === 'whitepaper') section = 'documents';
       if (section === 'mechanics') section = 'terms';
@@ -163,6 +171,7 @@ function route() {
   } else if (parts[0] === 'docs') {
     page = 'docs'; variant = 'bvi';
   } else if (parts[0] === 'ecosystem') page = 'ecosystem';
+  else if (parts[0] === 'contact') page = 'contact';
   const changed = page !== lastRoute.page || chapter !== lastRoute.chapter || variant !== lastRoute.variant;
   document.body.dataset.page = page;
   document.body.dataset.variant = variant;
@@ -170,7 +179,7 @@ function route() {
   if (changed) {
     lastNavKey = '';
     document.getElementById('app').innerHTML = header(page,variant) + pageBody(page,chapter,variant) + footer(page,variant);
-    const title = page === 'home' ? 'WAGMIx' : page === 'catalog' ? t('代幣化股票／ETF | WAGMIx','Tokenized Stocks / ETFs | WAGMIx') : page === 'product' || page === 'adgmguide' ? productCode(variant) + ' | WAGMIx' : page === 'ecosystem' ? t('生態 | WAGMIx','Ecosystem | WAGMIx') : page === 'docs' ? t('SKHY2Lw 產品文件 | WAGMIx','SKHY2Lw Product Documents | WAGMIx') : (chapterNames[chapter] || t('產品文件','Product documents')) + ' | WAGMIx';
+    const title = page === 'home' ? 'WAGMIx' : page === 'catalog' ? t('代幣化股票／ETF | WAGMIx','Tokenized Stocks / ETFs | WAGMIx') : page === 'product' || page === 'adgmguide' ? productCode(variant) + ' | WAGMIx' : page === 'ecosystem' ? t('生態合作夥伴 | WAGMIx','Ecosystem Partners | WAGMIx') : page === 'contact' ? t('聯絡我們 | WAGMIx','Contact | WAGMIx') : page === 'docs' ? t('SKHY2Lw 產品文件 | WAGMIx','SKHY2Lw Product Documents | WAGMIx') : (chapterNames[chapter] || t('產品文件','Product documents')) + ' | WAGMIx';
     document.title = title + t('｜繁體中文',' | English');
   }
   lastRoute = {page,chapter,variant};
@@ -255,8 +264,9 @@ document.addEventListener('keydown',event => { handleDocsKeydown(event); if (eve
 window.addEventListener('scroll',scrollSpy,{passive:true});
 window.addEventListener('resize',() => {
   scrollSpy();
-  if (innerWidth > 900) {
-    const open = document.querySelector('.site-nav.open,.context-nav.is-open'); closeNavigation();
+  if (innerWidth > 900) closeContext();
+  if (innerWidth > 1100) {
+    const open = document.querySelector('.site-nav.open'); closeNavigation();
     if (open) document.querySelector('.site-logo').focus();
   }
 });
