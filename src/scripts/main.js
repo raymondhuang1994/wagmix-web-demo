@@ -64,7 +64,16 @@ function homeProducts() {
  ];
  return `<section class="product-spotlight v9-home-products" id="home-product"><div class="wrap">
   <div class="section-head">
-   <div><h2>${t('焦點產品','Featured products')}</h2><p class="spotlight-introduction">${t('透過 7709.HK，在鏈上參與 SK 海力士的每日槓桿表現。','Access SK hynix’s daily leveraged performance on-chain through 7709.HK.')}</p></div>
+   <div><h2>${t('旗艦產品','Flagship Product')}</h2><p class="spotlight-introduction">${t('捕捉 AI 算力浪潮：以 7709.HK 為底層支撐，鏈上參與 SK 海力士每日最多 2 倍槓桿策略','Capture the AI Compute Opportunity: On-Chain Access to a Daily Leveraged Strategy Linked to SK Hynix, Targeting Up to 2x Exposure via 7709.HK')}</p>
+    <div class="spotlight-highlights"><h3>${t('核心優勢：','Key Highlights:')}</h3><ul>
+     <li><strong>${t('HBM 市場龍頭：','A Global HBM Market Leader:')}</strong> ${t('SK 海力士於 2026 年第二季度佔全球 HBM 營收約 50%，位居市場第一','SK hynix captured approximately 50% of global HBM revenue in Q2 2026, ranking first worldwide')}<sup>1</sup>${t('；','; ')}${t('同期公司整體毛利率達 83.2%','Its company-wide gross margin reached 83.2% during the same quarter')}<sup>2</sup>${t('，',', ')}${t('是 AI 記憶體供應鏈的重要供應商。','underscoring its position as a major supplier in the AI memory supply chain.')}</li>
+     <li><strong>${t('全球熱門槓桿產品支持：','Backed by a Globally Popular Leveraged Product:')}</strong> ${t('代幣以全球最熱門的個股槓桿產品之一 7709.HK 作為底層資產。該產品曾按資產管理規模位居全球個股槓桿及反向產品首位','The token is backed by 7709.HK, one of the world’s most popular single-stock leveraged products. Previously reported as the world’s largest single-stock leveraged and inverse product by assets under management')}<sup>3</sup>${t('，','; ')}${t('讓投資者透過鏈上代幣參與 SK 海力士每日 2 倍槓桿','7709.HK provides access to a daily leveraged strategy linked to SK hynix, with a targeted leverage factor of 2x')}</li>
+    </ul><ol class="spotlight-footnotes">
+     <li>${t('Counterpoint Research：2026 年第二季度全球 HBM 營收市佔，2026 年 9 月 2 日發布。','Counterpoint Research, global HBM revenue market share in Q2 2026, published September 2, 2026.')}</li>
+     <li>${t('SK hynix 官方投資者關係網站：2026 年第二季度財務數據。','SK hynix official Investor Relations website, Q2 2026 financial results.')}</li>
+     <li>${t('Bloomberg。','Bloomberg.')}</li>
+    </ol></div>
+   </div>
    <a class="text-link" href="#/products">${t('查看全部產品','View all products')} ${arrow}</a>
   </div>
   <div class="v14-product-banners">${products.map(homeProductBanner).join('')}</div>

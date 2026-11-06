@@ -121,6 +121,42 @@ body[data-page="home"] .team-section .section-introduction {
   transform-origin: center center;
   animation: home-intro-reveal 2.5s cubic-bezier(.77,0,.175,1) forwards;
 }
+.spotlight-highlights {
+  max-width: 900px;
+  margin-top: 20px;
+  color: #41627e;
+}
+.spotlight-highlights h3 {
+  margin: 0 0 8px;
+  color: #0b2b50;
+  font-size: 19px;
+  line-height: 1.4;
+}
+.spotlight-highlights ul {
+  display: grid;
+  gap: 10px;
+  margin: 0;
+  padding-inline-start: 1.25em;
+}
+.spotlight-highlights li {
+  padding-inline-start: 4px;
+  font-size: 16px;
+  line-height: 1.7;
+}
+.spotlight-highlights li::marker { color: #1683d7; }
+.spotlight-highlights strong { color: #173e62; }
+.spotlight-highlights sup { font-size: .72em; }
+.spotlight-highlights .spotlight-footnotes {
+  display: grid;
+  gap: 0px;
+  margin: 14px 0 0;
+  padding-inline-start: 1.25em;
+  color: #667d90;
+  font-size: 12px;
+  line-height: 1.55;
+}
+.spotlight-highlights .spotlight-footnotes li { padding-inline-start: 2px; font-size: inherit; }
+.spotlight-highlights .spotlight-footnotes li::marker { color: #667d90; }
 @keyframes home-intro-reveal {
   from { transform: scale(.01); }
   to { transform: scale(5); }

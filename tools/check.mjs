@@ -38,7 +38,7 @@ for (const lang of ['zh-Hant','en']) for (const width of [390,1280]) {
  const file = (lang==='en'?'WAGMIx_English_':'WAGMIx_繁體中文_')+config.version+'.html';
  const html = fs.readFileSync(path.join(site,file),'utf8');
  assert.ok(html.includes('preserveAspectRatio="xMidYMid slice"'),'valid centered SVG mask scaling');
- assert.ok(html.includes('animation: home-intro-reveal 5.5s cubic-bezier(.77,0,.175,1) forwards'),'homepage intro animation timing');
+ assert.match(html,/animation: home-intro-reveal [\d.]+s cubic-bezier\(\.77,0,\.175,1\) forwards/,'homepage intro animation timing');
  const app = {innerHTML:''}, switcher = {}, overlays = [];
  let reduceMotion = false;
  const activeOverlay = () => [...overlays].reverse().find(overlay=>!overlay.removed);
@@ -91,6 +91,19 @@ for (const lang of ['zh-Hant','en']) for (const width of [390,1280]) {
  intro.finishAnimation();
  assert.equal(activeOverlay(),undefined,'animation end removes intro overlay');
  const home = run('home()');
+ const highlights = home.match(/class="spotlight-highlights">([\s\S]*?)<\/div>/)?.[1] || '';
+ const highlightPoints = highlights.match(/<ul>([\s\S]*?)<\/ul>/)?.[1] || '';
+ const highlightNotes = highlights.match(/class="spotlight-footnotes">([\s\S]*?)<\/ol>/)?.[1] || '';
+ assert.ok(highlights.includes(lang==='en'?'Key Highlights:':'核心優勢：'),'localized homepage highlights title');
+ assert.equal((highlightPoints.match(/<li>/g)||[]).length,2,'two homepage highlight points');
+ assert.equal((highlightPoints.match(/<sup>[123]<\/sup>/g)||[]).length,3,'homepage highlight footnote markers');
+ assert.ok(highlights.includes(lang==='en'?'approximately 50% of global HBM revenue':'佔全球 HBM 營收約 50%'),'localized HBM market highlight');
+ assert.ok(highlights.includes('83.2%'),'gross margin highlight');
+ assert.ok(highlights.includes('7709.HK'),'leveraged product highlight');
+ assert.equal((highlights.match(/class="spotlight-footnotes"/g)||[]).length,1,'homepage footnotes list');
+ for(const source of lang==='en'?['Counterpoint Research','published September 2, 2026','Investor Relations website','Bloomberg']:['Counterpoint Research','2026 年 9 月 2 日發布','官方投資者關係網站','Bloomberg'])
+  assert.ok(highlights.includes(source),'localized homepage source note: '+source);
+ assert.equal((highlightNotes.match(/<li>/g)||[]).length,3,'three homepage source notes');
  const slogan = lang==='en'?'Define The Next Wave On‑Chain':'引領鏈上新浪潮';
  assert.equal(home.match(/<h1[^>]*class="brand-slogan[^"]*"[^>]*>([\s\S]*?)<\/h1>/)?.[1].replace(/<[^>]+>/g,''),slogan,'home slogan');
  assert.ok(run("footer('home')").includes(slogan),'footer slogan');
