@@ -53,7 +53,7 @@ function fixture(lang,width,initialHash='#/') {
       if(id==='home-intro')return activeOverlay()||null;
       if(!appHTML.includes('id="'+id+'"'))return null;
       if(!nodes.has(id))nodes.set(id,{
-        id,attrs:{},isConnected:true,setAttribute(key,value){this.attrs[key]=value;},
+        id,attrs:{},dataset:{},textContent:'',innerHTML:'',classList:{toggle(){}},isConnected:true,setAttribute(key,value){this.attrs[key]=value;},
         focus(options){document.activeElement=this;focusCalls.push({id,options});},
         getBoundingClientRect(){return {top:position(id)-ctx.scrollY,bottom:position(id)-ctx.scrollY+60,height:60};},
         scrollIntoView(options){ctx.scrollY=position(id)-(width<=600?202:120);scrolls.push({id,options});},
@@ -67,7 +67,7 @@ function fixture(lang,width,initialHash='#/') {
     },querySelectorAll(){return [];},addEventListener(){},
   };
   const history={scrollRestoration:'auto',back(){if(cursor>0){cursor--;pending=true;}},forward(){if(cursor<stack.length-1){cursor++;pending=true;}}};
-  const ctx=vm.createContext({document,location,history,innerWidth:width,console,scrollY:0,matchMedia(){return {matches:false};},
+  const ctx=vm.createContext({document,location,history,innerWidth:width,console:{error(){},warn(){},log(){}},fetch:async()=>({ok:false,status:503}),AbortController,setTimeout,clearTimeout,scrollY:0,matchMedia(){return {matches:false};},
     requestAnimationFrame(fn){fn();},scrollTo(options){ctx.scrollY=options.top;scrolls.push({id:'window',options});},
     addEventListener(type,fn){(listeners[type]??=[]).push(fn);},
   });

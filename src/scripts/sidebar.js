@@ -189,10 +189,12 @@ function route() {
   document.body.classList.toggle('en',L === 'en');
   if(page !== 'home')clearHomeIntro();
   if (changed) {
+    cancelMarketSnapshot();
     lastNavKey = '';
     clearHomeIntro();
     document.getElementById('app').innerHTML = header(page,variant) + pageBody(page,chapter,variant) + footer(page,variant);
     if(page === 'home')showHomeIntro();
+    if(page === 'product')loadMarketSnapshot();
     const title = page === 'home' ? 'WAGMIx' : page === 'catalog' ? t('代幣化股票／ETF | WAGMIx','Tokenized Stocks / ETFs | WAGMIx') : page === 'product' || page === 'adgmguide' ? productCode(variant) + ' | WAGMIx' : page === 'ecosystem' ? t('生態合作夥伴 | WAGMIx','Ecosystem Partners | WAGMIx') : page === 'contact' ? t('聯絡我們 | WAGMIx','Contact | WAGMIx') : page === 'docs' ? t('SKHY2Lw 產品文件 | WAGMIx','SKHY2Lw Product Documents | WAGMIx') : (chapterNames[chapter] || t('產品文件','Product documents')) + ' | WAGMIx';
     document.title = title + t('｜繁體中文',' | English');
   }
@@ -269,7 +271,7 @@ document.addEventListener('click',event => {
   const chart = event.target.closest('[data-chart]');
   if (chart) {
     document.querySelectorAll('[data-chart]').forEach(button => { button.classList.toggle('selected',button === chart); button.setAttribute('aria-pressed',String(button === chart)); });
-    document.getElementById('price-chart').innerHTML = priceChart(chart.dataset.chart);
+    document.getElementById('price-chart').innerHTML = priceChart(chart.dataset.chart,liveMarketSnapshot);
   }
   const link = event.target.closest('a[href^="#/"]');
   if (link && link.getAttribute('href') === location.hash) { event.preventDefault(); route(); }

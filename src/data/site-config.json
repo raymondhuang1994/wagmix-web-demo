@@ -71,6 +71,17 @@
     "funding",
     "access"
   ],
+  "marketSnapshot": {
+    "endpoint": "https://fengle.me/api/futu/snapshot/HK/07709",
+    "code": "HK.07709",
+    "symbol": "7709.HK",
+    "currency": "HKD",
+    "priceDecimals": 3,
+    "timeoutMs": 6000,
+    "axisMin": 10,
+    "axisMax": 50,
+    "axisStep": 10
+  },
   "downloadFiles": {
     "whitepaper": "WAGMIx_SKHY2Lw_Whitepaper_EN.pdf",
     "factsheetZh": "WAGMIx_7709_產品單頁_繁體中文_V8.pdf",

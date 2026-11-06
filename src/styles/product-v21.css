@@ -4,3 +4,10 @@
 .adgm-page .adgm-disclaimer { color: #b0c5dd; }
 .adgm-page .adgm-disclaimer p { border-color: #2b415c; color: #b0c5dd; }
 .adgm-page .adgm-disclaimer p + p { border-top: 0; padding-top: 14px; }
+.market-status [data-state] { display: inline-block; padding: 5px 9px; border: 1px solid transparent; border-radius: 999px; }
+.market-status [data-state="live"] { color: #087c61; border-color: #a7decd; background: #eaf8f3; }
+.market-status [data-state="loading"] { color: #496d8f; }
+.market-status [data-state="error"] { color: #a04c3d; border-color: #efc7bd; background: #fff3ef; }
+.market-change.is-negative { color: #d34f5d; }
+.market-price [data-market-price] { font-weight: inherit; }
+.live-snapshot-candle rect { stroke: #fff; stroke-width: 1; }

@@ -43,7 +43,7 @@ for (const lang of ['zh-Hant','en']) for (const width of [390,1280]) {
  let reduceMotion = false;
  const activeOverlay = () => [...overlays].reverse().find(overlay=>!overlay.removed);
  const location = {hash:'#/',replace(hash){this.hash=hash;}};
- const node = {setAttribute(){},focus(){},scrollIntoView(){},getBoundingClientRect(){return {top:120,height:50};}};
+ const node = {dataset:{},isConnected:true,textContent:'',innerHTML:'',classList:{toggle(){}},setAttribute(){},focus(){},scrollIntoView(){},getBoundingClientRect(){return {top:120,height:50};}};
  const document = {documentElement:{lang}, body:{dataset:{},append(overlay){overlays.push(overlay);},classList:{toggle(){},remove(){},contains(){return false;}}},
   createElement(){
    const overlay={removed:false,setAttribute(){},remove(){this.removed=true;},querySelector(){return {addEventListener(type,listener,options){overlay.finishAnimation=listener;overlay.animationOptions=options;}};}};
@@ -55,7 +55,8 @@ for (const lang of ['zh-Hant','en']) for (const width of [390,1280]) {
    if(id==='home-intro') return activeOverlay() || null;
    return app.innerHTML.includes('id="'+id+'"')?node:null;
   }, querySelector(){return null;},querySelectorAll(){return [];},addEventListener(){}};
- const ctx = vm.createContext({document,location,history:{},innerWidth:width,console,matchMedia(){return {matches:reduceMotion};},
+ const snapshotRequests=[];
+ const ctx = vm.createContext({document,location,history:{},innerWidth:width,console:{error(){},warn(){},log(){}},fetch:async(url,options)=>{snapshotRequests.push({url,options});return {ok:false,status:503};},AbortController,setTimeout,clearTimeout,matchMedia(){return {matches:reduceMotion};},
   addEventListener(){},requestAnimationFrame(fn){fn();},scrollY:0,scrollTo(){}});
  ctx.window=ctx;
  const run = expr => vm.runInContext(expr,ctx);
@@ -77,6 +78,14 @@ for (const lang of ['zh-Hant','en']) for (const width of [390,1280]) {
     assert.ok(!legal.test(visible(app.innerHTML)),route+' architecture outside disclosure');
   const logo = app.innerHTML.match(/class="site-logo"[^>]*>[\s\S]*?<img[^>]* src="([^"]+)"/)?.[1];
   assert.equal(logo,run('LOGO'),route+' brand mark');
+ }
+ for(const code of codes){
+  location.hash=slug(code)+'overview';run('route()');
+  assert.equal(document.body.dataset.page,'product',code+' product route');
+  assert.equal(snapshotRequests.at(-1)?.url,config.marketSnapshot.endpoint,code+' loads underlying-product snapshot');
+  const before=snapshotRequests.length;
+  location.hash=slug(code)+'market';run('route()');
+  assert.equal(snapshotRequests.length,before,code+' does not reload snapshot for an in-page section');
  }
  reduceMotion=true;
  location.hash='#/products';run('route()');

@@ -7,6 +7,10 @@ const productMarketingNotes = {
  access:t('錢包接入不豁免投資者資格、交易平台及轉讓限制。申贖須符合 KYC／AML／KYT 等要求；稅務待遇取決於持有人情況及司法管轄區，應取得獨立稅務意見。','Wallet access does not waive eligibility, venue or transfer restrictions. Creation and redemption remain subject to KYC/AML/KYT and other requirements. Tax treatment depends on the holder and jurisdiction; independent tax advice should be obtained.')
 };
 const productFeatureMeta = {funding:{symbol:'0%',chapter:'technology'},backing:{symbol:'1:1',chapter:'token'},liquidity:{symbol:'24/7',chapter:'offer'},access:{symbol:'↗',chapter:'disclaimer'}};
+const marketSnapshotConfig = SITE_CONFIG.marketSnapshot;
+let liveMarketSnapshot = null;
+let marketSnapshotRequestId = 0;
+let activeMarketSnapshotController = null;
 function productCoin() {
  return `<div class="p-coin-scene bvi-product-art" aria-hidden="true">
   <div class="bvi-product-mark">${productMark('bvi')}</div>
@@ -106,17 +110,87 @@ function skHynixProfile(){
 }
 // Kept as a compatibility helper for callers that render an overview excerpt.
 function productOverview(){return productFeatures()+productTheme();}
-function priceChart(mode='line'){
- const rows=HISTORY.prices,W=1080,H=350,left=10,right=70,top=28,bottom=44,lo=10,hi=50,plotH=H-top-bottom,plotW=W-left-right;
- const d0=Date.parse(rows[0].date),d1=Date.parse(rows.at(-1).date),x=d=>left+(Date.parse(d)-d0)/(d1-d0)*plotW,y=v=>top+(hi-v)/(hi-lo)*plotH;
+function marketNumber(value){return Number.isFinite(value)?value.toFixed(marketSnapshotConfig.priceDecimals):'—';}
+function marketVolume(value){return L==='zh'?`${(value/100000000).toFixed(3)} 億`:`${(value/1000000).toFixed(2)}M`;}
+function marketChange(value,base){const change=value-base,percent=change/base*100;return `${change>=0?'+':''}${marketNumber(change)} (${percent>=0?'+':''}${percent.toFixed(2)}%)`;}
+function niceChartStep(value){const power=10**Math.floor(Math.log10(value)),scaled=value/power;return power*(scaled<1.5?1:scaled<3.5?2:scaled<7.5?5:10);}
+function priceChart(mode='line',snapshot=liveMarketSnapshot){
+ const rows=HISTORY.prices,W=1180,H=350,left=10,right=70,top=28,bottom=44;
+ const minValue=Math.min(marketSnapshotConfig.axisMin,snapshot?.low??marketSnapshotConfig.axisMin);
+ const maxValue=Math.max(marketSnapshotConfig.axisMax,snapshot?.high??marketSnapshotConfig.axisMax);
+ const step=minValue>=marketSnapshotConfig.axisMin&&maxValue<=marketSnapshotConfig.axisMax?marketSnapshotConfig.axisStep:niceChartStep((maxValue-minValue)/4);
+ const lo=minValue<marketSnapshotConfig.axisMin?Math.floor(minValue/step)*step:marketSnapshotConfig.axisMin;
+ const hi=maxValue>marketSnapshotConfig.axisMax?Math.ceil(maxValue/step)*step:marketSnapshotConfig.axisMax;
+ const plotH=H-top-bottom,plotW=W-left-right,liveX=W-right-92,historicalEnd=snapshot?liveX-80:W-right;
+ const d0=Date.parse(rows[0].date),d1=Date.parse(rows.at(-1).date);
+ const x=d=>left+(Date.parse(d)-d0)/(d1-d0)*(historicalEnd-left),y=v=>top+(hi-v)/(hi-lo)*plotH;
  const path=rows.map((p,i)=>`${i?'L':'M'}${x(p.date).toFixed(1)},${y(p.close).toFixed(1)}`).join(' '),last=rows.at(-1);
- const grid=[10,20,30,40,50].map(v=>`<line x1="${left}" y1="${y(v)}" x2="${W-right}" y2="${y(v)}" stroke="#dfe8f3" stroke-dasharray="3 5"/><text x="${W-right+17}" y="${y(v)+4}" fill="#7890ac" font-size="16">${v.toFixed(2)}</text>`).join('');
+ const grid=Array.from({length:Math.round((hi-lo)/step)+1},(_,i)=>lo+i*step).map(v=>`<line x1="${left}" y1="${y(v)}" x2="${W-right}" y2="${y(v)}" stroke="#dfe8f3" stroke-dasharray="3 5"/><text x="${W-right+9}" y="${y(v)+4}" fill="#7890ac" font-size="16">${v.toFixed(2)}</text>`).join('');
  const ticks=[rows[0],rows[4],rows[9],rows[14],last].map((r,i)=>`<text x="${x(r.date)}" y="${H-12}" fill="#7890ac" font-size="16" text-anchor="${i===0?'start':i===4?'end':'middle'}">${r.date.slice(5).replace('-','/')}</text>`).join('');
  const points=rows.map(p=>`<circle class="chart-point" cx="${x(p.date)}" cy="${y(p.close)}" r="3.4" fill="#1678ed"><title>${p.date} · ${t('港元','HKD')} ${p.close.toFixed(3)}</title></circle>`).join('');
  const candle=rows.map(p=>{const color=p.close>=p.open?'#009a85':'#e16c77';return `<g><title>${p.date} · ${t('開市','O')} ${p.open} ${t('最高','H')} ${p.high} ${t('最低','L')} ${p.low} ${t('收市','C')} ${p.close}</title><line x1="${x(p.date)}" x2="${x(p.date)}" y1="${y(p.high)}" y2="${y(p.low)}" stroke="${color}" stroke-width="1.4"/><rect x="${x(p.date)-7}" y="${Math.min(y(p.open),y(p.close))}" width="14" height="${Math.max(2,Math.abs(y(p.open)-y(p.close)))}" rx="1" fill="${color}"/></g>`;}).join('');
- return `<svg class="p-price-chart-svg" viewBox="0 0 ${W} ${H}" role="img" aria-label="${t('7709.HK 歷史價格：2026年9月30日至10月28日，已取得的19個交易日，港元。','7709.HK historical prices: 19 available trading days from 30 September to 28 October 2026, in HKD.')}"><defs><linearGradient id="chart-fill" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#1688ee" stop-opacity=".22"/><stop offset="1" stop-color="#1688ee" stop-opacity=".01"/></linearGradient></defs>${grid}${mode==='line'?`<path d="${path} L${x(last.date)},${y(lo)} L${left},${y(lo)} Z" fill="url(#chart-fill)"/><path d="${path}" fill="none" stroke="#1678ed" stroke-width="3" stroke-linejoin="round"/>${points}`:candle}${ticks}<line x1="${left}" x2="${W-right}" y1="${y(last.close)}" y2="${y(last.close)}" stroke="#1688ee" stroke-opacity=".3" stroke-dasharray="4 4"/><rect x="${W-right+8}" y="${y(last.close)-12}" width="53" height="24" rx="5" fill="#1678ed"/><text x="${W-right+34}" y="${y(last.close)+4}" fill="white" font-size="16" text-anchor="middle">${last.close.toFixed(2)}</text></svg>`;
+ const liveCandle=snapshot?(()=>{const color=snapshot.last>=snapshot.open?'#009a85':'#e16c77';return `<g class="live-snapshot-candle"><title>${marketSnapshotConfig.symbol} · ${snapshot.updateTime} · ${t('開市','Open')} ${marketNumber(snapshot.open)} ${t('最高','High')} ${marketNumber(snapshot.high)} ${t('最低','Low')} ${marketNumber(snapshot.low)} ${t('現價','Last')} ${marketNumber(snapshot.last)} ${marketSnapshotConfig.currency}</title><line x1="${liveX}" x2="${liveX}" y1="${y(snapshot.high)}" y2="${y(snapshot.low)}" stroke="${color}" stroke-width="2.5"/><rect x="${liveX-9}" y="${Math.min(y(snapshot.open),y(snapshot.last))}" width="18" height="${Math.max(3,Math.abs(y(snapshot.open)-y(snapshot.last)))}" rx="2" fill="${color}"/><text x="${liveX}" y="${H-12}" fill="#13785f" font-size="15" font-weight="700" text-anchor="middle">${t('即時','Live')}</text></g>`;})():'';
+ const line=mode==='line'?`<path class="historical-area" d="${path} L${x(last.date)},${y(lo)} L${left},${y(lo)} Z" fill="url(#chart-fill)"/><path class="historical-close-line" d="${path}" fill="none" stroke="#1678ed" stroke-width="3" stroke-linejoin="round"/>${points}`:candle;
+ const liveDivider=snapshot?`<line x1="${liveX-42}" x2="${liveX-42}" y1="${top}" y2="${H-bottom+3}" stroke="#92a8be" stroke-width="1.5" stroke-dasharray="5 5"/><text x="${liveX}" y="${top-8}" fill="#13785f" font-size="14" font-weight="700" text-anchor="middle">${t('即時快照','LIVE SNAPSHOT')} · ${marketSnapshotConfig.symbol}</text>`:'';
+ const aria=t(snapshot?`7709.HK 歷史價格及獨立即時快照；即時快照時間 ${snapshot.updateTime}，幣別 ${marketSnapshotConfig.currency}。`:'7709.HK 歷史價格；即時行情載入中。',snapshot?`7709.HK historical prices and a separate live snapshot at ${snapshot.updateTime}, in ${marketSnapshotConfig.currency}.`:'7709.HK historical prices; live snapshot loading.');
+ return `<svg class="p-price-chart-svg" viewBox="0 0 ${W} ${H}" role="img" aria-label="${aria}"><defs><linearGradient id="chart-fill" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#1688ee" stop-opacity=".22"/><stop offset="1" stop-color="#1688ee" stop-opacity=".01"/></linearGradient></defs>${grid}${line}${ticks}${liveDivider}${liveCandle}</svg>`;
 }
-function marketPanel(){const last=HISTORY.prices.at(-1),prev=HISTORY.prices.at(-2),change=last.close-prev.close;return `<div class="market-panel"><div class="market-head"><div><div class="market-security"><span>7709</span><div><b>${t('港交所','HKEX')} · 7709.HK</b><small>${t('南方東英 SK 海力士每日槓桿最多（2x）產品','CSOP SK Hynix Daily Max (2x) Leveraged Product')}</small></div></div><div class="market-price">${last.close.toFixed(3)}<span>${t('港元','HKD')}</span></div><div class="market-change">+${change.toFixed(3)} (+${(change/prev.close*100).toFixed(2)}%) <span>${t('較前一筆收市價','vs. prior available close')}</span></div></div><div class="market-status"><span>◷ ${t('歷史收市快照 · 非即時行情','HISTORICAL CLOSE · NOT LIVE')}</span><p>${t('2026.10.28 收市快照','28 Oct 2026 · closing snapshot')}</p></div></div><div class="chart-tools"><div class="chart-period">${t('已取得交易日','Available trading days')} <b>2026.09.30 — 10.28</b></div><div class="chart-switch" role="group" aria-label="${t('圖表類型','Chart type')}"><button data-chart="line" class="selected" aria-pressed="true">${t('走勢','Line')}</button><button data-chart="candle" aria-pressed="false">${t('K 線','Candles')}</button></div></div><div class="chart-area" id="price-chart">${priceChart()}</div><div class="market-stats">${[[t('開市','Open'),last.open.toFixed(3)],[t('最高','High'),last.high.toFixed(3)],[t('最低','Low'),last.low.toFixed(3)],[t('成交量','Volume'),t('1.731 億','173.13M')]].map(r=>`<div><small>${r[0]}</small><strong>${r[1]}</strong></div>`).join('')}</div><div class="chart-source">${t('來源：','Source: ')}<a href="https://finance.yahoo.com/quote/7709.HK/history/" target="_blank" rel="noopener">${t('Yahoo 財經','Yahoo Finance')}</a> · ${t('底層上市產品價格，並非 SKHY2Lw 代幣成交價。線段連接已取得的歷史報價，不補算缺失日期。','Underlying listed-product prices, not SKHY2Lw token execution prices. Lines connect available historical observations; missing dates are not imputed.')}</div><details class="chart-data"><summary>${t('查看圖表數據','View chart data')} <span>↓</span></summary><div class="chart-table-scroll"><table><thead><tr><th>${t('日期','Date')}</th><th>${t('收市價（港元）','Close (HKD)')}</th><th>${t('成交量','Volume')}</th></tr></thead><tbody>${HISTORY.prices.map(p=>`<tr><td>${p.date}</td><td>${p.close.toFixed(3)}</td><td>${p.volume.toLocaleString('en-US')}</td></tr>`).join('')}</tbody></table></div></details></div>`;}
+function marketPanel(){
+ const last=HISTORY.prices.at(-1),prev=HISTORY.prices.at(-2),change=last.close-prev.close;
+ const from=HISTORY.prices[0].date,to=last.date;
+ const formatDate=date=>date.slice(0,4)+'.'+date.slice(5,7)+'.'+date.slice(8,10);
+ return `<div class="market-panel"><div class="market-head"><div><div class="market-security"><span>7709</span><div><b>${t('港交所','HKEX')} · ${marketSnapshotConfig.symbol}</b><small>${t('南方東英 SK 海力士每日槓桿最多（2x）產品','CSOP SK Hynix Daily Max (2x) Leveraged Product')}</small></div></div><div class="market-price"><b data-market-price>${marketNumber(last.close)}</b><span>${t('港元',marketSnapshotConfig.currency)}</span></div><div class="market-change${change<0?' is-negative':''}" data-market-change><span data-market-change-value>${marketChange(last.close,prev.close)}</span> <span data-market-change-label>${t('較前一筆收市價','vs. prior available close')}</span></div></div><div class="market-status"><span id="market-live-status" role="status" aria-live="polite">◷ ${t('載入即時行情中','Loading live snapshot')}</span><p id="market-live-time">${t(`歷史收市快照：${to}。載入即時資料中。`,`Historical close: ${to}. Loading live data.`)}</p></div></div><div class="chart-tools"><div class="chart-period">${t('已取得交易日','Available trading days')} <b>${formatDate(from)} — ${formatDate(to).slice(5)}</b></div><div class="chart-switch" role="group" aria-label="${t('圖表類型','Chart type')}"><button data-chart="line" class="selected" aria-pressed="true">${t('走勢','Line')}</button><button data-chart="candle" aria-pressed="false">${t('K 線','Candles')}</button></div></div><div class="chart-area" id="price-chart">${priceChart()}</div><div class="market-stats">${[[t('開市','Open'),marketNumber(last.open),'open'],[t('最高','High'),marketNumber(last.high),'high'],[t('最低','Low'),marketNumber(last.low),'low'],[t('成交量','Volume'),marketVolume(last.volume),'volume']].map(r=>`<div><small>${r[0]}</small><strong data-market-stat="${r[2]}">${r[1]}</strong></div>`).join('')}</div><div class="chart-source">${t('來源：','Source: ')}<a href="https://finance.yahoo.com/quote/7709.HK/history/" target="_blank" rel="noopener">${t('Yahoo 財經','Yahoo Finance')}</a> · ${t('底層上市產品價格，並非 SKHY2Lw 代幣成交價。線段連接已取得的歷史報價，不補算缺失日期。','Underlying listed-product prices, not SKHY2Lw token execution prices. Lines connect available historical observations; missing dates are not imputed.')}</div><details class="chart-data"><summary>${t('查看圖表數據','View chart data')} <span>↓</span></summary><div class="chart-table-scroll"><table><thead><tr><th>${t('日期','Date')}</th><th>${t('收市價（港元）','Close (HKD)')}</th><th>${t('成交量','Volume')}</th></tr></thead><tbody>${HISTORY.prices.map(p=>`<tr><td>${p.date}</td><td>${p.close.toFixed(3)}</td><td>${p.volume.toLocaleString('en-US')}</td></tr>`).join('')}</tbody></table></div></details></div>`;
+}
+function validateMarketSnapshot(data){
+ const config=marketSnapshotConfig;
+ if(!config||typeof config.endpoint!=='string'||new URL(config.endpoint).protocol!=='https:'||typeof config.code!=='string'||!config.symbol||!config.currency||!Number.isInteger(config.priceDecimals)||config.priceDecimals<0||config.priceDecimals>6||!Number.isFinite(config.axisMin)||!Number.isFinite(config.axisMax)||config.axisMax<=config.axisMin||!Number.isFinite(config.axisStep)||config.axisStep<=0||!Number.isFinite(config.timeoutMs)||config.timeoutMs<=0)throw new Error('Invalid market snapshot configuration');
+ if(!data||typeof data!=='object'||Array.isArray(data))throw new Error('Snapshot payload must be an object');
+ if(data.code!==config.code)throw new Error(`Unexpected market code: ${String(data.code)}`);
+ const fields=['last_price','open_price','high_price','low_price','prev_close','volume'];
+ if(fields.some(field=>typeof data[field]!=='number'||!Number.isFinite(data[field])))throw new Error('Snapshot contains a non-finite numeric field');
+ if(data.last_price<=0||data.open_price<=0||data.high_price<=0||data.low_price<=0||data.prev_close<=0||data.volume<0||data.low_price>Math.min(data.open_price,data.last_price)||data.high_price<Math.max(data.open_price,data.last_price)||data.low_price>data.high_price)throw new Error('Snapshot OHLC or volume relationship is invalid');
+ const match=/^(\d{4})-(\d{2})-(\d{2}) (\d{2}):(\d{2}):(\d{2})$/.exec(data.update_time||'');
+ if(!match)throw new Error('Snapshot update time has an invalid format');
+ const [,year,month,day,hour,minute,second]=match.map(Number);
+ const date=new Date(Date.UTC(year,month-1,day,hour,minute,second));
+ if(date.getUTCFullYear()!==year||date.getUTCMonth()!==month-1||date.getUTCDate()!==day||date.getUTCHours()!==hour||date.getUTCMinutes()!==minute||date.getUTCSeconds()!==second)throw new Error('Snapshot update time is invalid');
+ return {last:data.last_price,open:data.open_price,high:data.high_price,low:data.low_price,prevClose:data.prev_close,volume:data.volume,updateTime:`${year}.${String(month).padStart(2,'0')}.${String(day).padStart(2,'0')} ${String(hour).padStart(2,'0')}:${String(minute).padStart(2,'0')}:${String(second).padStart(2,'0')} HKT`};
+}
+function isCurrentMarketSnapshot(requestId,chart){return requestId===marketSnapshotRequestId&&document.body.dataset.page==='product'&&chart.isConnected&&document.getElementById('price-chart')===chart;}
+function setMarketSnapshotStatus(state,label,message){const status=document.getElementById('market-live-status'),time=document.getElementById('market-live-time');if(status){status.dataset.state=state;status.textContent=label;}if(time)time.textContent=message;}
+function cancelMarketSnapshot(){marketSnapshotRequestId++;liveMarketSnapshot=null;activeMarketSnapshotController?.abort();activeMarketSnapshotController=null;}
+async function loadMarketSnapshot(){
+ const requestId=++marketSnapshotRequestId;
+ liveMarketSnapshot=null;
+ const chart=document.getElementById('price-chart');
+ if(document.body.dataset.page!=='product'||!chart)return;
+ setMarketSnapshotStatus('loading',`◷ ${t('載入即時行情中','Loading live snapshot')}`,t('歷史圖表可用；正在讀取 7709.HK 即時快照。','Historical data remains available while the 7709.HK snapshot loads.'));
+ const controller=new AbortController();
+ activeMarketSnapshotController=controller;
+ const timeout=setTimeout(()=>controller.abort(),marketSnapshotConfig?.timeoutMs||6000);
+ try{
+  const response=await fetch(marketSnapshotConfig.endpoint,{method:'GET',headers:{Accept:'application/json'},cache:'no-store',credentials:'omit',redirect:'error',signal:controller.signal});
+  if(!response.ok)throw new Error(`Market snapshot HTTP ${response.status}`);
+  let payload;
+  try{payload=await response.json();}catch(error){throw new Error('Market snapshot response is not valid JSON',{cause:error});}
+  const snapshot=validateMarketSnapshot(payload);
+  if(!isCurrentMarketSnapshot(requestId,chart))return;
+  liveMarketSnapshot=snapshot;
+  const price=document.querySelector('[data-market-price]'),change=document.querySelector('[data-market-change-value]'),changeContainer=document.querySelector('[data-market-change]'),changeLabel=document.querySelector('[data-market-change-label]');
+  if(price)price.textContent=marketNumber(snapshot.last);
+  if(change)change.textContent=marketChange(snapshot.last,snapshot.prevClose);
+  if(changeContainer)changeContainer.classList.toggle('is-negative',snapshot.last<snapshot.prevClose);
+  if(changeLabel)changeLabel.textContent=t('較前收市價','vs. previous close');
+  for(const [key,value]of Object.entries({open:snapshot.open,high:snapshot.high,low:snapshot.low,volume:snapshot.volume})){const node=document.querySelector(`[data-market-stat="${key}"]`);if(node)node.textContent=key==='volume'?marketVolume(value):marketNumber(value);}
+  setMarketSnapshotStatus('live',`◷ ${t('即時快照','LIVE SNAPSHOT')}`,`${t('更新時間','Updated')}: ${snapshot.updateTime} · ${marketSnapshotConfig.currency}`);
+  chart.innerHTML=priceChart(document.querySelector('.chart-switch button.selected')?.dataset.chart||'line',snapshot);
+ }catch(error){
+  if(!isCurrentMarketSnapshot(requestId,chart))return;
+  console.error('Unable to load 7709.HK market snapshot',error);
+  setMarketSnapshotStatus('error',`⚠ ${t('即時行情暫不可用','LIVE SNAPSHOT UNAVAILABLE')}`,t('目前顯示歷史資料；即時快照載入失敗。','Showing historical data only; the live snapshot could not be loaded.'));
+ }finally{clearTimeout(timeout);if(activeMarketSnapshotController===controller)activeMarketSnapshotController=null;}
+}
+function productMarket(){return `<section class="p-section" id="product-market"><div class="wrap"><div class="p-section-heading"><div><div class="eyebrow">${t('底層行情','Underlying market')}</div><h2>${t('底層市場價格可作為代幣估值參考，<br>代幣成交價可能與之不同。','Underlying market prices provide a reference for token valuation;<br>token execution prices may differ.')}</h2></div></div>${marketPanel()}<div class="p-market-notes" role="note"><p><span class="market-note-number" aria-hidden="true">1.</span><strong>${t('底層產品按港股市場時段交易。','The underlying product follows Hong Kong market hours.')}</strong> ${t('圖表為 7709.HK 歷史行情，並非 SKHY2Lw 的二級市場報價。','The chart shows 7709.HK historical prices, not SKHY2Lw secondary-market quotations.')}</p><p><span class="market-note-number" aria-hidden="true">2.</span><strong>${t('代幣成交價可偏離指示價值。','Token execution prices may differ from indicative value.')}</strong> ${t('非底層交易時段的估值僅供指示；報價、交易及申贖可受限制或暫停。','Values outside underlying trading hours are indicative. Quotations, trading and creation or redemption may be limited or suspended.')}</p></div></div></section>`;}
 function productMarket(){return `<section class="p-section" id="product-market"><div class="wrap"><div class="p-section-heading"><div><div class="eyebrow">${t('底層行情','Underlying market')}</div><h2>${t('底層市場價格可作為代幣估值參考，<br>代幣成交價可能與之不同。','Underlying market prices provide a reference for token valuation;<br>token execution prices may differ.')}</h2></div></div>${marketPanel()}<div class="p-market-notes" role="note"><p><span class="market-note-number" aria-hidden="true">1.</span><strong>${t('底層產品按港股市場時段交易。','The underlying product follows Hong Kong market hours.')}</strong> ${t('圖表為 7709.HK 歷史行情，並非 SKHY2Lw 的二級市場報價。','The chart shows 7709.HK historical prices, not SKHY2Lw secondary-market quotations.')}</p><p><span class="market-note-number" aria-hidden="true">2.</span><strong>${t('代幣成交價可偏離指示價值。','Token execution prices may differ from indicative value.')}</strong> ${t('非底層交易時段的估值僅供指示；報價、交易及申贖可受限制或暫停。','Values outside underlying trading hours are indicative. Quotations, trading and creation or redemption may be limited or suspended.')}</p></div></div></section>`;}
 function productTerms() {
  const facts = [
