@@ -37,16 +37,25 @@ const results = [];
 for (const lang of ['zh-Hant','en']) for (const width of [390,1280]) {
  const file = (lang==='en'?'WAGMIx_English_':'WAGMIx_繁體中文_')+config.version+'.html';
  const html = fs.readFileSync(path.join(site,file),'utf8');
- const app = {innerHTML:''}, switcher = {};
+ assert.ok(html.includes('preserveAspectRatio="xMidYMid slice"'),'valid centered SVG mask scaling');
+ assert.ok(html.includes('animation: home-intro-reveal 5.5s cubic-bezier(.77,0,.175,1) forwards'),'homepage intro animation timing');
+ const app = {innerHTML:''}, switcher = {}, overlays = [];
+ let reduceMotion = false;
+ const activeOverlay = () => [...overlays].reverse().find(overlay=>!overlay.removed);
  const location = {hash:'#/',replace(hash){this.hash=hash;}};
  const node = {setAttribute(){},focus(){},scrollIntoView(){},getBoundingClientRect(){return {top:120,height:50};}};
- const document = {documentElement:{lang}, body:{dataset:{},classList:{toggle(){},remove(){},contains(){return false;}}},
+ const document = {documentElement:{lang}, body:{dataset:{},append(overlay){overlays.push(overlay);},classList:{toggle(){},remove(){},contains(){return false;}}},
+  createElement(){
+   const overlay={removed:false,setAttribute(){},remove(){this.removed=true;},querySelector(){return {addEventListener(type,listener,options){overlay.finishAnimation=listener;overlay.animationOptions=options;}};}};
+   return overlay;
+  },
   getElementById(id) {
    if(id==='app') return app;
    if(id==='language-switch') return switcher;
+   if(id==='home-intro') return activeOverlay() || null;
    return app.innerHTML.includes('id="'+id+'"')?node:null;
   }, querySelector(){return null;},querySelectorAll(){return [];},addEventListener(){}};
- const ctx = vm.createContext({document,location,history:{},innerWidth:width,console,
+ const ctx = vm.createContext({document,location,history:{},innerWidth:width,console,matchMedia(){return {matches:reduceMotion};},
   addEventListener(){},requestAnimationFrame(fn){fn();},scrollY:0,scrollTo(){}});
  ctx.window=ctx;
  const run = expr => vm.runInContext(expr,ctx);
@@ -56,6 +65,7 @@ for (const lang of ['zh-Hant','en']) for (const width of [390,1280]) {
   location.hash=route; run('route()');
   if(location.hash!==route) run('route()');
   assert.equal(location.hash,aliases.find(([old])=>old===route)?.[1]??route);
+  assert.equal(Boolean(activeOverlay()),document.body.dataset.page==='home',route+' homepage-only intro overlay');
   assert.ok(app.innerHTML.includes('<main'),route);
   assert.ok(!retired.test(visible(app.innerHTML)),route+' retired wording');
   assert.ok(switcher.href.endsWith(location.hash) && switcher.href.includes('_'+config.version+'.html'),route+' language switch');
@@ -68,6 +78,18 @@ for (const lang of ['zh-Hant','en']) for (const width of [390,1280]) {
   const logo = app.innerHTML.match(/class="site-logo"[^>]*>[\s\S]*?<img[^>]* src="([^"]+)"/)?.[1];
   assert.equal(logo,run('LOGO'),route+' brand mark');
  }
+ reduceMotion=true;
+ location.hash='#/products';run('route()');
+ location.hash='#/';run('route()');
+ assert.equal(activeOverlay(),undefined,'reduced motion skips homepage intro');
+ reduceMotion=false;
+ location.hash='#/products';run('route()');
+ location.hash='#/';run('route()');
+ const intro=activeOverlay();
+ assert.ok(intro,'homepage re-entry creates intro overlay');
+ assert.equal(intro.animationOptions.once,true,'intro removes itself once animation ends');
+ intro.finishAnimation();
+ assert.equal(activeOverlay(),undefined,'animation end removes intro overlay');
  const home = run('home()');
  const slogan = lang==='en'?'Define The Next Wave On‑Chain':'引領鏈上新浪潮';
  assert.equal(home.match(/<h1[^>]*class="brand-slogan[^"]*"[^>]*>([\s\S]*?)<\/h1>/)?.[1].replace(/<[^>]+>/g,''),slogan,'home slogan');

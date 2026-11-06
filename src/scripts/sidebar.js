@@ -187,9 +187,12 @@ function route() {
   document.body.dataset.page = page;
   document.body.dataset.variant = variant;
   document.body.classList.toggle('en',L === 'en');
+  if(page !== 'home')clearHomeIntro();
   if (changed) {
     lastNavKey = '';
+    clearHomeIntro();
     document.getElementById('app').innerHTML = header(page,variant) + pageBody(page,chapter,variant) + footer(page,variant);
+    if(page === 'home')showHomeIntro();
     const title = page === 'home' ? 'WAGMIx' : page === 'catalog' ? t('代幣化股票／ETF | WAGMIx','Tokenized Stocks / ETFs | WAGMIx') : page === 'product' || page === 'adgmguide' ? productCode(variant) + ' | WAGMIx' : page === 'ecosystem' ? t('生態合作夥伴 | WAGMIx','Ecosystem Partners | WAGMIx') : page === 'contact' ? t('聯絡我們 | WAGMIx','Contact | WAGMIx') : page === 'docs' ? t('SKHY2Lw 產品文件 | WAGMIx','SKHY2Lw Product Documents | WAGMIx') : (chapterNames[chapter] || t('產品文件','Product documents')) + ' | WAGMIx';
     document.title = title + t('｜繁體中文',' | English');
   }

@@ -7,6 +7,18 @@ function brandHeroCopy(){
  const lines = pick(SITE_CONFIG.brand.introduction);
  return `<h1 class="brand-slogan ${L === 'zh' ? 'brand-slogan-zh' : ''}" lang="${L === 'zh' ? 'zh-Hant' : 'en'}">${slogan}</h1><div class="brand-introduction"><p class="brand-description" lang="${L === 'zh' ? 'zh-Hant' : 'en'}">${lines.map(line=>`<span class="brand-description-line">${esc(line)}</span>`).join('')}</p></div>`;
 }
+function clearHomeIntro(){document.getElementById('home-intro')?.remove();}
+function showHomeIntro(){
+ if(window.matchMedia?.('(prefers-reduced-motion: reduce)').matches)return;
+ const overlay=document.createElement('div');
+ overlay.id='home-intro';
+ overlay.className='home-intro';
+ overlay.setAttribute('aria-hidden','true');
+ overlay.innerHTML=`<svg viewBox="0 0 793 763" preserveAspectRatio="xMidYMid slice" focusable="false"><defs><mask id="home-intro-mask" maskUnits="userSpaceOnUse" x="0" y="0" width="793" height="763"><rect width="793" height="763" fill="white"/><path class="home-intro-mask-x" d="M528.667 381.49L786.612 127.589L793 5.00794L646.155 0L396.5 248.274L146.845 0L0 5.00794L6.38816 127.589L264.333 381.49L6.38816 635.411L0 757.992L146.845 763L396.5 514.726L646.155 763L793 757.992L786.612 635.411Z" fill="black"/></mask></defs><rect width="793" height="763" fill="#ebf4f9" mask="url(#home-intro-mask)"/></svg>`;
+ const x=overlay.querySelector('.home-intro-mask-x');
+ x.addEventListener('animationend',()=>overlay.remove(),{once:true});
+ document.body.append(overlay);
+}
 function contactIcon(kind){const paths={email:'<rect x="3" y="5" width="18" height="14" rx="3"/><path d="m4 7 8 6 8-6"/>',x:'<path d="M5 4h4l10 16h-4L5 4zM19 4 5 20"/>',telegram:'<path d="m3 11 18-7-4 16-6-6-4 3v-6l11-5-8 8"/>'};return `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${paths[kind]}</svg>`;}
 function contactChannels(){const channels=[{id:'email',title:t('電子郵件','Email'),copy:t('商務合作與機構諮詢','Business and institutional enquiries'),address:'info@wagmix.com'},{id:'x',title:'X',copy:t('品牌與產品動態','Brand and product updates'),address:'@WAGMIx_Official'},{id:'telegram',title:'Telegram',copy:t('社群與公告','Community and announcements'),address:'t.me/wagmix'}];return `<div class="contact-channels">${channels.map(c=>`<a class="contact-channel is-linked" href="${SITE_CONFIG.contacts[c.id]}" ${c.id==='email'?'':'target="_blank" rel="noopener noreferrer"'} aria-label="${esc(c.title+' · '+c.address)}"><span class="contact-channel-icon">${contactIcon(c.id)}</span><div><h3>${c.title}</h3><p>${c.copy}</p><span class="contact-channel-address">${c.address}</span></div><span class="contact-channel-arrow" aria-hidden="true">↗</span></a>`).join('')}</div>`;}
 function footer(page,variant){

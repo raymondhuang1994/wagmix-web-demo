@@ -26,8 +26,9 @@ const source = Object.entries(constants).map(([key,value])=>'const '+key+'='+JSO
   '\n'+files.map(file=>read('src/scripts/'+file)).join('\n');
 
 function fixture(lang,width,initialHash='#/') {
-  const stack=[initialHash], listeners={}, nodes=new Map(), scrolls=[], focusCalls=[];
+  const stack=[initialHash], listeners={}, nodes=new Map(), scrolls=[], focusCalls=[], overlays=[];
   let cursor=0, pending=false, appHTML='';
+  const activeOverlay=()=>[...overlays].reverse().find(overlay=>!overlay.removed);
   const switcher={href:''};
   const app={get innerHTML(){return appHTML;},set innerHTML(value){appHTML=value;nodes.clear();}};
   const position = id => ({[noteId]:640,'main':0,'product-market':1100,'adgm-market':1100,'product-theme':1700,'adgm-theme':1700,'product-features':2300,'adgm-features':2300,'product-terms':2900,'adgm-terms':2900,'product-whitepaper':3500,'adgm-documents':3500}[id]??1000);
@@ -41,10 +42,15 @@ function fixture(lang,width,initialHash='#/') {
   const contextNav={getBoundingClientRect(){return {top:width<=600?130:94,bottom:width<=600?184:160,height:width<=600?54:66};}};
   const document={
     documentElement:{lang},activeElement:null,
-    body:{dataset:{},classList:{toggle(){},remove(){},contains(){return false;}}},
+    body:{dataset:{},append(overlay){overlays.push(overlay);},classList:{toggle(){},remove(){},contains(){return false;}}},
+    createElement(){
+      const overlay={removed:false,setAttribute(){},remove(){this.removed=true;},querySelector(){return {addEventListener(){}};}};
+      return overlay;
+    },
     getElementById(id){
       if(id==='app')return app;
       if(id==='language-switch')return switcher;
+      if(id==='home-intro')return activeOverlay()||null;
       if(!appHTML.includes('id="'+id+'"'))return null;
       if(!nodes.has(id))nodes.set(id,{
         id,attrs:{},isConnected:true,setAttribute(key,value){this.attrs[key]=value;},
@@ -61,7 +67,7 @@ function fixture(lang,width,initialHash='#/') {
     },querySelectorAll(){return [];},addEventListener(){},
   };
   const history={scrollRestoration:'auto',back(){if(cursor>0){cursor--;pending=true;}},forward(){if(cursor<stack.length-1){cursor++;pending=true;}}};
-  const ctx=vm.createContext({document,location,history,innerWidth:width,console,scrollY:0,
+  const ctx=vm.createContext({document,location,history,innerWidth:width,console,scrollY:0,matchMedia(){return {matches:false};},
     requestAnimationFrame(fn){fn();},scrollTo(options){ctx.scrollY=options.top;scrolls.push({id:'window',options});},
     addEventListener(type,fn){(listeners[type]??=[]).push(fn);},
   });

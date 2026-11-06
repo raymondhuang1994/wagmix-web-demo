@@ -103,3 +103,25 @@ body[data-page="home"] .team-section .section-introduction {
   .capability-showcase .capability-column .capability-icon { height: 48px; }
   .capability-showcase .capability-glass-icon { width: 46px; }
 }
+
+.home-intro {
+  position: fixed;
+  inset: 0;
+  z-index: 2147483647;
+  pointer-events: none;
+}
+.home-intro svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  filter: drop-shadow(0 0 6px rgba(8,28,50,.55));
+}
+.home-intro-mask-x {
+  transform-box: fill-box;
+  transform-origin: center center;
+  animation: home-intro-reveal 2.5s cubic-bezier(.77,0,.175,1) forwards;
+}
+@keyframes home-intro-reveal {
+  from { transform: scale(.01); }
+  to { transform: scale(5); }
+}
