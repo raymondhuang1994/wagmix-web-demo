@@ -155,6 +155,11 @@ for (const lang of ['zh-Hant','en']) for (const width of [390,1280]) {
  assert.ok(run('productMarket()').includes(lang==='en'?'token execution prices may differ.':'代幣成交價可能與之不同。'),'bounded reference price claim');
  assert.ok(!run('ecosystem()').includes('eco-network-product'),'no product/network relationship hero');
  assert.ok(run('contactPage()').includes('mailto:info@wagmix.com'),'dedicated contact links');
+ const homeContact=run('homeContactSection()');
+ const contactMain=run('contactPage()');
+ assert.ok(contactMain.startsWith('<main id="main" class="contact-page home-contact-page">'),'contact page uses the shared main layout');
+ assert.ok(contactMain.includes(homeContact),'contact page reuses the homepage contact section');
+ assert.equal((contactMain.match(/id="contact"/g)||[]).length,1,'contact section anchor is unique');
  const factsheet = 'downloads/'+config.downloadFiles[lang==='en'?'factsheetEn':'factsheetZh'];
  assert.ok(factsheet.endsWith('_V8.pdf') && run('product()').includes('href="'+factsheet+'"'),'approved factsheet download language');
  assert.ok(run('docsDownloads()').includes('href="downloads/'+config.downloadFiles.whitepaper+'"'),'English whitepaper download');
