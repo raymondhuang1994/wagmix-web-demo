@@ -1,5 +1,5 @@
 {
-  "version": "V23",
+  "version": "V24",
   "date": "2026-11-06",
   "checks": {
     "bilingual_route_cases": 204,
@@ -18,12 +18,14 @@
     },
     "original_logos_and_fonts_unchanged": true,
     "public_delivery_private_material_scan_passed": true,
-    "browser_visual_validation": "Reviewed title rules and font metrics. Real browser visual acceptance pending.",
+    "browser_visual_validation": "Measured bilingual introduction widths with the supplied fonts. Physical-device visual acceptance pending.",
     "live_ip_validation": "not performed; endpoint not configured",
     "bilingual_primary_before_secondary_and_t0_link": true,
     "same_brand_x_renderer_image_and_crop": true,
-    "three_downloads_and_artwork_identical_to_v22": true,
-    "deterministic_bilingual_build": true
+    "deterministic_bilingual_build": true,
+    "three_downloads_and_artwork_identical_to_v23": true,
+    "single_approved_team_paragraph_in_both_editions": true,
+    "explore_introduction_full_width_and_protected_chinese_term": true
   },
   "geo": {
     "mode": "preview",
@@ -35,9 +37,9 @@
     "serverAccessBlockingImplemented": false
   },
   "sha256": {
-    "index.html": "785651dfe1cbcb1d6738f5d486e0a533f458cc52d25c2cb6737ac6b589fd7aa7",
-    "WAGMIx_繁體中文_V23.html": "785651dfe1cbcb1d6738f5d486e0a533f458cc52d25c2cb6737ac6b589fd7aa7",
-    "WAGMIx_English_V23.html": "dd572517346c25226dafd401da1cb1a605fce04c4e85de09f42c0344103c5915",
+    "index.html": "c24700c511cde2b6361fa635c9fe0e217b5f3fa4aadf8e321ab9304956f6041b",
+    "WAGMIx_繁體中文_V24.html": "c24700c511cde2b6361fa635c9fe0e217b5f3fa4aadf8e321ab9304956f6041b",
+    "WAGMIx_English_V24.html": "e5bd8e5e99cb377238eb97686de99f67cca5c9537c057ddea04444e1528e4cc1",
     "assets/wagmix.svg": "8ca149b495c0b591987fb673faa4139650032c0dd817637f134e708600857bb4",
     "assets/wagmix-light.svg": "584db71b335a3250966a6a07c50f1945d6ba7501c496609475c9355d5a158a36",
     "assets/wagmix-x-hero.webp": "6347298953bc0f474feaab43f72331d33a8c8a36b3025160a3d887f82ac0d24c",

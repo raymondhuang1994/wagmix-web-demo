@@ -1,3 +1,12 @@
+/* Let both introductions use the full section width, including at mobile sizes. */
+.cap-section .capability-heading p,
+body[data-page="home"] .team-section .section-introduction {
+  max-width: none;
+  text-wrap: wrap;
+}
+.capability-heading .keep-term { white-space: nowrap; }
+.team-section .section-head { display: block; }
+
 /* Five columns share the same icon and title starting positions. */
 .capability-showcase .capability-column {
   padding: 20px 16px 24px;
