@@ -14,6 +14,21 @@
   filter: drop-shadow(3px 6px 5px #145ea722);
 }
 .capability-showcase .capability-column .capability-copy { margin-top: 10px; }
+.capability-showcase .capability-column h3 { text-wrap: wrap; }
+
+@media (min-width: 1101px) {
+  /* Shared rows line up the descriptions even when a heading needs two lines. */
+  .capability-showcase .capability-column {
+    display: grid;
+    grid-row: span 3;
+    grid-template-rows: subgrid;
+  }
+  .capability-showcase .capability-column h3 {
+    min-height: 0;
+    margin-inline-end: -12px;
+    font-size: clamp(21px, 1.8vw, 26px);
+  }
+}
 
 /* The decorative halo must leave the whole link clickable. */
 .home-ecosystem::before { pointer-events: none; }

@@ -465,8 +465,8 @@ window.WHITEPAPER = [
       "en": "Definitive transaction documents govern holder rights and redemption procedures."
     },
     "summary": {
-      "zh": "持有人享有與 7709.HK 掛鈎的合約經濟利益，可在適用轉讓限制下全天候轉讓代幣。獲發行人批准的投資者可透過 PD，以現金、支持的穩定幣或合資格資產實物贖回。持有人不直接擁有底層產品單位。",
-      "en": "Holders receive contractual economic benefits linked to 7709.HK and may transfer their tokens around the clock, subject to applicable transfer restrictions. Issuer-approved investors may redeem in cash, supported stablecoins or in kind with eligible assets via a PD. Holders do not directly own units of the underlying product."
+      "zh": "持有人享有與 7709.HK 掛鈎的合約經濟利益。獲發行人批准的投資者可透過 PD，以現金、支持的穩定幣或合資格資產實物贖回。持有人可在適用轉讓限制下全天候轉讓代幣，並不直接擁有底層產品單位。",
+      "en": "Holders receive contractual economic benefits linked to 7709.HK. Issuer-approved investors may redeem in cash, supported stablecoins or in kind with eligible assets via a PD. Holders may transfer their tokens around the clock, subject to applicable transfer restrictions. Holders do not directly own units of the underlying product."
     },
     "sections": [
       {

@@ -22,7 +22,7 @@ function product() {
     <div class="p-hero-copy">
      <span class="pill">${t('即將上線','Coming soon')}</span>
      <h1>WAGMIx SK Hynix<br><em>Daily Max (2x)</em></h1>
-     <p class="p-hero-slogan">${t('全球首個支持 24/7 交易及一級申贖 T0 交收³的代幣化產品','The world’s first tokenized product supporting 24/7 trading and T0 settlement³ for primary subscriptions and redemptions')}</p>
+     <p class="p-hero-slogan">${t('全球首個支持一級申贖 T0 交收³及二級市場 24/7 交易的代幣化產品','The world’s first tokenized product to combine T0 settlement³ for primary subscriptions and redemptions with 24/7 secondary trading')}</p>
      <div class="p-hero-meta">
       <span>${t('底層資產','Underlying asset')} <b>7709.HK</b></span>
       <span>${t('計劃首發','Planned launch')} <b>${launchDateLabel('long')}</b></span>
@@ -130,9 +130,9 @@ function productTerms() {
    'SKHY2Lw/USDT、SKHY2Lw/USDC；實際上線時間及交易對以交易場所支持及公告為準。',
    'SKHY2Lw/USDT and SKHY2Lw/USDC; availability and launch timing are subject to venue support and announcements.'
   )],
-  [t('交易與交收時段','Trading and settlement hours'), t(
-   '二級市場全天候交易。一級申贖於港股交易時段內外均可進行 T0 交收³。',
-   'Secondary trading is available 24/7. Primary subscriptions and redemptions are eligible for T0 settlement³ both during and outside of Hong Kong market hours.'
+  [t('交收與交易時段','Settlement and trading hours'), t(
+   '一級申贖於港股交易時段內外均可進行 T0 交收³。二級市場全天候交易。',
+   'Primary subscriptions and redemptions are eligible for T0 settlement³ both during and outside of Hong Kong market hours. Secondary trading is available 24/7.'
   )],
   [t('一級申購','Primary subscriptions'), t(
    '獲發行人批准的投資者可透過參與交易商（PD），以現金、支持的穩定幣或合資格資產實物申購。',
@@ -186,7 +186,7 @@ function productTerms() {
     <div class="p-rights"><span class="p-small-label">${t('持有人權利','HOLDER RIGHTS')}</span>
      <h3>${t('每枚代幣代表一份無抵押票據。','Each token represents one unsecured Note.')}</h3>
      <div class="p-rights-count"><span>1 <small>${t('代幣','Token')}</small></span><i>=</i><span>1 <small>${t('票據','Note')}</small></span></div>
-     <p>${t('持有人享有與 7709.HK 掛鈎的合約經濟利益，可在適用轉讓限制下全天候轉讓代幣，亦可透過獲批參與交易商申請贖回。','Holders receive contractual economic benefits linked to 7709.HK. They may transfer their tokens around the clock, subject to applicable transfer restrictions, and request redemption through an approved PD.')}</p>
+     <p>${t('持有人享有與 7709.HK 掛鈎的合約經濟利益，可透過獲批參與交易商申請贖回，亦可在適用轉讓限制下全天候轉讓代幣。','Holders receive contractual economic benefits linked to 7709.HK. They may request redemption through an approved PD and transfer their tokens around the clock, subject to applicable transfer restrictions.')}</p>
      <p>${t('持有人並不取得底層 7709.HK 單位的所有權或實益權益。發行人可持有 7709.HK 單位、現金或現金等價物作對沖及營運用途。該等資產不構成票據抵押，亦不為持有人設置信託。權利、贖回及交收均須遵守最終交易文件。','Holders do not acquire ownership or a beneficial interest in the underlying 7709.HK units. The issuer may hold 7709.HK units, cash or cash equivalents for hedging and operations. These assets do not secure the Notes and are not held on trust for holders. Rights, redemption and settlement remain subject to the definitive transaction documents.')}</p>
      <a class="text-link" href="#/whitepaper/rights">${t('閱讀持有人權利','Read holder rights')} ↗</a>
     </div>

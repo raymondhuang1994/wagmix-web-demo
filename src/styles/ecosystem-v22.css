@@ -13,7 +13,14 @@
 .eco-v18-page .eco-v9-directory { background: #fff; }
 .eco-v18-page .eco-v9-hero::after { background: #dde7ef; }
 .eco-v18-page .eco-v9-hero h1 { color: var(--eco-ink); }
-.eco-v18-page .eco-v18-network { opacity: .48; }
+.eco-v18-page .eco-brand-art {
+  width: min(100%, 340px);
+  min-width: 0;
+  justify-self: end;
+  pointer-events: none;
+  /* Soften the image background against white, outside the four arms of the X. */
+  mask-image: linear-gradient(to bottom, transparent, #000 6%, #000 92%, transparent);
+}
 
 .eco-v18-page .eco-v9-search,
 .eco-v18-page .eco-v9-filter-bar select {
@@ -102,11 +109,22 @@ body[data-page="ecosystem"] .footer-compact {
 body[data-page="ecosystem"] .footer-bottom { color: #52687b; }
 
 @media (max-width: 780px) {
-  .eco-v18-page .eco-v18-network { opacity: .24; }
+  .eco-v18-page .eco-v18-hero-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, .66fr);
+    gap: 16px;
+    min-height: 0;
+  }
+  .eco-v18-page .eco-brand-art { max-width: 230px; }
 }
 
 /* Narrow screens open introductions within their card, including the final result. */
 @media (max-width: 540px) {
+  .eco-v18-page .eco-v18-hero-grid { grid-template-columns: minmax(0, 1fr); }
+  .eco-v18-page .eco-brand-art {
+    width: min(100%, 210px);
+    justify-self: center;
+  }
   .eco-v18-page .eco-v9-grid { grid-template-columns: 1fr; }
   .eco-v18-page .eco-v9-card-front {
     display: grid;

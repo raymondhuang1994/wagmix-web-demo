@@ -1,16 +1,16 @@
-# WAGMIx 网站设计与双语网页 · V22
+# WAGMIx 网站设计与双语网页 · V23
 
 ![WAGMIx](assets/wagmix.svg)
 
 本项目包含平台介绍、产品目录、7709w 和 SKHY2Lw 产品详情、文件阅读器、生态目录及联系页。它是可交接给设计与开发 agent 的 HTML 样稿和源码，未启用 GitHub Pages。
 
-V22 将生态目录改为白底，缩小首页能力图标，并更新产品菜单与生态入口。7709w 的发行人栏显示 Cocoa Issuer Limited，第四项卖点补充 DeFi 转让范围。两款产品的一级申购分别经 PD（SKHY2Lw）和由合资格 AP 经 Finloop 办理（7709w）。
+V23 调整首页五项能力标题的自然换行。全天候链上资产的双语说明先介绍一级申赎，再介绍二级交易。生态页使用与首页相同的品牌 X 图像。
 
 本版沿用 V8 产品单页与原白皮书。产品披露和脚标见 [V21 修改记录](RELEASE_V21.md)，地区提示见 [V20 修改记录](RELEASE_V20.md)。
 
 ## 打开交付文件
 
-下载并解压完整仓库，打开 [繁体中文 HTML](WAGMIx_繁體中文_V22.html) 或 [English HTML](WAGMIx_English_V22.html)。`index.html` 同为繁中入口。字体、图片、样式和脚本均内嵌；PDF 位于旁边的 `downloads/` 目录，请保留完整目录。
+下载并解压完整仓库，打开 [繁体中文 HTML](WAGMIx_繁體中文_V23.html) 或 [English HTML](WAGMIx_English_V23.html)。`index.html` 同为繁中入口。字体、图片、样式和脚本均内嵌；PDF 位于旁边的 `downloads/` 目录，请保留完整目录。
 
 | 产品代码 | 底层资产 | 网络 | 页面识别 |
 |---|---|---|---|

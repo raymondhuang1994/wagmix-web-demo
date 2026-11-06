@@ -68,10 +68,10 @@
       },
       "copy": {
         "zh": [
-          "支持二級市場 24/7 交易，實現一級市場 T0 申贖交收³。"
+          "實現一級市場 T0 申贖交收³，支持二級市場 24/7 交易。"
         ],
         "en": [
-          "Supports 24/7 secondary trading and T0 primary settlement³."
+          "Supports T0 primary settlement³ and 24/7 secondary trading."
         ]
       }
     }
@@ -174,8 +174,8 @@
       "en": "Turnover and AUM source: Bloomberg. Turnover data through 20 Oct 2026; monthly figures compare full calendar months. July 2026 had 22 trading days. AUM data are for June 2026."
     },
     "t0": {
-      "zh": "WAGMIx 僅為代幣化技術服務供應商，不營運任何交易場所。SKHY2Lw 代幣的 24/7 交易及一級申贖的 T0 交收，均於相關第三方交易場所或由獲批參與交易商（僅限合資格專業投資者）執行。港股交易時段內外均可進行 T0 交收；如無法可靠估值或交收，交收將順延。非港股交易時段之價格僅供參考。",
-      "en": "WAGMIx provides tokenization services only and does not operate a trading venue. 24/7 token trading is on third-party venues; T0 primary settlement is through approved PDs for eligible professional investors. T0 may occur in or outside Hong Kong market hours, subject to reliable valuation and settlement; otherwise it is deferred. Off-hours prices are indicative."
+      "zh": "WAGMIx 僅為代幣化技術服務供應商，不營運任何交易場所。SKHY2Lw 一級申贖的 T0 交收由獲批參與交易商辦理，僅限合資格專業投資者。港股交易時段內外均可進行 T0 交收；如無法可靠估值或交收，交收將順延。代幣於相關第三方交易場所進行 24/7 二級交易。非港股交易時段之價格僅供參考。",
+      "en": "WAGMIx provides tokenization services only and does not operate a trading venue. T0 primary settlement is through approved PDs for eligible professional investors. T0 may occur in or outside Hong Kong market hours, subject to reliable valuation and settlement; otherwise it is deferred. Secondary token trading takes place 24/7 on third-party venues. Off-hours prices are indicative."
     }
   },
   "factsheetVersion": "V8"

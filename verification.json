@@ -1,5 +1,5 @@
 {
-  "version": "V22",
+  "version": "V23",
   "date": "2026-11-06",
   "checks": {
     "bilingual_route_cases": 204,
@@ -18,12 +18,12 @@
     },
     "original_logos_and_fonts_unchanged": true,
     "public_delivery_private_material_scan_passed": true,
-    "browser_visual_validation": "Source and responsive CSS reviewed. Real browser visual acceptance pending.",
+    "browser_visual_validation": "Reviewed title rules and font metrics. Real browser visual acceptance pending.",
     "live_ip_validation": "not performed; endpoint not configured",
-    "v8_source_data_and_three_downloads_identical_to_v21": true,
-    "deterministic_build_and_embedded_v22_styles": true,
-    "bilingual_issuer_subscription_and_product_scoped_defi_copy": true,
-    "native_product_menu_home_banner_ecosystem_link": true
+    "bilingual_primary_before_secondary_and_t0_link": true,
+    "same_brand_x_renderer_image_and_crop": true,
+    "three_downloads_and_artwork_identical_to_v22": true,
+    "deterministic_bilingual_build": true
   },
   "geo": {
     "mode": "preview",
@@ -35,13 +35,14 @@
     "serverAccessBlockingImplemented": false
   },
   "sha256": {
-    "index.html": "2d1e851a5622651a0bf8b03641ac1ac5ef9833bd8856268d347d5695ae0232f4",
-    "WAGMIx_繁體中文_V22.html": "2d1e851a5622651a0bf8b03641ac1ac5ef9833bd8856268d347d5695ae0232f4",
-    "WAGMIx_English_V22.html": "bf4fe7b73780f99f44c9e06cba1d7806fefc372cc14a08f690132d7cd297d0e3",
+    "index.html": "785651dfe1cbcb1d6738f5d486e0a533f458cc52d25c2cb6737ac6b589fd7aa7",
+    "WAGMIx_繁體中文_V23.html": "785651dfe1cbcb1d6738f5d486e0a533f458cc52d25c2cb6737ac6b589fd7aa7",
+    "WAGMIx_English_V23.html": "dd572517346c25226dafd401da1cb1a605fce04c4e85de09f42c0344103c5915",
     "assets/wagmix.svg": "8ca149b495c0b591987fb673faa4139650032c0dd817637f134e708600857bb4",
     "assets/wagmix-light.svg": "584db71b335a3250966a6a07c50f1945d6ba7501c496609475c9355d5a158a36",
-    "downloads/WAGMIx_7709_Factsheet_EN_V8.pdf": "0eea7c5627c1d7aae55c1c121e794ae34c2ecd56b7f2988b43287cdaa29c9d89",
+    "assets/wagmix-x-hero.webp": "6347298953bc0f474feaab43f72331d33a8c8a36b3025160a3d887f82ac0d24c",
     "downloads/WAGMIx_7709_產品單頁_繁體中文_V8.pdf": "2ec5bfaf879e940f6be735502366af82e4e584a68e1fbb7d2ee86b1af30caf97",
-    "downloads/WAGMIx_SKHY2Lw_Whitepaper_EN.pdf": "e3c70cbced396e46ee04d9a4afe4081ddfd28dbc3fe2310b071ca05cfaee8b0a"
+    "downloads/WAGMIx_SKHY2Lw_Whitepaper_EN.pdf": "e3c70cbced396e46ee04d9a4afe4081ddfd28dbc3fe2310b071ca05cfaee8b0a",
+    "downloads/WAGMIx_7709_Factsheet_EN_V8.pdf": "0eea7c5627c1d7aae55c1c121e794ae34c2ecd56b7f2988b43287cdaa29c9d89"
   }
 }

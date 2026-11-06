@@ -52,12 +52,7 @@ function ecosystem() {
     <section class="eco-v9-hero"><div class="wrap eco-v18-hero-grid">
       <div class="eco-v18-hero-copy"><h1 id="eco-v18-title">${title}</h1>
       </div>
-      <div class="eco-v18-network" aria-hidden="true">
-        <svg class="eco-v18-circuit" viewBox="0 0 520 350" fill="none">
-          <defs><linearGradient id="eco-v18-beam" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#0a54da" stop-opacity=".12"/><stop offset=".5" stop-color="#7bd7ff" stop-opacity=".65"/><stop offset="1" stop-color="#235afa" stop-opacity=".12"/></linearGradient></defs>
-          <path d="M156 33 260 137 364 33 412 81 308 185 412 289 364 337 260 233 156 337 108 289 212 185 108 81Z" fill="url(#eco-v18-beam)" stroke="#62b7fa" stroke-opacity=".35"/>
-        </svg>
-      </div>
+      <div class="eco-brand-art" aria-hidden="true">${brandXScene()}</div>
     </div></section>
     <section id="ecosystem-directory" class="eco-v9-directory" aria-labelledby="eco-v18-title"><div class="wrap">
       <div class="eco-v9-heading"><label class="eco-v9-search"><span class="eco-v9-sr">${t('搜尋機構或網絡','Search institutions or networks')}</span><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10" cy="10" r="6"></circle><path d="m15 15 5 5"></path></svg><input data-eco-v9-search type="search" maxlength="100" placeholder="${t('搜尋機構或網絡','Search institutions or networks')}" aria-label="${t('搜尋機構或網絡','Search institutions or networks')}"></label></div>
