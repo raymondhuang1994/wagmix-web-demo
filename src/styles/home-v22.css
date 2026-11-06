@@ -1,0 +1,81 @@
+/* Five columns share the same icon and title starting positions. */
+.capability-showcase .capability-column {
+  padding: 20px 16px 24px;
+  text-align: left;
+}
+.capability-showcase .capability-icon {
+  height: 90px;
+  margin: 0 0 12px;
+  justify-items: start;
+}
+.capability-showcase .capability-glass-icon {
+  width: clamp(72px, 5.4vw, 80px);
+  height: auto;
+  filter: drop-shadow(3px 6px 5px #145ea722);
+}
+.capability-showcase .capability-column .capability-copy { margin-top: 10px; }
+
+/* The decorative halo must leave the whole link clickable. */
+.home-ecosystem::before { pointer-events: none; }
+.home-ecosystem .home-ecosystem-link {
+  position: relative;
+  flex-shrink: 0;
+  min-height: 48px;
+  padding: 10px 20px;
+  font-size: 17px;
+  line-height: 1.4;
+  color: #0b2b50;
+  background: #e5f4ff;
+  border-color: #a6d9ff;
+}
+.home-ecosystem .home-ecosystem-link:hover { background: #fff; }
+.home-ecosystem .home-ecosystem-link:focus-visible {
+  outline: 3px solid #8ed5ff;
+  outline-offset: 4px;
+}
+
+/* A continuous list uses the full tablet width for every capability. */
+@media (max-width: 1100px) {
+  .capability-showcase { grid-template-columns: minmax(0, 1fr); }
+  .capability-showcase > .capability-column {
+    display: grid;
+    grid-column: 1;
+    grid-template-columns: 76px minmax(145px, .8fr) minmax(0, 1.35fr);
+    grid-template-areas: "icon title copy";
+    align-items: start;
+    gap: 0 20px;
+    padding: 20px 8px;
+    border: 0;
+  }
+  .capability-showcase > .capability-column + .capability-column {
+    border-left: 0;
+    border-top: 1px solid #d3e4f2;
+  }
+  .capability-showcase .capability-column .capability-icon {
+    grid-area: icon;
+    align-self: start;
+    height: 76px;
+    margin: 0;
+    place-items: start;
+  }
+  .capability-showcase .capability-column h3 {
+    grid-area: title;
+    align-self: start;
+    min-height: 0;
+    text-align: left;
+  }
+  .capability-showcase .capability-column .capability-copy {
+    grid-area: copy;
+    margin: 0;
+  }
+}
+@media (max-width: 700px) {
+  .capability-showcase > .capability-column {
+    grid-template-columns: 48px minmax(0, 1fr);
+    grid-template-areas: "icon title" "icon copy";
+    gap: 6px 14px;
+    padding: 18px 0;
+  }
+  .capability-showcase .capability-column .capability-icon { height: 48px; }
+  .capability-showcase .capability-glass-icon { width: 46px; }
+}

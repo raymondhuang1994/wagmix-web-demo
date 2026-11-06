@@ -25,7 +25,7 @@ function adgmHero() {
           <p class="adgm-lead">${t('7709w 以港交所上市的 7709.HK 為底層資產，擬於 BNB Smart Chain 部署。', '7709w references the Hong Kong-listed 7709.HK product and is planned for deployment on BNB Smart Chain.')}</p>
           <div class="adgm-channels"><span>${chainIcon('bnb')}<b>BNB Smart Chain</b><small>${t('擬部署', 'Planned deployment')}</small></span></div>
           <div class="adgm-actions"><a class="adgm-button primary" href="${adgmRoute('terms')}">${t('查看產品資料', 'View product details')} ${arrow}</a></div>
-          <p class="adgm-prelaunch">${t('發行人及產品安排仍在籌備，最終權利、資格及限制以正式產品文件為準。', 'The issuer and product arrangements are in preparation. Final rights, eligibility and restrictions will be set out in the formal product documents.')}</p>
+          <p class="adgm-prelaunch">${t('產品安排仍在籌備，最終權利、資格及限制以正式產品文件為準。', 'Product arrangements are in preparation. Final rights, eligibility and restrictions will be set out in the formal product documents.')}</p>
         </div>
         <div class="adgm-token-scene" aria-hidden="true"><div class="adgm-ring ring-one"></div><div class="adgm-ring ring-two"></div><div class="adgm-mark">${productMark('adgm')}</div><div class="adgm-visual-label"><span>7709w</span></div><div class="adgm-floor"></div></div>
       </div>
@@ -36,9 +36,13 @@ function adgmHero() {
 
 function adgmFeatures() {
   const features = adgmFeaturesData();
+  const transferNote = t(
+    '按擬議產品安排，7709w 可在 DeFi 上自由轉讓，相關轉讓須符合適用的轉讓限制。',
+    'Under the proposed product terms, 7709w is designed to be freely transferable on DeFi, subject to applicable transfer restrictions.'
+  );
   return `<section class="adgm-section" id="adgm-features"><div class="wrap">
     <div class="adgm-section-head"><span class="adgm-kicker">04 · ${t('核心賣點', 'Key features')}</span><h2>${t('四大核心賣點', 'Four Core Selling Points')}</h2></div>
-    <div class="adgm-feature-grid">${features.map((feature,index)=>`<article class="adgm-feature" data-feature="${feature.id}"><div class="adgm-feature-top"><span>0${index+1}</span><strong>${feature.symbol}</strong></div><h3>${esc(feature.title)}<sup class="feature-ref">${String.fromCharCode(97+index)}</sup></h3><p>${esc(feature.copy)}</p></article>`).join('')}</div>
+    <div class="adgm-feature-grid">${features.map((feature,index)=>`<article class="adgm-feature" data-feature="${feature.id}"><div class="adgm-feature-top"><span>0${index+1}</span><strong>${feature.symbol}</strong></div><h3>${esc(feature.title)}<sup class="feature-ref">${String.fromCharCode(97+index)}</sup></h3><p>${esc(feature.copy)}</p>${feature.id === 'access' ? `<p class="adgm-transfer-note">${esc(transferNote)}</p>` : ''}</article>`).join('')}</div>
     <ol class="product-feature-notes" type="a" aria-label="${t('賣點適用條件','Feature conditions')}">${features.map(feature=>`<li>${esc(feature.condition)}</li>`).join('')}</ol>
   </div></section>`;
 }
@@ -47,7 +51,7 @@ function adgmFacts() {
   return [
     [t('產品名稱', 'Product name'), 'WAGMIx SK Hynix Daily Max (2x) Token'],
     [t('產品代碼', 'Ticker'), '7709w'],
-    [t('發行人', 'Issuer'), t('擬設立的 ADGM 特殊目的公司，法定名稱待定。', 'An ADGM special-purpose vehicle is being established. Its legal name is pending.')],
+    [t('發行人', 'Issuer'), 'Cocoa Issuer Limited'],
     [t('底層資產', 'Underlying asset'), t('南方東英 SK 海力士每日槓桿最多（2x）產品（7709.HK）', 'CSOP SK Hynix Daily Max (2x) Leveraged Product (7709.HK)')],
     [t('網絡', 'Network'), 'BNB Smart Chain'],
     [t('申購', 'Subscription'), t('合資格的認可參與者（AP）經 Finloop Finance Limited 辦理，可交付 7709.HK 單位、現金或獲准的法幣參考代幣。', 'Eligible Authorised Participants (APs) subscribe through Finloop Finance Limited in 7709.HK units, cash or an approved fiat-referenced token.')],
@@ -77,7 +81,7 @@ function adgmDocuments() {
 
 function adgmDisclaimer() {
   const paragraphs = [
-    t('免責聲明：WAGMIx 為 7709w 提供代幣化技術及相關營運服務，並非產品發行人，亦不營運任何交易場所或提供投資建議。7709w 擬由第三方發行人發行。本頁所述為擬議產品安排，僅供資訊參考，不構成出售產品的要約、購買產品的要約招攬、投資建議或收益保證。', 'Disclaimer: WAGMIx provides tokenization technology and related operational services for 7709w. It is not the product issuer and does not operate any trading venue or provide investment advice. 7709w is proposed to be issued by a third-party issuer. This page describes proposed product arrangements for information only and does not constitute an offer to sell, a solicitation of an offer to buy, investment advice or a guarantee of returns.'),
+    t('免責聲明：WAGMIx 為 7709w 提供代幣化技術及相關營運服務，並非產品發行人，亦不營運任何交易場所或提供投資建議。7709w 擬由第三方發行人 Cocoa Issuer Limited 發行。本頁所述為擬議產品安排，僅供資訊參考，不構成出售產品的要約、購買產品的要約招攬、投資建議或收益保證。', 'Disclaimer: WAGMIx provides tokenization technology and related operational services for 7709w. It is not the product issuer and does not operate any trading venue or provide investment advice. 7709w is proposed to be issued by Cocoa Issuer Limited, a third-party issuer. This page describes proposed product arrangements for information only and does not constitute an offer to sell, a solicitation of an offer to buy, investment advice or a guarantee of returns.'),
     t('每枚 7709w 擬代表一份憑證，對應一個 7709.HK 單位的受益權益；持有人並非直接持有該單位或 SK 海力士股票。相關受益權益及有限追索安排，以正式產品文件為準。產品發行、參與資格、持有人權利及適用限制，均須遵守正式產品文件及適用法律。', 'Each 7709w token is intended to represent one Certificate corresponding to a beneficial interest in one 7709.HK unit. Holders do not directly own that unit or SK hynix shares. The beneficial-interest and limited-recourse arrangements are subject to the definitive product documents. Product issuance, eligibility, holder rights and applicable restrictions are governed by the definitive product documents and applicable law.')
   ];
   return `<section class="p-disclaimer adgm-disclaimer" aria-label="${t('免責聲明', 'Disclaimer')}"><div class="wrap">${paragraphs.map(copy=>`<p>${esc(copy)}</p>`).join('')}</div></section>`;
@@ -92,7 +96,7 @@ function adgmProduct() {
 
 function adgmGuide() {
   const chapters = [
-    [t('憑證擬提供一對一的底層受益權益。', 'Certificates are intended to provide a one-to-one beneficial interest.'), t('7709w 擬由 ADGM 發行人發行，每枚代幣代表一份 Certificate。每份憑證對應一個 7709.HK 單位的受益權益，並按最終文件採有限追索安排。發行人仍在設立，法定名稱及最終文件待完成。', '7709w is proposed to be issued by an ADGM issuer, with each token representing one Certificate. Each Certificate is intended to correspond to a beneficial interest in one 7709.HK unit under final limited-recourse terms. The issuer is being established, and its statutory name and final documents remain to be completed.')],
+    [t('憑證擬提供一對一的底層受益權益。', 'Certificates are intended to provide a one-to-one beneficial interest.'), t('7709w 擬由 Cocoa Issuer Limited 發行，每枚代幣代表一份憑證。每份憑證對應一個 7709.HK 單位的受益權益，並按最終文件採有限追索安排。正式產品文件仍在準備中。', '7709w is proposed to be issued by Cocoa Issuer Limited, with each token representing one Certificate. Each Certificate is intended to correspond to a beneficial interest in one 7709.HK unit under final limited-recourse terms. The formal product documents are in preparation.')],
     [t('二級成交價由市場形成，可偏離指示價值。', 'Secondary prices are market-determined and may differ from indicative value.'), t('參與二級交易須符合適用的 KYC、適當性及地區限制。底層 7709.HK 的 NAV、指示性淨值及市場價格可供估值參考，並非 7709w 的保證成交價。', 'Secondary trading is subject to applicable KYC, suitability and jurisdictional requirements. NAV, indicative NAV and market prices of 7709.HK may inform valuation and are not guaranteed executable prices for 7709w.')],
     [t('全天候提交一級請求，須遵守適用產品條款。', 'Around-the-clock primary requests remain subject to the applicable product terms.'), t('合資格的認可參與者（AP）可經 Finloop Finance Limited 提交一級申贖請求。可全天候提交申贖請求，須具備可靠估值，並遵守適用產品條款。普通持有人沒有一級贖回權，僅完成發行人 KYC 的 AP 可行使該權利。', 'Eligible Authorised Participants (APs) may submit primary requests through Finloop Finance Limited. Requests may be submitted around the clock, subject to reliable valuation and the applicable product terms. Ordinary holders have no primary redemption right. Only APs that have completed issuer KYC may exercise that right.')],
     [t('費用及最低規模適用於一級申贖。', 'Fees and minimum order sizes apply to primary access.'), t('最低一級訂單為 100,000 份 7709w。申購費及贖回費各為相應交易額的 0.10%。底層託管費為隔離託管賬戶內 7709.HK 單位價值的每年 0.25%。二級點差、平台費及網絡費另計。', 'The minimum primary order is 100,000 units of 7709w. Subscription and redemption fees are each 0.10% of the corresponding transaction value. Underlying custody is 0.25% per annum on the value of 7709.HK units in the segregated custody account. Secondary spreads, venue fees and network fees may also apply.')],

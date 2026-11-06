@@ -143,5 +143,5 @@ for (const lang of ['zh-Hant','en']) for (const width of [390,1280]) {
  for(const mark of ['adgm','bvi']) assert.ok(!legal.test(visible(run("productMark('"+mark+"')"))));
  results.push({language:lang,simulatedWidth:width,routes:pages.length+docs.length+1+aliases.length});
 }
-console.log('PASS. Bilingual routes, navigation, product-specific terms, logos, catalogue, filters, legacy links, slogan, V21 layout structure and PDF downloads.');
+console.log('PASS. Bilingual routes, navigation, product-specific terms, logos, catalogue, filters, legacy links, slogan, layout structure and PDF downloads.');
 console.log(results);

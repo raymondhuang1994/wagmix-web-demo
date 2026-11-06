@@ -32,7 +32,7 @@ function header(page, variant) {
       <a class="site-logo" href="#/" aria-label="WAGMIx ${t('首頁','home')}"><img src="${LOGO}" alt="WAGMIx"></a>
       <nav class="site-nav" id="site-nav" aria-label="${t('網站選單','Site navigation')}">
         <a data-top-key="home" href="#/" class="${page === 'home' ? 'active' : ''}" ${page === 'home' ? 'aria-current="page"' : ''}>${t('關於 WAGMIx','About WAGMIx')}</a>
-        <details class="product-menu"><summary data-top-key="products" class="${inProduct ? 'active' : ''}">${t('產品','Products')} <span aria-hidden="true">⌄</span></summary>
+        <details class="product-menu"><summary data-top-key="products" class="${inProduct ? 'active' : ''}">${t('產品','Products')}</summary>
           <div class="product-menu-panel">
             <a class="menu-category" href="#/products">
               <span class="menu-category-title">${t('代幣化股票／ETF','Tokenized Stocks / ETFs')}<span aria-hidden="true">↗</span></span>
