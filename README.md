@@ -1,6 +1,6 @@
 # WAGMIx 网站设计与双语网页 · V24
 
-![WAGMIx](assets/wagmix.svg)
+![WAGMIx](assets/logo.png)
 
 本项目包含首页 X 形揭幕动画、平台介绍、产品目录、7709w 和 SKHY2Lw 产品详情、文件阅读器、生态目录及联系页。它是可交接给设计与开发 agent 的 HTML 样稿和源码，未启用 GitHub Pages。
 

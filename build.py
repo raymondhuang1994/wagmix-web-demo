@@ -52,7 +52,7 @@ def build():
     constants = {
         'CONTENT': read_data('content-map.json'), 'HISTORY': read_data('7709-history.json'),
         'SITE_CONFIG': config, 'SKHYNIX': read_data('skhynix-data.json'),
-        'LOGO': image_uri('wagmix.svg'), 'LOGO_LIGHT': image_uri('wagmix-light.svg'),
+        'LOGO': image_uri('logo.png'), 'LOGO_LIGHT': image_uri('wagmix-light.svg'),
         'ASSETS': {'hero': image_uri('wagmix-x-hero.webp')},
         'INSTITUTION_LOGOS': {key: image_uri('institutions/' + file) for key, file in {
             'csop': 'csop-official.jpg', 'fosun': 'fosunwealth-official.png',
