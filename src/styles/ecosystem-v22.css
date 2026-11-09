@@ -68,12 +68,6 @@
 .eco-v18-page .eco-v9-logo-csop { object-fit: cover; }
 .eco-v18-page .eco-v9-logo-space-finloop { background: #10263f; border: 0; }
 .eco-v18-page .eco-v9-logo-space-beosin { background: #17353e; }
-.eco-v18-page .eco-v9-logo-space-bnb svg {
-  background: #172333;
-  border-radius: 50%;
-  padding: 4px;
-}
-
 .eco-v18-page .eco-v9-info {
   background: #fff;
   color: var(--eco-ink);

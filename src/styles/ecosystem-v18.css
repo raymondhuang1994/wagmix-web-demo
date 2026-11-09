@@ -145,8 +145,10 @@
 .eco-v18-page .eco-v9-logo-csop { object-fit: contain; }
 .eco-v18-page .eco-v9-logo-space-bnb,
 .eco-v18-page .eco-v9-logo-space-solana { background: transparent; padding: 0; }
-.eco-v18-page .eco-v9-logo-space-bnb svg,
 .eco-v18-page .eco-v9-logo-space-solana svg { width: 62px; height: 62px; }
+.eco-v18-page .eco-v9-logo-space-bnb .eco-v9-logo-bnb-chain {
+  width: 170px; max-width: 100%; height: auto; object-fit: contain;
+}
 .eco-v18-page .eco-v9-name { color: #f4f8ff; font-size: 20px; line-height: 1.4; font-weight: 550; }
 .eco-v18-page .eco-v9-info-icon {
   height: 24px; width: 24px; top: 14px; right: 14px;

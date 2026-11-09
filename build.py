@@ -54,6 +54,7 @@ def build():
         'SITE_CONFIG': config, 'SKHYNIX': read_data('skhynix-data.json'),
         'LOGO': image_uri('logo.png'), 'LOGO_LIGHT': image_uri('wagmix-light.svg'),
         'ASSETS': {'hero': image_uri('wagmix-x-hero.webp')},
+        'BNB_CHAIN_LOGO': image_uri('bnb-smart-chain-logo.svg'),
         'INSTITUTION_LOGOS': {key: image_uri('institutions/' + file) for key, file in {
             'csop': 'csop-official.jpg', 'fosun': 'fosunwealth-official.png',
             'finloop': 'finloop-official.svg', 'beosin': 'beosin-official.png',

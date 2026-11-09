@@ -31,6 +31,7 @@ const v9EcoFilters = [
 ];
 function v9EcoMark(entry) {
   if (entry.logo && INSTITUTION_LOGOS[entry.logo]) return `<img class="eco-v9-logo eco-v9-logo-${entry.logo}" src="${INSTITUTION_LOGOS[entry.logo]}" alt="" loading="lazy">`;
+  if (entry.id === 'bnb') return `<img class="eco-v9-logo eco-v9-logo-bnb-chain" src="${BNB_CHAIN_LOGO}" alt="" loading="lazy">`;
   if (entry.symbol) return chainIcon(entry.symbol);
   return `<span class="eco-v9-logo-pending" aria-hidden="true">${esc(entry.name)}</span>`;
 }
