@@ -1,0 +1,64 @@
+:root {
+  color: #282620;
+  background: #f8f6f0;
+  font-family: system-ui, -apple-system, "PingFang TC", "Microsoft JhengHei", sans-serif;
+  line-height: 1.6;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+body { margin: 0; }
+.issuer-page {
+  width: min(820px, calc(100% - 40px));
+  margin: 0 auto;
+  padding: clamp(48px, 12vw, 132px) 0 64px;
+}
+.issuer-page h1 {
+  margin: 0 0 30px;
+  font-size: clamp(33px, 6vw, 60px);
+  font-weight: 650;
+  letter-spacing: -.04em;
+  line-height: 1.12;
+}
+.issuer-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2px clamp(12px, 5vw, 32px);
+  border-bottom: 1px solid #cec8b9;
+}
+.issuer-nav a {
+  min-height: 46px;
+  padding: 10px 0;
+  border-bottom: 2px solid transparent;
+  color: #4f4b40;
+  font-size: 16px;
+  font-weight: 600;
+  text-decoration: none;
+}
+.issuer-nav a[aria-current="page"] {
+  color: #30291e;
+  border-bottom-color: #825527;
+}
+.issuer-content {
+  min-height: 168px;
+  padding: 30px 0;
+}
+.issuer-content h2 { margin: 0 0 8px; font-size: 20px; }
+.issuer-content p { margin: 12px 0 0; color: #605a4e; }
+.issuer-email { color: #674418; text-underline-offset: .18em; }
+.issuer-download {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  min-height: 46px;
+  max-width: 100%;
+  padding: 10px 16px;
+  border: 1px solid #3d3426;
+  border-radius: 6px;
+  color: #fff;
+  background: #3d3426;
+  font-weight: 600;
+  text-decoration: none;
+}
+.issuer-download:hover { background: #57482f; }
+a:focus-visible { outline: 2px solid #825527; outline-offset: 4px; }

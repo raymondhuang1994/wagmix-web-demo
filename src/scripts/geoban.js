@@ -86,7 +86,7 @@ function geoErrorMarkup() {
 function geoMarkup() {
   if (!geoModalOpen) return geoErrorMarkup() + geoPreviewControls();
   return `<div class="geo-overlay" data-geo-backdrop><section class="geo-dialog" role="dialog" aria-modal="true" aria-labelledby="geo-title" aria-describedby="geo-description geo-eligibility">
-    <div class="geo-dialog-top"><img class="geo-logo" src="${LOGO_LIGHT}" alt="WAGMIx"><div class="geo-dialog-controls"><a class="geo-language" href="${geoLanguageHref()}" lang="${L === 'zh' ? 'en' : 'zh-Hant'}">${t('EN','繁中')}</a><button class="geo-close" type="button" data-geo-dismiss aria-label="${t('關閉提示','Dismiss notice')}">×</button></div></div>
+    <div class="geo-dialog-top"><img class="geo-logo" src="${LOGO}" alt="WAGMIx"><div class="geo-dialog-controls"><a class="geo-language" href="${geoLanguageHref()}" lang="${L === 'zh' ? 'en' : 'zh-Hant'}">${t('EN','繁中')}</a><button class="geo-close" type="button" data-geo-dismiss aria-label="${t('關閉提示','Dismiss notice')}">×</button></div></div>
     <div class="geo-warning" aria-hidden="true">!</div>
     <h2 id="geo-title" tabindex="-1">${geoTitle()}</h2>
     <p id="geo-description">${geoMessage()}</p>

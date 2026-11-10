@@ -45,17 +45,9 @@ function catalog() {
         <tbody>${catalogRow('adgm')}${catalogRow('bvi')}</tbody>
       </table></div>
     </section>
-    <section class="catalog-learning wrap" aria-labelledby="catalog-learning-title">
-      <h2 id="catalog-learning-title">${t('從底層股票到鏈上產品','From underlying equity to on-chain products')}</h2>
-      <div class="catalog-asset-path">
-        <div class="catalog-asset-step"><span class="catalog-asset-symbol" aria-hidden="true">SK</span><h3>${t('SK 海力士股票','SK hynix equity')}</h3></div>
-        <span class="catalog-asset-arrow" aria-hidden="true">→</span>
-        <div class="catalog-asset-step"><span class="catalog-asset-symbol catalog-asset-hk" aria-hidden="true">HK</span><h3>7709.HK</h3><p>${t('南方東英 SK 海力士每日槓桿最多（2x）產品','CSOP SK Hynix Daily Max (2x) Leveraged Product')}</p></div>
-        <span class="catalog-asset-arrow" aria-hidden="true">→</span>
-        <div class="catalog-asset-tokens">${['adgm','bvi'].map(v=>`<a href="#/products/7709/${productCode(v)}/overview"><span aria-hidden="true">${productMark(v)}</span><strong>${productCode(v)}</strong><span aria-hidden="true">↗</span></a>`).join('')}</div>
-      </div>
-      <p class="catalog-learning-note">${t('兩款產品均以 7709.HK 為底層資產；持有人權利、交易資格及產品文件須按各產品分別查閱。','Both products reference 7709.HK. Holder rights, eligibility and documentation must be reviewed separately for each product.')}</p>
-      <div class="catalog-document-links">${['7709w','SKHY2Lw'].map(code=>`<article><h3>${code}</h3><a href="#/products/7709/${code}/terms">${t('產品資料與權利','Product details & rights')} <span aria-hidden="true">↗</span></a><a href="#/products/7709/${code}/documents">${t('產品文件','Product documents')} <span aria-hidden="true">↗</span></a></article>`).join('')}</div>
+    <section class="catalog-disclaimer wrap" aria-labelledby="catalog-disclaimer-title">
+      <h2 id="catalog-disclaimer-title">${t('免責聲明','Disclaimer')}</h2>
+      <p>${t('本頁資料僅供參考。WAGMIx 為本頁所列產品提供代幣化技術服務，並非產品發行人，亦不營運交易場所或提供投資建議。本頁資料不構成出售產品的要約、購買產品的要約招攬或收益保證。各產品的條款、參與資格及持有人權利以各自的正式交易文件及適用法律為準。','This page is for information only. WAGMIx provides tokenization technology services for the products listed here. It does not issue those products, operate a trading venue, or provide investment advice. Nothing on this page constitutes an offer to sell, a solicitation of an offer to buy, or a guarantee of returns. Each product’s terms, eligibility requirements, and holder rights are governed by its own definitive transaction documents and applicable law.')}</p>
     </section>
   </main>`;
 }

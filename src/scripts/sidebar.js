@@ -7,13 +7,20 @@ function headerSocials() {
 if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
 const productSections = [
   ['overview','產品總覽','Product overview'], ['market','底層行情','Underlying market'],
-  ['theme','底層資產投資主題','Underlying asset investment theme'], ['features','核心賣點','Key features'],
-  ['terms','產品資料與權利','Product details & rights'], ['documents','產品文件','Product documents']
+  ['theme','底層資產投資主題與市場數據','Underlying asset investment theme and market data'], ['features','核心賣點','Key features'],
+  ['terms','產品資料','Product details'], ['documents','產品文件','Product documents']
 ];
+function productSectionLabel(key) {
+  const section = productSections.find(([id]) => id === key);
+  return section ? t(section[1], section[2]) : '';
+}
+
+function cocoaIssuerHref() {
+  return pick(SITE_CONFIG.issuerPages.previewFiles);
+}
 const bviSectionIds = {market:'product-market',theme:'product-theme',features:'product-features',terms:'product-terms',documents:'product-whitepaper'};
 const adgmSectionIds = {market:'adgm-market',theme:'adgm-theme',features:'adgm-features',terms:'adgm-terms',documents:'adgm-documents'};
 let lastRoute = {page:'',chapter:'',variant:''};
-let activeCapability = 0;
 let spyPending = false;
 let lastNavKey = '';
 
@@ -58,11 +65,13 @@ function contextNav(kind,variant='bvi') {
     links = CAPABILITIES.map((capability,index) => sideLink('#/home/capabilities/' + index,`<small>0${index + 1}</small>${esc(pick(capability.title))}`,'cap-' + index,`id="cap-tab-${index}" data-cap="${index}"`)).join('');
   } else if (kind === 'product') {
     title = productCode(variant);
-    links = productSections.map(([key,zh,en],index) => sideLink('#/products/7709/' + title + '/' + key,`<small>0${index + 1}</small>${t(zh,en)}`,'product-' + key)).join('');
+    links = productSections.map(([key],index) =>
+      sideLink('#/products/7709/' + title + '/' + key,`<small>0${index + 1}</small>${productSectionLabel(key)}`,'product-' + key)
+    ).join('');
   } else {
     title = t('產品文件','Product documents');
     subtitle = 'SKHY2Lw';
-    links = sideLink('#/docs',t('文件總覽','Document overview'),'docs') + WHITEPAPER.map((chapter,index) => sideLink('#/whitepaper/' + chapter.id,`<small>${shortRefs[index]}</small>${esc(chapterNames[chapter.id])}`,'wp-' + chapter.id)).join('');
+    links = sideLink('#/docs',t('封面與目錄','Cover & contents'),'docs') + WHITEPAPER.map((chapter,index) => sideLink('#/whitepaper/' + chapter.id,`<small>${shortRefs[index]}</small>${esc(pick(chapter.sourceTitle))}`,'wp-' + chapter.id)).join('');
     meta = `<a class="context-version-link" href="#/products/7709/SKHY2Lw/documents">← ${t('返回 SKHY2Lw','Back to SKHY2Lw')}</a>`;
   }
   const toggle = kind === 'capabilities' ? '' : `<button class="context-toggle" type="button" aria-expanded="false" aria-controls="${kind}-toc"><span>${kind === 'product' ? title : t('本頁目錄','On this page')}<b data-context-current></b></span><i aria-hidden="true">⌄</i></button>`;
@@ -101,10 +110,6 @@ function setActiveNav(key) {
     const box = nav.getBoundingClientRect(), item = active.getBoundingClientRect();
     if (item.top < box.top || item.bottom > box.bottom) nav.scrollTop += item.top - box.top - 55;
   });
-}
-function selectCapability(index) {
-  activeCapability = Math.max(0,Math.min(4,Number(index) || 0));
-  setActiveNav('cap-' + activeCapability);
 }
 function capabilityOffset() {
   const nav = document.querySelector('[data-context="capabilities"]');
@@ -158,6 +163,11 @@ function route() {
     location.replace('#/products/7709/SKHY2Lw/documents');
     return;
   }
+  if ('/' + parts.slice(0, 2).join('/') === SITE_CONFIG.issuerPages.cocoa) {
+    const contact = parts[2] === 'contact' ? '#contact' : '';
+    location.replace(cocoaIssuerHref() + contact);
+    return;
+  }
   let page = 'home', variant = '', section = '', chapter = '', settlementFootnote = false;
   if (parts[0] === 'products') {
     page = parts[1] === '7709' ? 'product' : 'catalog';
@@ -170,15 +180,16 @@ function route() {
       if (section === 'mechanics') section = 'terms';
       if (variant === 'adgm' && section === 'guide') page = 'adgmguide';
       if (!productSections.some(entry => entry[0] === section) && page === 'product') section = 'overview';
-      settlementFootnote = hasProduct && variant === 'bvi' && section === 'overview' && parts[3] === 'overview' && parts[4] === 'footnote-3' && parts.length === 5;
-      const canonicalHash = '#/products/7709/' + productCode(variant) + '/' + section + (settlementFootnote ? '/footnote-3' : '');
+      settlementFootnote = hasProduct && variant === 'bvi' && parts[3] === 'overview' &&
+        ['footnote-1', 'footnote-3'].includes(parts[4]) && parts.length === 5;
+      const canonicalHash = '#/products/7709/' + productCode(variant) + '/' + section + (settlementFootnote ? '/footnote-1' : '');
       if (location.hash !== canonicalHash) {
         location.replace(canonicalHash);
         return;
       }
     }
   } else if (parts[0] === 'whitepaper') {
-    page = 'whitepaper'; variant = 'bvi'; chapter = parts[1] || 'summary';
+    page = 'whitepaper'; variant = 'bvi'; chapter = parts[1] || 'information';
   } else if (parts[0] === 'docs') {
     page = 'docs'; variant = 'bvi';
   } else if (parts[0] === 'ecosystem') page = 'ecosystem';
@@ -196,15 +207,16 @@ function route() {
   lastRoute = {page,chapter,variant};
   document.getElementById('language-switch').href = geoLanguageHref();
   closeNavigation();
-  if (page === 'home') selectCapability(parts[1] === 'capabilities' ? parts[2] || 0 : activeCapability);
-  setActiveNav(page === 'product' ? 'product-' + section : page === 'adgmguide' ? 'product-documents' : page === 'whitepaper' ? 'wp-' + chapter : page === 'docs' ? 'docs' : 'cap-' + activeCapability);
+  setActiveNav(page === 'product' ? 'product-' + section : page === 'adgmguide' ? 'product-documents' : page === 'whitepaper' ? 'wp-' + chapter : page === 'docs' ? 'docs' : '');
   const capabilityRoute = page === 'home' && parts[1] === 'capabilities' && parts[2] !== undefined;
+  const capabilityNote = page === 'home' && parts[1] === 'capability-note-3';
+  const capabilityIndex = Math.max(0,Math.min(CAPABILITIES.length - 1,Math.trunc(Number(parts[2]) || 0)));
   const ids = variant === 'adgm' ? adgmSectionIds : bviSectionIds;
-  const anchor = settlementFootnote ? 'product-source-note-3' : page === 'home' ? (capabilityRoute ? 'capability-' + activeCapability : parts[1]) : page === 'product' ? ids[section] : page === 'ecosystem' && parts[1] === 'directory' ? 'ecosystem-directory' : page === 'whitepaper' && parts[2] ? 'wp-' + parts[2] : null;
+  const anchor = settlementFootnote ? 'product-source-note-1' : page === 'home' ? (capabilityRoute ? 'capability-' + capabilityIndex : parts[1]) : page === 'product' ? ids[section] : page === 'ecosystem' && parts[1] === 'directory' ? 'ecosystem-directory' : page === 'whitepaper' && parts[2] ? 'wp-' + parts[2] : null;
   requestAnimationFrame(() => {
     const target = (anchor && document.getElementById(anchor)) || document.getElementById('main');
     if (!target) return;
-    if (fromMenu || settlementFootnote) { target.setAttribute('tabindex','-1'); target.focus({preventScroll:true}); }
+    if (fromMenu || settlementFootnote || capabilityRoute || capabilityNote) { target.setAttribute('tabindex','-1'); target.focus({preventScroll:true}); }
     if (settlementFootnote) scrollToProductFootnote(target);
     else if (capabilityRoute) scrollToCapability(target);
     else if (anchor && document.getElementById(anchor)) target.scrollIntoView({behavior:'instant',block:'start'});
@@ -217,16 +229,10 @@ function scrollSpy() {
   requestAnimationFrame(() => {
     spyPending = false;
     const page = document.body.dataset.page;
-    if (page === 'home') {
-      let active = 0;
-      const cut = capabilityOffset() + 40;
-      document.querySelectorAll('[data-capability]').forEach((element,index) => { if (element.getBoundingClientRect().top <= cut) active = index; });
-      selectCapability(active);
-      return;
-    }
     if (page !== 'product') return;
     const ids = document.body.dataset.variant === 'adgm' ? adgmSectionIds : bviSectionIds;
-    const cut = innerWidth <= 900 ? 200 : 150;
+    const scrollPadding = parseFloat(getComputedStyle(document.documentElement).scrollPaddingTop) || 0;
+    const cut = Math.max(innerWidth <= 900 ? 200 : 150, scrollPadding + 4);
     let key = 'product-overview';
     for (const [section,id] of Object.entries(ids)) {
       const element = document.getElementById(id);

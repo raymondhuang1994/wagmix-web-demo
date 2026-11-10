@@ -1,10 +1,10 @@
 /* BVI SKHY2Lw product: V8 factsheet marketing and formal product terms. */
 const productMarketingNotes = {
  funding:
- t('0 資金費不代表所有費用為零，申贖費及託管費仍適用。每日再平衡、路徑依賴及跟蹤偏差可影響對沖結果；套利收益並不獲保證。','Zero funding fees do not mean zero total costs; subscription, redemption and custody fees still apply. Daily rebalancing, path dependency and tracking difference may affect hedging results. Arbitrage income is not guaranteed.'),
- backing:t('營運資產可包括 7709.HK 單位、現金或現金等價物。每枚代幣代表一份無抵押票據，持有人依交易文件取得對 7709.HK 的合約經濟敞口，並不擁有底層資產。這些營運資產屬於發行人，不構成票據抵押品，亦不為持有人設置信託。','Operational assets may include 7709.HK units, cash or cash equivalents. Each token represents one unsecured Note and gives holders contractual economic exposure to 7709.HK under the transaction documents, without ownership of the underlying assets. These operational assets belong to the issuer, do not secure the Notes and are not held on trust for holders.'),
- liquidity:t('做市商可支持二級流動性，但不保證市場持續活躍或具流動性；報價及交易可能受限制或暫停。','Market makers may support secondary liquidity, but an active or liquid market is not guaranteed. Quotations and trading may be restricted or suspended.'),
- access:t('錢包接入不豁免投資者資格、交易平台及轉讓限制。申贖須符合 KYC／AML／KYT 等要求；稅務待遇取決於持有人情況及司法管轄區，應取得獨立稅務意見。','Wallet access does not waive eligibility, venue or transfer restrictions. Creation and redemption remain subject to KYC/AML/KYT and other requirements. Tax treatment depends on the holder and jurisdiction; independent tax advice should be obtained.')
+ t('0 資金費不代表所有費用為零，申贖費、託管費及其他發行／贖回相關費用仍適用。','Zero funding fees do not mean zero total costs; subscription, redemption and custody fees, as well as other issuance and redemption-related fees, still apply.'),
+ backing:t('提供支持的資產可包括 7709.HK 單位、現金或現金等價物。每枚代幣代表一份無抵押票據，持有人依交易文件取得對 7709.HK 的合約經濟敞口，並不擁有底層資產。這些營運資產屬於發行人，不構成票據抵押品，亦不為持有人設置信託。','Backing assets may include 7709.HK units, cash or cash equivalents. Each token represents one unsecured Note and gives holders contractual economic exposure to 7709.HK under the transaction documents, without ownership of the underlying assets. These operational assets belong to the issuer, do not secure the Notes and are not held on trust for holders.'),
+ liquidity:t('做市商可支持二級流動性，但不保證市場持續活躍或具流動性；在特定條件下，報價及交易可能受限制或暫停。','Market makers may support secondary liquidity, but an active or liquid market is not guaranteed. Quotations and trading may be restricted or suspended under certain conditions.'),
+ access:t('錢包接入不豁免投資者資格、交易平台及轉讓限制。申贖須符合 KYC／AML／KYT 及其他適用要求；稅務待遇取決於持有人情況及司法管轄區，應取得獨立稅務意見。','Wallet access does not waive eligibility, venue or transfer restrictions. Creation and redemption remain subject to KYC/AML/KYT and other applicable requirements. Tax treatment depends on the holder and jurisdiction; independent tax advice should be obtained.')
 };
 const productFeatureMeta = {funding:{symbol:'0%',chapter:'technology'},backing:{symbol:'1:1',chapter:'token'},liquidity:{symbol:'24/7',chapter:'offer'},access:{symbol:'↗',chapter:'disclaimer'}};
 function productCoin() {
@@ -15,14 +15,18 @@ function productCoin() {
 }
 
 function product() {
- return `<main id="main" class="p-page">
+ const settlementNote = t(
+  'WAGMIx 僅為代幣化技術服務供應商，不營運任何交易場所。SKHY2Lw 一級申贖的 T0 交收由獲批參與交易商辦理，僅限合資格專業投資者。港股交易時段內外均可進行 T0 交收，須具備可靠估值及交收條件。代幣於相關第三方交易場所進行 24/7 二級交易。非港股交易時段之價格僅供參考。',
+  'WAGMIx provides tokenization services only and does not operate a trading venue. T0 primary settlement is through approved PDs for eligible professional investors. T0 may occur in or outside Hong Kong market hours, subject to reliable valuation and settlement. Secondary token trading takes place 24/7 on third-party venues. Off-hours prices are indicative.'
+ );
+ return `<main id="main" class="p-page skhy-page">
   <section class="p-hero"><div class="wrap">
 
    <div class="p-hero-layout">
     <div class="p-hero-copy">
      <span class="pill">${t('即將上線','Coming soon')}</span>
-     <h1>WAGMIx SK Hynix<br><em>Daily Max (2x)</em></h1>
-     <p class="p-hero-slogan">${t('全球首個支持一級申贖 T0 交收³及二級市場 24/7 交易的代幣化產品','The world’s first tokenized product to combine T0 settlement³ for primary subscriptions and redemptions with 24/7 secondary trading')}</p>
+     <h1>WAGMIx SK Hynix<br><em>Daily Max (2x)</em> <span class="p-token-word">Token</span></h1>
+     <p class="p-hero-slogan">${t('全球首個支持一級申贖 T0 交收¹及二級市場 24/7 交易的代幣化產品','The world’s first tokenized product to support T0 settlement¹ for primary subscriptions and redemptions, with 24/7 secondary trading')}</p>
      <div class="p-hero-meta">
       <span>${t('底層資產','Underlying asset')} <b>7709.HK</b></span>
       <span>${t('計劃首發','Planned launch')} <b>${launchDateLabel('long')}</b></span>
@@ -31,20 +35,19 @@ function product() {
       <a class="btn" href="#/products/7709/SKHY2Lw/terms">${t('查看產品資料','View product details')} ${arrow}</a>
       <button class="p-trading-pending" type="button" disabled>${chainIcon('solana')}${t('Solana · 即將開放','Solana · Coming soon')}</button>
      </div>
-     <div class="p-hero-download">${downloadLink('factsheet',t('產品單頁下載','Download factsheet'),'p-factsheet-link')}<span>${t('繁體中文 · PDF','English · PDF')}</span></div>
     </div>
     ${productCoin()}
    </div>
-   <p class="p-t0" id="product-source-note-3">${t0}</p>
+   <p class="p-t0" id="product-source-note-1">¹ ${esc(settlementNote)}</p>
   </div></section>
   <div class="p-tab-content" id="product-content">${productMarket()}${productTheme()}${productFeatures()}${productTerms()}${productWhitepaper()}${productDisclaimer()}</div>
  </main>`;
 }
 function productFeatures(){
  return `<section class="p-section" id="product-features"><div class="wrap">
-  <div class="p-section-heading"><div><div class="eyebrow">${t('核心賣點','Key features')}</div><h2>${t('四大核心賣點','Four Core Selling Points')}</h2></div></div>
+  <div class="p-section-heading"><h2>${esc(productSectionLabel('features'))}</h2></div>
   <div class="p-feature-grid">${PRODUCT_FEATURES.map((s,i)=>`<article class="p-feature p-feature-${i}" data-feature="${s.id}"><div class="p-feature-top"><span>0${i+1}</span><div class="p-feature-symbol" aria-hidden="true">${productFeatureMeta[s.id].symbol}</div></div><h3>${esc(pick(s.title))}<sup class="feature-ref">${String.fromCharCode(97+i)}</sup></h3><p class="p-feature-copy">${esc(pick(s.copy))}</p></article>`).join('')}</div>
-  <ol class="product-feature-notes" type="a" aria-label="${t('賣點適用條件','Feature conditions')}">${PRODUCT_FEATURES.map(s=>`<li>${productMarketingNotes[s.id]} <a href="#/whitepaper/${productFeatureMeta[s.id].chapter}">${t('相關條款','Related terms')} ↗</a></li>`).join('')}</ol>
+  <ol class="product-feature-notes" type="a" aria-label="${t('賣點適用條件','Feature conditions')}">${PRODUCT_FEATURES.map(s=>`<li>${productMarketingNotes[s.id]}</li>`).join('')}</ol>
  </div></section>`;
 }
 
@@ -63,6 +66,10 @@ function productTheme() {
      <h2>${esc(pick(theme.hbmTitle))}<sup>¹</sup></h2>
     </div>
    </div>
+   <details class="sk-profile-details">
+    <summary><span>${t('進一步了解 SK 海力士','Know more about SK hynix')}</span><span class="sk-profile-toggle" aria-hidden="true">+</span></summary>
+    <div class="sk-profile-content">${skHynixProfile()}</div>
+   </details>
    <div class="p-metrics p-metrics-four">
     <article class="p-metric p-metric-objective">
      <div class="p-metric-label">${t('每日槓桿最多','Maximum daily leverage')}</div>
@@ -94,7 +101,6 @@ function productTheme() {
     <p>² ${esc(pick(CONTENT.productFootnotes.market))}</p>
     <p>${t('歷史數據不代表未來表現、流動性或需求。每日槓桿不等於長期累計兩倍回報。','Historical figures do not indicate future performance, liquidity or demand. Daily leverage does not imply twice the cumulative return over longer periods.')}</p>
    </div>
-   ${skHynixProfile()}
   </div>
  </section>`;
 }
@@ -116,49 +122,53 @@ function priceChart(mode='line'){
  const candle=rows.map(p=>{const color=p.close>=p.open?'#009a85':'#e16c77';return `<g><title>${p.date} · ${t('開市','O')} ${p.open} ${t('最高','H')} ${p.high} ${t('最低','L')} ${p.low} ${t('收市','C')} ${p.close}</title><line x1="${x(p.date)}" x2="${x(p.date)}" y1="${y(p.high)}" y2="${y(p.low)}" stroke="${color}" stroke-width="1.4"/><rect x="${x(p.date)-7}" y="${Math.min(y(p.open),y(p.close))}" width="14" height="${Math.max(2,Math.abs(y(p.open)-y(p.close)))}" rx="1" fill="${color}"/></g>`;}).join('');
  return `<svg class="p-price-chart-svg" viewBox="0 0 ${W} ${H}" role="img" aria-label="${t('7709.HK 歷史價格：2026年9月30日至10月28日，已取得的19個交易日，港元。','7709.HK historical prices: 19 available trading days from 30 September to 28 October 2026, in HKD.')}"><defs><linearGradient id="chart-fill" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#1688ee" stop-opacity=".22"/><stop offset="1" stop-color="#1688ee" stop-opacity=".01"/></linearGradient></defs>${grid}${mode==='line'?`<path d="${path} L${x(last.date)},${y(lo)} L${left},${y(lo)} Z" fill="url(#chart-fill)"/><path d="${path}" fill="none" stroke="#1678ed" stroke-width="3" stroke-linejoin="round"/>${points}`:candle}${ticks}<line x1="${left}" x2="${W-right}" y1="${y(last.close)}" y2="${y(last.close)}" stroke="#1688ee" stroke-opacity=".3" stroke-dasharray="4 4"/><rect x="${W-right+8}" y="${y(last.close)-12}" width="53" height="24" rx="5" fill="#1678ed"/><text x="${W-right+34}" y="${y(last.close)+4}" fill="white" font-size="16" text-anchor="middle">${last.close.toFixed(2)}</text></svg>`;
 }
-function marketPanel(){const last=HISTORY.prices.at(-1),prev=HISTORY.prices.at(-2),change=last.close-prev.close;return `<div class="market-panel"><div class="market-head"><div><div class="market-security"><span>7709</span><div><b>${t('港交所','HKEX')} · 7709.HK</b><small>${t('南方東英 SK 海力士每日槓桿最多（2x）產品','CSOP SK Hynix Daily Max (2x) Leveraged Product')}</small></div></div><div class="market-price">${last.close.toFixed(3)}<span>${t('港元','HKD')}</span></div><div class="market-change">+${change.toFixed(3)} (+${(change/prev.close*100).toFixed(2)}%) <span>${t('較前一筆收市價','vs. prior available close')}</span></div></div><div class="market-status"><span>◷ ${t('歷史收市快照 · 非即時行情','HISTORICAL CLOSE · NOT LIVE')}</span><p>${t('2026.10.28 收市快照','28 Oct 2026 · closing snapshot')}</p></div></div><div class="chart-tools"><div class="chart-period">${t('已取得交易日','Available trading days')} <b>2026.09.30 — 10.28</b></div><div class="chart-switch" role="group" aria-label="${t('圖表類型','Chart type')}"><button data-chart="line" class="selected" aria-pressed="true">${t('走勢','Line')}</button><button data-chart="candle" aria-pressed="false">${t('K 線','Candles')}</button></div></div><div class="chart-area" id="price-chart">${priceChart()}</div><div class="market-stats">${[[t('開市','Open'),last.open.toFixed(3)],[t('最高','High'),last.high.toFixed(3)],[t('最低','Low'),last.low.toFixed(3)],[t('成交量','Volume'),t('1.731 億','173.13M')]].map(r=>`<div><small>${r[0]}</small><strong>${r[1]}</strong></div>`).join('')}</div><div class="chart-source">${t('來源：','Source: ')}<a href="https://finance.yahoo.com/quote/7709.HK/history/" target="_blank" rel="noopener">${t('Yahoo 財經','Yahoo Finance')}</a> · ${t('底層上市產品價格，並非 SKHY2Lw 代幣成交價。線段連接已取得的歷史報價，不補算缺失日期。','Underlying listed-product prices, not SKHY2Lw token execution prices. Lines connect available historical observations; missing dates are not imputed.')}</div><details class="chart-data"><summary>${t('查看圖表數據','View chart data')} <span>↓</span></summary><div class="chart-table-scroll"><table><thead><tr><th>${t('日期','Date')}</th><th>${t('收市價（港元）','Close (HKD)')}</th><th>${t('成交量','Volume')}</th></tr></thead><tbody>${HISTORY.prices.map(p=>`<tr><td>${p.date}</td><td>${p.close.toFixed(3)}</td><td>${p.volume.toLocaleString('en-US')}</td></tr>`).join('')}</tbody></table></div></details></div>`;}
-function productMarket(){return `<section class="p-section" id="product-market"><div class="wrap"><div class="p-section-heading"><div><div class="eyebrow">${t('底層行情','Underlying market')}</div><h2>${t('底層市場價格可作為代幣估值參考，<br>代幣成交價可能與之不同。','Underlying market prices provide a reference for token valuation;<br>token execution prices may differ.')}</h2></div></div>${marketPanel()}<div class="p-market-notes" role="note"><p><span class="market-note-number" aria-hidden="true">1.</span><strong>${t('底層產品按港股市場時段交易。','The underlying product follows Hong Kong market hours.')}</strong> ${t('圖表為 7709.HK 歷史行情，並非 SKHY2Lw 的二級市場報價。','The chart shows 7709.HK historical prices, not SKHY2Lw secondary-market quotations.')}</p><p><span class="market-note-number" aria-hidden="true">2.</span><strong>${t('代幣成交價可偏離指示價值。','Token execution prices may differ from indicative value.')}</strong> ${t('非底層交易時段的估值僅供指示；報價、交易及申贖可受限制或暫停。','Values outside underlying trading hours are indicative. Quotations, trading and creation or redemption may be limited or suspended.')}</p></div></div></section>`;}
+function marketPanel(){const last=HISTORY.prices.at(-1),prev=HISTORY.prices.at(-2),change=last.close-prev.close;return `<div class="market-panel"><div class="market-head"><div><div class="market-security"><span>7709</span><div><b>${t('港交所','HKEX')} · 7709.HK</b><small>${t('南方東英 SK 海力士每日槓桿最多（2x）產品','CSOP SK Hynix Daily Max (2x) Leveraged Product')}</small></div></div><div class="market-price">${last.close.toFixed(3)}<span>${t('港元','HKD')}</span></div><div class="market-change">+${change.toFixed(3)} (+${(change/prev.close*100).toFixed(2)}%) <span>${t('較前一筆收市價','vs. prior available close')}</span></div></div><div class="market-status"><span>◷ ${t('歷史收市快照 · 非即時行情','HISTORICAL CLOSE · NOT LIVE')}</span><p>${t('2026.10.28 收市快照','28 Oct 2026 · closing snapshot')}</p></div></div><div class="chart-tools"><div class="chart-period">${t('已取得交易日','Available trading days')} <b>2026.09.30 — 10.28</b></div><div class="chart-switch" role="group" aria-label="${t('圖表類型','Chart type')}"><button data-chart="line" class="selected" aria-pressed="true">${t('走勢','Line')}</button><button data-chart="candle" aria-pressed="false">${t('K 線','Candles')}</button></div></div><div class="chart-area" id="price-chart">${priceChart()}</div><div class="market-stats">${[[t('開市','Open'),last.open.toFixed(3)],[t('最高','High'),last.high.toFixed(3)],[t('最低','Low'),last.low.toFixed(3)],[t('成交量','Volume'),t('1.731 億','173.13M')]].map(r=>`<div><small>${r[0]}</small><strong>${r[1]}</strong></div>`).join('')}</div><details class="chart-data"><summary>${t('查看圖表數據','View chart data')} <span>↓</span></summary><div class="chart-table-scroll"><table><thead><tr><th>${t('日期','Date')}</th><th>${t('收市價（港元）','Close (HKD)')}</th><th>${t('成交量','Volume')}</th></tr></thead><tbody>${HISTORY.prices.map(p=>`<tr><td>${p.date}</td><td>${p.close.toFixed(3)}</td><td>${p.volume.toLocaleString('en-US')}</td></tr>`).join('')}</tbody></table></div></details></div>`;}
+function productMarket(ticker = 'SKHY2Lw') {
+ const adgm = ticker === '7709w';
+ return `<section class="p-section p-market-reviewed" id="${adgm ? 'adgm-market' : 'product-market'}"><div class="wrap">
+   <h2 class="p-market-title">${esc(productSectionLabel('market'))}</h2>
+   ${marketPanel()}
+   <div class="p-market-notes" role="note"><p>
+    <span class="market-note-number" aria-hidden="true">1.</span>
+    <span><strong>${t('底層產品按香港交易所（HKEX）的市場時段交易。','The underlying product follows Hong Kong Stock Exchange (HKEX) market hours.')}</strong>
+    ${t(`圖表為 7709.HK 歷史行情，並非 ${ticker} 的二級市場報價。`, `The chart shows 7709.HK historical prices, not ${ticker} secondary-market quotations.`)}
+    ${t('來源：','Source: ')}<a href="https://finance.yahoo.com/quote/7709.HK/history/" target="_blank" rel="noopener noreferrer">${t('Yahoo 財經','Yahoo Finance')}</a>.
+    ${t('線段連接已取得的歷史報價，不補算缺失日期。','Lines connect available historical observations; missing dates are not imputed.')}</span>
+   </p>${adgm ? `<p><span class="market-note-number" aria-hidden="true">2.</span>
+    <span><strong>${t('代幣成交價可偏離指示價值。','Token execution prices may differ from indicative value.')}</strong>
+    ${t('非底層交易時段的估值僅供指示；報價、交易及申贖可受限制或暫停。','Values outside underlying trading hours are indicative. Quotations, trading and creation or redemption may be limited or suspended.')}</span>
+   </p>` : ''}</div>
+  </div></section>`;
+}
 function productTerms() {
  const facts = [
   [t('代幣代碼','Ticker'), 'SKHY2Lw'],
-  [t('發行架構／網絡','Structure / network'), 'BVI / Solana'],
-  [t('完整產品名稱','Product name'), 'WAGMIx SK Hynix Daily Max (2x)'],
+  [t('區塊鏈','Blockchain'), 'Solana'],
+  [t('完整產品名稱','Product name'), 'WAGMIx SK Hynix Daily Max (2x) Token'],
   [t('底層參考資產','Underlying reference asset'), t('南方東英 SK 海力士每日槓桿最多（2x）產品（7709.HK）','CSOP SK Hynix Daily Max (2x) Leveraged Product (7709.HK)')],
-  [t('票據性質','Instrument'), t('永續、無抵押、非後償票據','Perpetual, unsecured, unsubordinated Notes')],
+  [t('票據性質','Instrument'), t('票據','Notes')],
   [t('計價貨幣','Denomination'), 'USDT / USDC'],
-  [t('計劃交易對','Planned trading pairs'), t(
+  [t('交易對','Trading pairs'), t(
    'SKHY2Lw/USDT、SKHY2Lw/USDC；實際上線時間及交易對以交易場所支持及公告為準。',
    'SKHY2Lw/USDT and SKHY2Lw/USDC; availability and launch timing are subject to venue support and announcements.'
   )],
   [t('交收與交易時段','Settlement and trading hours'), t(
-   '一級申贖於港股交易時段內外均可進行 T0 交收³。二級市場全天候交易。',
-   'Primary subscriptions and redemptions are eligible for T0 settlement³ both during and outside of Hong Kong market hours. Secondary trading is available 24/7.'
+   '一級申贖於港股交易時段內外均可進行 T0 交收。二級市場全天候交易。',
+   'Primary subscriptions and redemptions are eligible for T0 settlement both during and outside of Hong Kong market hours. Secondary trading is available 24/7.'
   )],
-  [t('一級申購','Primary subscriptions'), t(
-   '獲發行人批准的投資者可透過參與交易商（PD），以現金、支持的穩定幣或合資格資產實物申購。',
-   'Issuer-approved investors may subscribe in cash, supported stablecoins or in kind with eligible assets via a Participating Dealer (“PD”).'
+  [t('申購及贖回','Subscription and Redemption'), t(
+   '獲發行人批准的投資者可透過參與交易商（PD），以現金、支持的穩定幣或合資格資產實物申購及贖回。',
+   'Issuer-approved investors may subscribe and redeem in cash, supported stablecoins or in kind with eligible assets via a Participating Dealer (“PD”).'
   )],
-  [t('受控鑄造','Controlled minting'), t(
-   '全額收到已結清款項或適用的合資格資產，並滿足發行及交收條件後，方受控鑄造及交付代幣。每枚代幣代表一份票據。',
-   'Tokens are minted under controlled permissions and delivered only after receipt in full of cleared funds or applicable eligible assets and satisfaction of issuance and settlement conditions. Each token represents one Note.'
-  )],
-  [t('一級贖回','Primary redemptions'), t(
-   '獲發行人批准的投資者可透過 PD，以現金、支持的穩定幣或合資格資產實物贖回。',
-   'Issuer-approved investors may redeem in cash, supported stablecoins or in kind with eligible assets via a PD.'
-  )],
-  [t('一級申贖門檻','Primary minimum'), t(
+  [t('最低規模','Minimum Size'), t(
    '一級市場每筆申購或贖回最低為 100,000 份票據；此門檻不適用於二級市場交易。最終交易文件另有指定或議定最低數量或倍數者除外。',
    'The minimum is 100,000 Notes per primary subscription or redemption (this minimum does not apply to secondary-market trades), unless another minimum or multiple is specified or agreed under the definitive transaction documents.'
   )],
-  [t('資金費與一級申贖費','Funding and primary dealing fees'), t(
-   '產品不收取資金費。獲發行人批准的投資者每次申購及贖回各支付 0.10% 的費用。',
-   'The product charges no funding fee. Issuer-approved investors pay 0.10% on each subscription and 0.10% on each redemption.'
+  [t('費用','Fees'), t(
+   '產品不收取資金費。獲發行人批准的投資者每次申購及贖回各支付 0.10% 的費用。另按託管底層資產計收每年 0.25% 的託管費。較低費率須逐案獲批。',
+   'The product charges no funding fee. Issuer-approved investors pay 0.10% on each subscription and 0.10% on each redemption. A 0.25% per annum custody fee is based on the Underlying Asset under Custody. Lower fees are subject to approval on a case-by-case basis.'
   )],
-  [t('託管費','Custody fee'), t(
-   '按託管底層資產計收每年 0.25% 的託管費。較低費率須逐案獲批。',
-   'A 0.25% per annum custody fee is based on the Underlying Asset under Custody. Lower fees are subject to approval on a case-by-case basis.'
-  )],
-  [t('發行人','Issuer'), t('Cocoa Issuer Limited · 英屬維爾京群島特殊目的公司','Cocoa Issuer Limited · BVI SPV')],
+  [t('發行人','Issuer'), 'Cocoa Issuer Limited', cocoaIssuerHref()],
   [t('底層資產託管','Underlying asset custody'), t(
    '復星國際證券有限公司作為持牌券商承擔託管職責，持有底層 7709.HK 單位，以實際持倉提供 1:1 支持。',
    'Fosun International Securities Limited, a licensed broker acting as custodian, holds the underlying 7709.HK units, with actual holdings providing 1:1 backing.'
@@ -168,23 +178,24 @@ function productTerms() {
    'WAGMIx, the 24/7 tokenization platform, handles the end-to-end tokenization structuring and operations.'
   )],
   [t('技術支持','Technology support'), t(
-   'Finloop Finance Limited 提供技術支持。',
-   'Finloop Finance Limited provides technology support.'
+   '星路金融科技服務有限公司提供技術支持。',
+   'Finloop Finance Technology Services Limited provides technology support.'
   )],
   [t('適用法律','Governing law'), t('英格蘭法律','English law')]
  ];
  return `<section class="p-section" id="product-terms">
   <div class="wrap">
-   <div class="p-section-heading"><div>
-    <div class="eyebrow">${t('產品資料與權利','Product details & rights')}</div>
-    <h2>${t('產品條款界定代幣參數與持有人權利。','The product terms define token parameters and holder rights.')}</h2>
-   </div><p>${t('下列產品摘要已按最新版產品單頁更新。白皮書原文保持原版本；如文件版本存在差異，須核對最終交易文件。','This product summary reflects the latest factsheet. The white paper is retained in its original version; any differences between versions should be checked against the definitive transaction documents.')}</p></div>
+   <div class="p-section-heading"><h2>${esc(productSectionLabel('terms'))}</h2></div>
    <div class="p-terms-grid">
-    <div class="p-facts"><h3>${t('產品參數以最終交易文件為準。','Definitive transaction documents govern the product terms.')}</h3>
-     <dl>${facts.map(([label,value])=>`<div><dt>${esc(label)}</dt><dd>${esc(value)}</dd></div>`).join('')}</dl>
+    <div class="p-facts">
+     <dl>${facts.map(([label,value,href])=>`<div><dt>${esc(label)}</dt><dd>${href ? `<a class="p-issuer-link" href="${href}">${esc(value)} ${arrow}</a>` : esc(value)}</dd></div>`).join('')}</dl>
+     <div class="p-source-notes p-terms-notes" role="note"><p>${t(
+      '下列產品摘要已按最新版產品單頁更新。如本產品單頁與最終法律文件有任何差異，概以最終法律文件為準。',
+      "This product summary reflects the latest factsheet. If there's any difference between this factsheet and the definitive legal documents, the latter shall prevail."
+     )}</p></div>
     </div>
     <div class="p-rights"><span class="p-small-label">${t('持有人權利','HOLDER RIGHTS')}</span>
-     <h3>${t('每枚代幣代表一份無抵押票據。','Each token represents one unsecured Note.')}</h3>
+     <h3>${t('實物 1:1 支持','Real 1:1 Backing')}</h3>
      <div class="p-rights-count"><span>1 <small>${t('代幣','Token')}</small></span><i>=</i><span>1 <small>${t('票據','Note')}</small></span></div>
      <p>${t('持有人享有與 7709.HK 掛鈎的合約經濟利益，可透過獲批參與交易商申請贖回，亦可在適用轉讓限制下全天候轉讓代幣。','Holders receive contractual economic benefits linked to 7709.HK. They may request redemption through an approved PD and transfer their tokens around the clock, subject to applicable transfer restrictions.')}</p>
      <p>${t('持有人並不取得底層 7709.HK 單位的所有權或實益權益。發行人可持有 7709.HK 單位、現金或現金等價物作對沖及營運用途。該等資產不構成票據抵押，亦不為持有人設置信託。權利、贖回及交收均須遵守最終交易文件。','Holders do not acquire ownership or a beneficial interest in the underlying 7709.HK units. The issuer may hold 7709.HK units, cash or cash equivalents for hedging and operations. These assets do not secure the Notes and are not held on trust for holders. Rights, redemption and settlement remain subject to the definitive transaction documents.')}</p>
@@ -195,4 +206,24 @@ function productTerms() {
  </section>`;
 }
 
-function productWhitepaper(prefix='product'){return `<section class="p-section" id="${prefix}-whitepaper"><div class="wrap"><div class="p-paper-intro"><div><span class="eyebrow">${t('產品文件','Product documents')}</span><h2>${t('按章閱讀白皮書，了解完整條款。','Read the white paper by chapter to understand the full terms.')}</h2><p>${t('白皮書按章節說明產品、交易安排、持有人權利、技術及風險，網頁提供導讀及中英節選，完整條款見英文 PDF。','The white paper covers the product, trading, rights, technology and risks by chapter. Read chapter guides and selected excerpts; download the English white paper for the complete terms.')}</p><div class="p-document-actions"><a class="btn" href="#/whitepaper/summary">${t('閱讀產品白皮書','Read the Product White Paper')} ${arrow}</a>${downloadLink('whitepaper',t('下載白皮書','Download White Paper'))}</div><span class="p-download-language">${t('白皮書下載：英文原文 · PDF','White paper download: English original · PDF')}</span></div><div class="p-paper-cover"><img class="paper-logo brand-plate" src="${LOGO}" alt="WAGMIx"><b>SKHY2Lw</b><strong>${t('產品<br>白皮書','Product<br>White Paper')}</strong><div>${t('產品白皮書','PRODUCT WHITE PAPER')} <i>↗</i></div></div></div><div class="p-paper-tiles">${[['token',t('代幣與參考資產','Token & reference asset'),t('每枚代幣代表一份票據，並不賦予 7709 的所有權。','Each Token represents one Note and does not confer ownership of 7709.')],['offer',t('申贖、交易與定價','Creation, trading & pricing'),t('一級申贖須經獲批 PD，二級成交價可偏離指示價值。','Primary access requires approved PDs; secondary prices may differ from indicative value.')],['rights',t('持有人權利','Holder rights'),t('權利及贖回程序由最終交易文件界定。','Definitive transaction documents govern rights and redemption procedures.')],['risks',t('投資及營運風險','Investment & operational risks'),t('槓桿、發行人信用及交易中斷均可能導致損失。','Leverage, issuer credit and trading disruptions may cause loss.')]].map((r,i)=>`<a href="#/whitepaper/${r[0]}"><span>0${i+1} <i>↗</i></span><h3>${r[1]}</h3><p>${r[2]}</p></a>`).join('')}</div><p class="p-source-notes">${t('中文譯文僅供參考；如與英文原文存在任何歧義或不一致，概以英文原文為準。產品權利義務及文件適用順序，依最終交易文件的約定確定。','The Chinese translation is for reference only. In the event of ambiguity or inconsistency, the English original prevails. Product rights, obligations and document precedence are governed by the definitive transaction documents.')}</p></div></section>`;}
+function productWhitepaper(prefix='product') {
+ return `<section class="p-section" id="${prefix}-whitepaper"><div class="wrap">
+  <div class="p-paper-intro">
+   <div>
+    <h2>${esc(productSectionLabel('documents'))}</h2>
+    <p class="p-document-lead">${t('按章閱讀白皮書，了解完整條款。','Read the white paper by chapter to understand the full terms.')}</p>
+    <p>${t('按章查閱完整英文原文，或下載英文白皮書 PDF。','Read the complete English white paper by chapter or download the PDF.')}</p>
+    <div class="p-document-actions">
+     <a class="btn" href="#/whitepaper/information">${t('閱讀白皮書','Read White Paper')} ${arrow}</a>
+     ${downloadLink('whitepaper',t('下載白皮書','Download White Paper'))}
+    </div>
+   </div>
+   <div class="p-paper-cover">
+    <img class="paper-logo brand-plate" src="${LOGO}" alt="WAGMIx"><b>SKHY2Lw</b>
+    <strong>${t('產品<br>白皮書','Product<br>White Paper')}</strong>
+    <div>${t('產品白皮書','PRODUCT WHITE PAPER')} <i>↗</i></div>
+   </div>
+  </div>
+  <p class="p-source-notes">${t('中文譯文僅供參考；如與英文原文存在任何歧義或不一致，概以英文原文為準。產品權利義務及文件適用順序，依最終交易文件的約定確定。','The Chinese translation is for reference only. In the event of ambiguity or inconsistency, the English original prevails. Product rights, obligations and document precedence are governed by the definitive transaction documents.')}</p>
+ </div></section>`;
+}

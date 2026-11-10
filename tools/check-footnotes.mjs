@@ -8,8 +8,8 @@ import {fileURLToPath} from 'node:url';
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const read = name => fs.readFileSync(path.join(root,name),'utf8');
 const config = JSON.parse(read('src/data/site-config.json'));
-const deepLink = '#/products/7709/SKHY2Lw/overview/footnote-3';
-const noteId = 'product-source-note-3';
+const deepLink = '#/products/7709/SKHY2Lw/overview/footnote-1';
+const noteId = 'product-source-note-1';
 const constants = {
   CONTENT: JSON.parse(read('src/data/content-map.json')),
   HISTORY: JSON.parse(read('src/data/7709-history.json')),
@@ -62,6 +62,7 @@ function fixture(lang,width,initialHash='#/') {
   };
   const history={scrollRestoration:'auto',back(){if(cursor>0){cursor--;pending=true;}},forward(){if(cursor<stack.length-1){cursor++;pending=true;}}};
   const ctx=vm.createContext({document,location,history,innerWidth:width,console,scrollY:0,
+    getComputedStyle:()=>({scrollPaddingTop:width<=600?'202px':width<=900?'155px':'120px'}),
     requestAnimationFrame(fn){fn();},scrollTo(options){ctx.scrollY=options.top;scrolls.push({id:'window',options});},
     addEventListener(type,fn){(listeners[type]??=[]).push(fn);},
   });
@@ -76,7 +77,14 @@ function fixture(lang,width,initialHash='#/') {
 
 for(const lang of ['zh-Hant','en'])for(const width of [390,768,1280]){
   const f=fixture(lang,width);
-  assert.ok(f.app.innerHTML.includes('href="'+deepLink+'"'),'homepage superscript points to exact note');
+  const homeNoteLink = '#/home/capability-note-3';
+  assert.match(f.app.innerHTML, new RegExp('href="'+homeNoteLink+'" aria-label="[^"]+">\\*</a>'),
+    'homepage star points to the local capability note');
+  assert.ok(f.app.innerHTML.includes('id="capability-note-3">* '), 'local capability note uses the same star');
+  f.navigate(homeNoteLink);
+  const homeNote = f.document.getElementById('capability-note-3');
+  assert.equal(f.document.activeElement,homeNote,'local capability note receives keyboard focus');
+  f.back();
   f.navigate(deepLink);
   const note=f.document.getElementById(noteId);
   assert.ok(note,'existing V8 note is rendered');

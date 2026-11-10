@@ -1,5 +1,5 @@
 {
-  "version": "V24",
+  "version": "V30",
   "geoAccess": {
     "mode": "preview",
     "endpoint": "",
@@ -74,7 +74,15 @@
   "downloadFiles": {
     "whitepaper": "WAGMIx_SKHY2Lw_Whitepaper_EN.pdf",
     "factsheetZh": "WAGMIx_7709_產品單頁_繁體中文_V8.pdf",
-    "factsheetEn": "WAGMIx_7709_Factsheet_EN_V8.pdf"
+    "factsheetEn": "WAGMIx_7709_Factsheet_EN_V8.pdf",
+    "cocoaSample": "Cocoa_7709w_Sample_Document.pdf"
+  },
+  "issuerPages": {
+    "cocoa": "/issuer/cocoa1",
+    "previewFiles": {
+      "zh": "Cocoa_Issuer_繁體中文.html",
+      "en": "Cocoa_Issuer.html"
+    }
   },
   "productRoutes": {
     "7709w": "#/products/7709/7709w/overview",

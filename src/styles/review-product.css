@@ -1,0 +1,175 @@
+/* Shared product presentation, with the original light and dark themes. */
+.skhy-page .p-hero h1 .p-token-word {
+  display: inline;
+  color: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  line-height: inherit;
+  letter-spacing: inherit;
+}
+
+.skhy-page .p-hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: stretch;
+  gap: 12px;
+}
+
+.skhy-page .p-hero-actions > .btn,
+.skhy-page .p-hero-actions > .p-trading-pending {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  min-height: 48px;
+  margin: 0;
+  padding: 12px 18px;
+  font-size: 16px;
+  line-height: 1.4;
+}
+
+.p-page .p-market-title {
+  margin: 0 0 24px;
+  color: #176cba;
+  font-size: 18px;
+  font-weight: 650;
+  line-height: 1.5;
+}
+
+.p-page .p-market-notes p {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+}
+
+.p-page .p-market-notes .market-note-number {
+  flex: 0 0 auto;
+}
+
+.p-page .p-market-notes a,
+.skhy-page .p-issuer-link {
+  color: #176cba;
+  text-decoration: underline;
+  text-underline-offset: .2em;
+}
+
+.skhy-page .p-issuer-link {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 8px;
+}
+
+.skhy-page .p-terms-notes {
+  margin-top: 20px;
+  padding-top: 18px;
+  border-top: 1px solid #d6e4ef;
+}
+
+.skhy-page .p-terms-notes p {
+  margin: 0;
+}
+
+.skhy-page .p-paper-intro + .p-source-notes {
+  margin-top: 28px;
+}
+
+.p-page .sk-profile-details {
+  margin: 0 0 32px;
+}
+
+.p-page .sk-profile-details > summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  width: fit-content;
+  max-width: 100%;
+  min-height: 48px;
+  padding: 12px 18px;
+  border: 1px solid #bfd8ed;
+  border-radius: 12px;
+  background: #edf7ff;
+  color: #175b98;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.5;
+  cursor: pointer;
+  list-style: none;
+}
+
+.p-page .sk-profile-details > summary::-webkit-details-marker {
+  display: none;
+}
+
+.p-page .sk-profile-details > summary:hover {
+  background: #e1f0fc;
+}
+
+.p-page .sk-profile-details > summary:focus-visible {
+  outline: 3px solid #2187d5;
+  outline-offset: 4px;
+}
+
+.p-page .sk-profile-toggle {
+  flex: 0 0 auto;
+  font-size: 24px;
+  line-height: 1;
+}
+
+.p-page .sk-profile-details[open] > summary .sk-profile-toggle {
+  transform: rotate(45deg);
+}
+
+.p-page .sk-profile-content {
+  padding-top: 24px;
+}
+
+.p-page .sk-profile-content .sk-company {
+  margin-top: 0;
+}
+
+.adgm-page .p-market-title,
+.adgm-page .p-market-notes a {
+  color: #a9d4ff;
+}
+
+.adgm-page .sk-profile-details > summary {
+  border-color: #355779;
+  background: #152c46;
+  color: #dcecff;
+}
+
+.adgm-page .sk-profile-details > summary:hover {
+  background: #203d60;
+}
+
+.adgm-page .adgm-section-head h2 {
+  margin-top: 0;
+}
+
+.adgm-page .adgm-primary-eligibility {
+  margin: -8px 0 28px;
+  max-width: 75ch;
+  color: #c2d4e9;
+  font-size: var(--reading-body, 18px);
+  line-height: 1.8;
+}
+
+@media (max-width: 600px) {
+  .skhy-page .p-hero-actions > .btn,
+  .skhy-page .p-hero-actions > .p-trading-pending {
+    flex: 1 1 190px;
+  }
+
+  .p-page .p-market-title {
+    margin-bottom: 18px;
+  }
+
+  .p-page .sk-profile-details > summary {
+    width: 100%;
+  }
+
+  .p-page .sk-profile-content {
+    padding-top: 18px;
+  }
+}

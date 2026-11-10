@@ -1,0 +1,93 @@
+.contact-page-layout {
+  display: grid;
+  grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr);
+  align-items: start;
+  gap: clamp(36px, 6vw, 104px);
+  max-width: 1080px;
+}
+
+.contact-page-intro {
+  display: block;
+  padding: 0;
+  border: 0;
+}
+
+.contact-page-brand img {
+  display: block;
+  width: min(100%, 250px);
+  height: auto;
+  margin-bottom: 34px;
+}
+
+.contact-page h1 {
+  margin: 0 0 14px;
+  color: #092c4d;
+  font-size: clamp(40px, 5vw, 64px);
+  line-height: 1.12;
+  letter-spacing: -.04em;
+}
+
+.contact-page-intro p {
+  margin: 0;
+  color: #4b6780;
+  font-size: 19px;
+  line-height: 1.65;
+}
+
+.contact-page-channels { margin: 0; }
+.contact-page .contact-channels {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 0;
+  margin: 0;
+  border-bottom: 1px solid #bed5ea;
+}
+
+.contact-page .contact-channel {
+  display: grid;
+  grid-template-columns: 34px minmax(0, 1fr) 22px;
+  align-items: start;
+  gap: 14px;
+  min-height: 0;
+  padding: 18px 8px;
+  border: 0;
+  border-top: 1px solid #bed5ea;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+  overflow-wrap: anywhere;
+}
+
+.contact-page .contact-channel:hover {
+  background: #e8f4ff90;
+  box-shadow: none;
+  transform: none;
+}
+
+.contact-page .contact-channel:focus-visible {
+  outline: 2px solid #1469b1;
+  outline-offset: 2px;
+}
+
+.contact-page .contact-channel-icon {
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  margin: 0;
+  background: none;
+  color: #2474b8;
+}
+
+.contact-page .contact-channel-icon svg { width: 25px; height: 25px; }
+.contact-page .contact-channel h3 { margin: 0; font-size: 21px; line-height: 1.35; }
+.contact-page .contact-channel p { margin: 3px 0 5px; color: #4b6780; font-size: 15px; line-height: 1.55; }
+.contact-page .contact-channel-address { display: block; margin: 0; color: #1c639f; font-size: 17px; line-height: 1.5; }
+.contact-page .contact-channel-arrow { position: static; align-self: center; color: #4b7b9f; font-size: 20px; }
+
+@media (max-width: 740px) {
+  .contact-page-layout { grid-template-columns: minmax(0, 1fr); gap: 28px; }
+  .contact-page-brand img { width: min(100%, 196px); margin-bottom: 22px; }
+  .contact-page-intro p { font-size: 17px; }
+  .contact-page .contact-channel { gap: 11px; padding-inline: 0; }
+}

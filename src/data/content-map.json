@@ -68,14 +68,18 @@
       },
       "copy": {
         "zh": [
-          "實現一級市場 T0 申贖交收³，支持二級市場 24/7 交易。"
+          "實現一級市場 T0 申贖交收*，支持二級市場 24/7 交易。"
         ],
         "en": [
-          "Supports T0 primary settlement³ and 24/7 secondary trading."
+          "Supports T0 primary settlement* and 24/7 secondary trading."
         ]
       }
     }
   ],
+  "capabilitySettlementNote": {
+    "zh": "WAGMIx 僅提供代幣化技術服務，不營運任何交易場所。一級申贖的 T0 交收由獲批參與交易商辦理，僅限合資格專業投資者。港股交易時段內外均可進行 T0 交收，惟須具備可靠估值及交收條件，否則交收將順延。二級市場 24/7 交易在第三方交易場所進行。非港股交易時段的價格僅供參考。",
+    "en": "WAGMIx provides tokenization technology services only and does not operate any trading venue. T0 settlement for primary subscriptions and redemptions is handled by approved participating dealers and is available only to eligible professional investors. T0 settlement may take place during or outside Hong Kong market hours, subject to reliable valuation and settlement. Otherwise, settlement is deferred. Secondary-market trading takes place 24/7 on third-party venues. Prices outside Hong Kong market hours are indicative only."
+  },
   "sellingPoints": [
     {
       "title": {
