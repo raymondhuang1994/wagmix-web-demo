@@ -1,6 +1,6 @@
 {
-  "version": "V30",
-  "date": "2026-11-10",
+  "version": "V31",
+  "date": "2026-11-11",
   "checks": {
     "bilingual_route_cases": 204,
     "jurisdiction_notice_assertions": 534,
@@ -17,7 +17,15 @@
       "zh-Hant",
       "en"
     ],
-    "approved_preview_html_byte_match": true
+    "approved_preview_html_byte_match": true,
+    "english_default_index": true,
+    "launch_common_copy_browser_widths": [
+      390,
+      1440
+    ],
+    "contact_order": "X, Telegram, Email",
+    "retained_primary_settlement_deferral_condition": true,
+    "favicon_and_og_resources": true
   },
   "geo": {
     "mode": "preview",
@@ -25,16 +33,20 @@
     "endpointConfigured": false
   },
   "sha256": {
-    "Cocoa_Issuer.html": "9c0723465dbf4dd0046c170aec407226064adf38398a9d997ab4649ec33883a1",
-    "Cocoa_Issuer_繁體中文.html": "c26652440362a61ab83fe7eb07137462eff3b66fd6349f7ada49266f9f92ff85",
-    "WAGMIx_English_V30.html": "a6a8284596958649f5b4e59d41685e46ee944580aa47520696d5330079421360",
-    "WAGMIx_繁體中文_V30.html": "756f19a96f7c1e09f78eae249d257c80db23db790aa96cd2e7239ec29ce9fd3d",
-    "index.html": "756f19a96f7c1e09f78eae249d257c80db23db790aa96cd2e7239ec29ce9fd3d",
+    "Cocoa_Issuer.html": "17d5e23c9fa5042169aa3e0f6fbdb91d49383db80526df0fd6caa348e5ddf9b4",
+    "Cocoa_Issuer_繁體中文.html": "e8f156037289627cc7ada9f7200bf9d7728e9d71ad0a2a1d505a7fd14b7b7064",
+    "WAGMIx_English_V31.html": "30b5d2be0f5aa05d7e8b7f34713f673de30b27ba4ced7a1eda02192fffcfdfa7",
+    "WAGMIx_繁體中文_V31.html": "d68b4730456d59943fbacf7039aed12621f187c7a485d41388a8c174f4d3e82d",
+    "index.html": "30b5d2be0f5aa05d7e8b7f34713f673de30b27ba4ced7a1eda02192fffcfdfa7",
     "assets/wagmix-uppercase.png": "7152e854747097db5cb1bc28c22b024193f673f7b64a2b90abd70e6ee8a212e6",
     "assets/wagmix-x-hero.webp": "6347298953bc0f474feaab43f72331d33a8c8a36b3025160a3d887f82ac0d24c",
     "downloads/Cocoa_7709w_Sample_Document.pdf": "fdd44f2401b639e1cbb0fcbb4f874e03249f904543d5ddecc14be369fc48050c",
     "downloads/WAGMIx_7709_Factsheet_EN_V8.pdf": "0eea7c5627c1d7aae55c1c121e794ae34c2ecd56b7f2988b43287cdaa29c9d89",
     "downloads/WAGMIx_7709_產品單頁_繁體中文_V8.pdf": "2ec5bfaf879e940f6be735502366af82e4e584a68e1fbb7d2ee86b1af30caf97",
-    "downloads/WAGMIx_SKHY2Lw_Whitepaper_EN.pdf": "e3c70cbced396e46ee04d9a4afe4081ddfd28dbc3fe2310b071ca05cfaee8b0a"
+    "downloads/WAGMIx_SKHY2Lw_Whitepaper_EN.pdf": "e3c70cbced396e46ee04d9a4afe4081ddfd28dbc3fe2310b071ca05cfaee8b0a",
+    "favicon.ico": "3178ab69139942dcee981247b5ebee1bedabc21db973e5fa31b2167a5c5769a4",
+    "favicon.png": "ca4ad6f70780298562a11a3fcc65925db6b42061056b2c1a6c1572bedd961d8b",
+    "og-image.jpg": "201ca2d0961ef7f5c21ed6460214b84977daf8c6f1c9af740ebe4e7f1739e95f",
+    "og-image.png": "14604cd91e88ddba3d62de53a9ac36753ea8da2d38bc6a3d68c5110bdeb21cf7"
   }
 }

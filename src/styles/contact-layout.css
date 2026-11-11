@@ -12,13 +12,6 @@
   border: 0;
 }
 
-.contact-page-brand img {
-  display: block;
-  width: min(100%, 250px);
-  height: auto;
-  margin-bottom: 34px;
-}
-
 .contact-page h1 {
   margin: 0 0 14px;
   color: #092c4d;
@@ -87,7 +80,6 @@
 
 @media (max-width: 740px) {
   .contact-page-layout { grid-template-columns: minmax(0, 1fr); gap: 28px; }
-  .contact-page-brand img { width: min(100%, 196px); margin-bottom: 22px; }
   .contact-page-intro p { font-size: 17px; }
   .contact-page .contact-channel { gap: 11px; padding-inline: 0; }
 }

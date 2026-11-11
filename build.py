@@ -25,9 +25,9 @@ SCRIPTS = (
     'sidebar.js',
 )
 EDITIONS = (
-    ('zh-Hant', 'WAGMIx_繁體中文_V30.html', 'WAGMIx｜機構級代幣化平台',
+    ('zh-Hant', 'WAGMIx_繁體中文_V31.html', 'WAGMIx｜機構級代幣化平台',
      'WAGMIx 整合五項能力，連接真實資產與全天候鏈上市場。查閱以港交所 7709.HK 為底層資產的 7709w 及 SKHY2Lw。'),
-    ('en', 'WAGMIx_English_V30.html', 'WAGMIx | Institutional Tokenization',
+    ('en', 'WAGMIx_English_V31.html', 'WAGMIx | Institutional Tokenization',
      'Explore WAGMIx and two tokenized products referencing HKEX-listed 7709.HK, 7709w and SKHY2Lw.'),
 )
 MIME = {'.webp':'image/webp', '.png':'image/png', '.svg':'image/svg+xml', '.jpg':'image/jpeg'}
@@ -95,6 +95,23 @@ def build_issuer(config, lang, product_page, sample_uri):
 
 def build():
     config = read_data('site-config.json')
+    share_description = escape(config['brand']['slogan']['en'], quote=True)
+    share_image_alt = escape('WAGMIx logo above the words ' + config['brand']['slogan']['en'], quote=True)
+    favicon_uri = 'data:image/x-icon;base64,' + base64.b64encode((ROOT / 'favicon.ico').read_bytes()).decode('ascii')
+    share_metadata = f'''<meta property="og:type" content="website">
+<meta property="og:title" content="WAGMIx">
+<meta property="og:description" content="{share_description}">
+<meta property="og:url" content="https://wagmix.com/">
+<meta property="og:image" content="https://wagmix.com/og-image.jpg">
+<meta property="og:image:type" content="image/jpeg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="{share_image_alt}">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="WAGMIx">
+<meta name="twitter:description" content="{share_description}">
+<meta name="twitter:image" content="https://wagmix.com/og-image.jpg">
+<meta name="twitter:image:alt" content="{share_image_alt}">'''
     constants = {
         'CONTENT': read_data('content-map.json'), 'HISTORY': read_data('7709-history.json'),
         'SITE_CONFIG': config, 'SKHYNIX': read_data('skhynix-data.json'),
@@ -128,16 +145,19 @@ def build():
     if '</script' in js.lower():
         raise ValueError('Unexpected HTML script terminator in a JavaScript source')
     for lang, filename, title, description in EDITIONS:
-        description = ' '.join(config['brand']['introduction']['en' if lang == 'en' else 'zh'])
+        description = escape(' '.join(config['brand']['introduction']['en' if lang == 'en' else 'zh']), quote=True)
         notice = '請啟用 JavaScript 以瀏覽此網站。' if lang == 'zh-Hant' else 'Please enable JavaScript to view this website.'
         html = f'''<!doctype html>
-<html lang="{lang}"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<html lang="{lang}" prefix="og: https://ogp.me/ns#"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="description" content="{description}"><meta name="theme-color" content="#c6e5ff">
-<link rel="icon" href="data:,"><title>{title}</title><style>{css}</style></head>
+<link rel="icon" type="image/png" sizes="32x32" href="./favicon.png">
+<link rel="icon" href="{favicon_uri}">
+{share_metadata}
+<title>{title}</title><style>{css}</style></head>
 <body><div id="app"></div><div id="geo-root"></div><noscript>{notice}</noscript><script>{js}</script></body></html>
 '''
         (ROOT / filename).write_text(html, encoding='utf-8')
-        if lang == 'zh-Hant':
+        if lang == 'en':
             (ROOT / 'index.html').write_text(html, encoding='utf-8')
         print(filename)
         build_issuer(config, lang, filename, sample_uri)

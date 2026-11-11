@@ -1,16 +1,16 @@
-# WAGMIx 网站设计与双语网页 · V30 审阅版
+# WAGMIx 网站设计与双语网页 · V31 审阅版
 
 ![WAGMIx](assets/wagmix-uppercase.png)
 
 本项目包含平台介绍、产品目录、7709w 和 SKHY2Lw 产品详情、文件阅读器、生态目录及联系页。它是可交接给设计与开发 agent 的 HTML 样稿和源码，未启用 GitHub Pages。
 
-V30 採用 V9 單頁的五項能力原文，調整第 02 項語序，先寫一級市場 T0 交收，再寫二級市場 24/7 交易。同頁雙語腳註以星號標記。完整站使用大寫 WAGMI 字標和藍色漸變 X，聯絡頁以電郵、X、Telegram 縱向排列。此前的页面调整见 [V26 修改对照](REVIEW_V26.md)。
+V31 将已发布 Launch 的做市、资产上链、团队专长及联系文案同步到完整版。平台通用脚注使用底层资产交易时段，并保留交收顺延条件。首页及独立联系页按 X、Telegram、电子邮件纵向排列。英文为默认入口，页首可切换繁体中文。具体差异见 [V31 修改对照](RELEASE_V31.md)。
 
 本版沿用 V8 产品单页与原白皮书。产品披露和脚标见 [V21 修改记录](RELEASE_V21.md)，地区提示见 [V20 修改记录](RELEASE_V20.md)。
 
 ## 打开交付文件
 
-克隆仓库或下载并解压 GitHub ZIP，再打开 [繁体中文 HTML](WAGMIx_繁體中文_V30.html) 或 [English HTML](WAGMIx_English_V30.html)。`index.html` 同为繁中入口。字体、图片、样式和脚本均内嵌。正式 PDF 位于旁边的 `downloads/` 目录。
+克隆仓库或下载并解压 GitHub ZIP，再打开 [English HTML](WAGMIx_English_V31.html) 或 [繁体中文 HTML](WAGMIx_繁體中文_V31.html)。`index.html` 为英文入口。字体、图片、样式和脚本均内嵌。正式 PDF 位于旁边的 `downloads/` 目录。根目录的 favicon 和分享预览图片供托管网站读取。
 
 | 产品代码 | 底层资产 | 网络 | 页面识别 |
 |---|---|---|---|
